@@ -21,6 +21,12 @@ function loadPanels() {
   for (const panelEl of panelEls) {
     const x = parseInt(panelEl.dataset.x);
     const y = parseInt(panelEl.dataset.y);
+
+    // Set the coordinates for the panel in the grid.
+    panelEl.style.left = `${100 * x}vw`;
+    panelEl.style.top = `${100 * y}vh`;
+
+    // Track panel metadata for user later in code.
     results.set(getPanelMetadataMapKey(x, y), {
       urlSuffix: panelEl.dataset.urlSuffix,
     });
