@@ -1,0 +1,50 @@
+<div class="panel x0 y3 blog-panel">
+  <div class="title">booggle.</div>
+  <div class="blog-date">2022-11-29</div>
+  <div class="section">
+    Several years ago, I created the side project I still use the most.
+  </div>
+
+  <div class="section">
+    <b>booggle</b> is a
+    <a href="https://en.wikipedia.org/wiki/Boo_(character)">fictional ghost</a>
+    inspired web implementation of a
+    <a href="https://boardgamegeek.com/boardgame/1293/boggle"
+      >popular word game</a
+    >
+    involving a 4x4 grid of letters. Designed to be played by me and my then
+    girlfriend (now wife), it helps kill a few minutes pretty much whenever we
+    need.
+  </div>
+
+  <div class="section">
+    The application was built using a minimal
+    <a href="https://nodejs.org/">nodejs</a> server (with
+    <a href="https://expressjs.com/">express</a>) that tracks users coming and
+    going, handles state for games that are in progress, checks words against a
+    dictionary as users are playing, and provides scoring at the end.
+  </div>
+
+  <div class="section">
+    On the client, I used mostly vanilla javascript with
+    <a href="https://handlebarsjs.com/">handlebars</a>. Simple json messages are
+    passed between the client and server via a
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API"
+      >websocket</a
+    >.
+  </div>
+
+  <div class="section">
+    Want to try it out? It runs over at
+    <a href="https://ari.blumenthal.dev/booggle">ari.blumenthal.dev/booggle</a>.
+    It's a little buggy, only one game can be played at a time, the dictionary
+    isn't perfect, but hey, anyone can play.
+  </div>
+
+  <div class="section">
+    Source for booggle is now available over on my github at
+    <a href="https://github.com/zkhr/booggle">github.com/zkhr/booggle</a>.
+  </div>
+
+  <div class="link back-link" data-x="0" data-y="1">go back</div>
+</div>
