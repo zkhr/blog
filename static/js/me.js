@@ -24,7 +24,7 @@ function loadPanels() {
 
     // Set the coordinates for the panel in the grid.
     panelEl.style.left = `${100 * x}vw`;
-    panelEl.style.top = `${100 * y}vh`;
+    panelEl.style.top = `${-100 * y}vh`;
 
     // Track panel metadata for user later in code.
     results.set(getPanelMetadataMapKey(x, y), {
@@ -140,17 +140,17 @@ function goRight() {
 }
 
 function goUp() {
-  goToCoordinate(currentCoord.x, currentCoord.y - 1);
+  goToCoordinate(currentCoord.x, currentCoord.y + 1);
 }
 
 function goDown() {
-  goToCoordinate(currentCoord.x, currentCoord.y + 1);
+  goToCoordinate(currentCoord.x, currentCoord.y - 1);
 }
 
 /** Navigates the page to the provided coordinates. */
 function goToCoordinate(x, y) {
   panelMatrixEl.style.left = `${-100 * x}vw`;
-  panelMatrixEl.style.top = `${-100 * y}vh`;
+  panelMatrixEl.style.top = `${100 * y}vh`;
   currentCoord = { x, y };
   const path = getCoordinatePath(x, y);
   window.history.replaceState(null, "", path);
