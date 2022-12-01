@@ -47,9 +47,14 @@ body {
   justify-content: center;
 }
 
+.home-panel .links {
+  display: flex;
+  padding-bottom: 40px;
+}
+
 .home-panel .link {
   font-size: 25px;
-  padding: 0 12px;
+  margin: 0 12px;
 }
 
 .who-panel {
@@ -71,6 +76,11 @@ body {
   color: #ffffff;
 }
 
+.toolkit-panel {
+  background-color: #5b7877;
+  color: #ffffff;
+}
+
 .name {
   display: flex;
   flex-direction: column;
@@ -80,20 +90,14 @@ body {
   text-align: center;
 }
 
-.links {
-  display: flex;
-  padding-bottom: 40px;
-}
-
 .link {
+  background-color: rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  text-decoration-line: underline;
-  text-decoration-color: #aaa;
+  padding: 0 12px;
 }
 
 .link:hover {
-  text-decoration-line: underline;
-  text-decoration-color: #ddd;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .back-link {
