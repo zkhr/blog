@@ -53,17 +53,17 @@
     <div class="section">
       2. I use the
       <a
-        href="http://nginx.org/en/docs/http/ngx_http_core_module.html#try_files"
-        >try_files</a
+        href="http://nginx.org/en/docs/http/ngx_http_rewrite_module.html#rewrite"
+        >rewrite</a
       >
-      directive so that all paths that match
+      directive so that all paths that start with
       <span class="inline-code">/!</span>
       will get sent to that index.html file.
     </div>
 
     <pre class="code-block">
 location /! {
-  try_files /index.html /;
+  rewrite ^.*$ /;
 }
 </pre
     >
