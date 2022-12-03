@@ -56,7 +56,7 @@ body {
 }
 
 .home-panel .link {
-  margin: 12px;
+  margin: 8px;
 }
 
 .who-panel {
@@ -79,8 +79,8 @@ body {
 }
 
 .toolkit-panel {
-  background-color: #5b7877;
-  color: #ffffff;
+  background-color: #a7efcb;
+  color: #111111;
 }
 
 .name {
@@ -136,6 +136,13 @@ body {
 .section-header {
   padding-top: 30px;
   font-size: 25px;
+}
+
+.toolkit-panel a:link,
+.toolkit-panel a:visited,
+.toolkit-panel a:hover,
+.toolkit-panel a:focus {
+  color: #9500d3;
 }
 
 a:link,
