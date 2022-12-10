@@ -1,4 +1,25 @@
-<!DOCTYPE html>
+/**
+ * Generates the index.html panel with all available panels in the panels/
+ * directory.
+ *
+ * Usage: `node ./codegen/refresh_index.mjs`
+ */
+
+import { readdir, readFile, writeFile } from "node:fs/promises";
+
+const filename = "./index.html";
+
+const panels = [];
+const filenames = await readdir("panels/");
+for (const filename of filenames) {
+  panels.push(`
+      <!--# include file="panels/${filename}" -->`);
+}
+
+console.log(`Updating ${filename}`);
+await writeFile(
+  filename,
+  `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -16,19 +37,10 @@
     <link type="text/css" rel="stylesheet" href="/static/css/me.css" />
   </head>
   <body>
-    <div id="panel-matrix" style="display: none">
-      <!--# include file="panels/aboutme.html" -->
-      <!--# include file="panels/blog-0-hello-world.html" -->
-      <!--# include file="panels/blog-1-booggle.html" -->
-      <!--# include file="panels/blog-2-new-site-who-dis.html" -->
-      <!--# include file="panels/blog-3-puzzle-hunts.html" -->
-      <!--# include file="panels/blog-4-pokemon-scarlet.html" -->
-      <!--# include file="panels/blog.html" -->
-      <!--# include file="panels/home.html" -->
-      <!--# include file="panels/projects.html" -->
-      <!--# include file="panels/puzzle-hunt-toolkit.html" -->
+    <div id="panel-matrix" style="display: none">${panels.join("")}
     </div>
     <script type="module" src="/static/js/matrix.js"></script>
     <script type="module" src="/static/js/bootstrap.js"></script>
   </body>
-</html>
+</html>`
+);
