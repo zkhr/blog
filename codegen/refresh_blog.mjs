@@ -34,7 +34,13 @@ for (const filename of filenames.reverse()) {
 console.log(`Updating ${filename}`);
 await writeFile(
   filename,
-  `<div class="panel blog-panel" data-x="0" data-y="-1" data-url-suffix="blog">
+  `<div
+  class="panel blog-theme"
+  data-x="0"
+  data-y="-1"
+  data-type="blog"
+  data-url-suffix="blog"
+>
   <div class="panel-content">
     <div class="title">Blog</div>
     <div class="blog-entries">${blogEntries.join("")}

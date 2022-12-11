@@ -27,6 +27,20 @@ class Matrix {
 
     this.goToCoordinate(this.#currentCoord.x, this.#currentCoord.y);
     this.#panelMatrixEl.style.display = "";
+
+    return this;
+  }
+
+  /**
+   * Returns metadata for all panels in the grid, in no particular order.
+   */
+  listPanels() {
+    return [...this.#panelMetadataMap.values()];
+  }
+
+  /** Returns the current coordinates. */
+  getCurrentCoordinates() {
+    return this.#currentCoord;
   }
 
   /**
@@ -46,6 +60,9 @@ class Matrix {
 
       // Track panel metadata for user later in code.
       results.set(this.#getPanelMetadataMapKey(x, y), {
+        x,
+        y,
+        type: panelEl.dataset.type,
         urlSuffix: panelEl.dataset.urlSuffix,
       });
     }
@@ -162,6 +179,7 @@ class Matrix {
     this.#currentCoord = { x, y };
     const path = this.#getCoordinatePath(x, y);
     window.history.replaceState(null, "", path);
+    window.dispatchEvent(new Event("coordinatechange"));
   }
 
   /** Returns the path to use in the URL for the provided coordinates. */

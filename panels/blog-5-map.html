@@ -1,0 +1,89 @@
+<div
+  class="panel blog-theme"
+  data-x="3"
+  data-y="-2"
+  data-type="blog"
+  data-url-suffix="hilbert-curve"
+>
+  <div class="panel-content">
+    <div class="title">hilbert curve.</div>
+    <div class="blog-date">2022-12-11</div>
+
+    <div class="section">
+      As mentioned in the
+      <span class="link" data-x="1" data-y="-3">new site, who dis.</span> blog
+      post, this site is an infinite grid, with each page on the site being a
+      panel on that grid. This raises the question, how do I decide where on the
+      grid to place new pages?
+    </div>
+
+    <div class="section">
+      Being an infinite grid, there are infinte number of options! For example,
+      we could just go off in an arbitrary direction:
+    </div>
+
+    <pre class="grid">
+··············
+··█───────────
+··············</pre
+    >
+
+    <div class="section">
+      But that doesn't really take advantage of the dimensionality of the grid.
+      Instead, we could spiral around a point:
+    </div>
+
+    <pre class="grid">
+┌─────┐
+│┌───┐│
+││┌─┐││
+│││█│││
+│││└┘││
+││└──┘│
+│└────┘</pre
+    >
+
+    <div class="section">
+      Or we could use the
+      <a href="https://en.wikipedia.org/wiki/Pairing_function"
+        >Cantor Pairing Function</a
+      >
+      or even pick randomly!
+    </div>
+
+    <div class="section">
+      So, what did I go with? Well, for blog posts, I decided to use the
+      <a href="https://en.wikipedia.org/wiki/Hilbert_curve">Hilbert curve</a>, a
+      space filling fractal, since it
+      <a href="https://datagenetics.com/blog/march22013/"
+        >has some nice properties</a
+      >:
+    </div>
+
+    <pre class="grid">
+█·······
+│┌─x┌─┐┌
+└┘┌┘└┐└┘
+┌┐└┐┌┘┌┐
+│└─┘└─┘│
+└┐┌──┐┌┘
+┌┘└┐┌┘└┐
+│┌┐││┌┐│
+└┘└┘└┘└┘
+</pre
+    >
+
+    <div class="section">This blog post is at 'x' on the curve.</div>
+
+    <div class="section">
+      If you get lost navigating the grid, you can always grab a
+      <span data-loot="map" class="loot">map</span> to check your position.
+    </div>
+
+    <div class="nav-section">
+      <span class="link nav-link" data-x="0" data-y="0">Home</span>
+      <span class="link nav-link" data-x="0" data-y="-1">Blog</span>
+      <span class="link nav-link" data-x="2" data-y="-2">Prev</span>
+    </div>
+  </div>
+</div>
