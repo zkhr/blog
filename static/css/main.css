@@ -1,8 +1,156 @@
+.map {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid #fff;
+  cursor: w-resize;
+  height: 175px;
+  overflow: hidden;
+  position: absolute;
+  right: -155px;
+  top: 5px;
+  width: 175px;
+  transition: right 0.3s ease-in-out;
+}
+
+.map:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.map.visible {
+  cursor: e-resize;
+  right: 5px;
+}
+
+.map-home {
+  border: 1px solid #dadce0;
+  height: 25px;
+  left: 74px;
+  position: absolute;
+  top: 74px;
+  width: 25px;
+  z-index: 2;
+}
+
+.map-slider {
+  position: relative;
+  transition: left 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+.map-panel {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  z-index: 1;
+}
+
+.pokemon-section {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 12px;
+}
+
+.pokemon {
+  width: 250px;
+}
+
+.pokemon .mon-name {
+  font-weight: bold;
+}
+
+.pokemon .detail {
+  color: #c8c8c8;
+}
+
+.pokemon .type {
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 16px;
+}
+
+.pokemon .bug {
+  background: #729f3f;
+}
+
+.pokemon .dragon {
+  background: #7038f8;
+}
+
+.pokemon .electric {
+  background: #eed535;
+  color: #000;
+}
+
+.pokemon .fairy {
+  background: #fdb9e9;
+  color: #000;
+}
+
+.pokemon .fighting {
+  background: #d56723;
+}
+
+.pokemon .fire {
+  background: #fd7d24;
+  color: #000;
+}
+
+.pokemon .ghost {
+  background: #7b62a3;
+}
+
+.pokemon .ground {
+  background: #e0c068;
+  color: #000;
+}
+
+.pokemon .psychic {
+  background: #f366b9;
+}
+
+.pokemon .rock {
+  background: #a38c21;
+}
+
+.pokemon .steel {
+  background: #9eb7b8;
+  color: #000;
+}
+
+.pokemon .water {
+  background: #4592c4;
+}
+
+.home-theme {
+  background-color: #6a5b78;
+  color: #ffffff;
+}
+
+.who-theme {
+  background-color: #785b5b;
+  color: #ffffff;
+}
+
+.blog-theme {
+  background-color: #5b7863;
+  color: #ffffff;
+}
+
+.projects-theme {
+  background-color: #5b6478;
+  color: #ffffff;
+}
+
+.toolkit-theme {
+  background-color: #b5c3b6;
+  color: #111111;
+}
+.toolkit-theme a:link, .toolkit-theme a:visited, .toolkit-theme a:hover, .toolkit-theme a:focus {
+  color: #930000;
+}
+
 @font-face {
   font-family: TravelingTypewriter;
   src: url("/static/fonts/TravelingTypewriter.otf") format("opentype");
 }
-
 html {
   font-family: "TravelingTypewriter", serif;
 }
@@ -34,6 +182,15 @@ body,
   padding: 20px;
   position: absolute;
 }
+.panel::-webkit-scrollbar {
+  width: 10px;
+}
+.panel::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.panel::-webkit-scrollbar-thumb {
+  background-color: #dadce0;
+}
 
 body {
   margin: 0;
@@ -55,31 +212,6 @@ body {
 
 .home-panel .link {
   margin: 8px;
-}
-
-.home-theme {
-  background-color: #6a5b78;
-  color: #ffffff;
-}
-
-.who-theme {
-  background-color: #785b5b;
-  color: #ffffff;
-}
-
-.blog-theme {
-  background-color: #5b7863;
-  color: #ffffff;
-}
-
-.projects-theme {
-  background-color: #5b6478;
-  color: #ffffff;
-}
-
-.toolkit-theme {
-  background-color: #a7efcb;
-  color: #111111;
 }
 
 .panel-content {
@@ -141,13 +273,6 @@ body {
   font-size: 25px;
 }
 
-.toolkit-theme a:link,
-.toolkit-theme a:visited,
-.toolkit-theme a:hover,
-.toolkit-theme a:focus {
-  color: #9500d3;
-}
-
 a:link,
 a:visited,
 a:hover,
@@ -181,72 +306,6 @@ ul {
   padding: 0 4px;
 }
 
-.pokemon-section {
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 12px;
-}
-
-.pokemon {
-  width: 250px;
-}
-
-.pokemon .mon-name {
-  font-weight: bold;
-}
-
-.pokemon .detail {
-  color: #c8c8c8;
-}
-
-.pokemon .type {
-  border-radius: 4px;
-  padding: 0 8px;
-  font-size: 16px;
-}
-
-.pokemon .bug {
-  background: #729f3f;
-}
-.pokemon .steel {
-  background: #9eb7b8;
-  color: #000;
-}
-.pokemon .psychic {
-  background: #f366b9;
-}
-.pokemon .fairy {
-  background: #fdb9e9;
-  color: #000;
-}
-.pokemon .dragon {
-  background: #7038f8;
-}
-.pokemon .ground {
-  background: #e0c068;
-  color: #000;
-}
-.pokemon .water {
-  background: #4592c4;
-}
-.pokemon .rock {
-  background: #a38c21;
-}
-.pokemon .fire {
-  background: #fd7d24;
-  color: #000;
-}
-.pokemon .ghost {
-  background: #7b62a3;
-}
-.pokemon .electric {
-  background: #eed535;
-  color: #000;
-}
-.pokemon .fighting {
-  background: #d56723;
-}
-
 .grid {
   font-size: 20px;
   line-height: 20px;
@@ -277,58 +336,4 @@ ul {
   background: rgba(255, 255, 255, 0.7);
 }
 
-.map {
-  background: rgba(0, 0, 0, 0.7);
-  border: 1px solid #fff;
-  cursor: w-resize;
-  height: 175px;
-  overflow: hidden;
-  position: absolute;
-  right: -155px;
-  top: 5px;
-  width: 175px;
-  transition: right 0.3s ease-in-out;
-}
-
-.map:hover {
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.map.visible {
-  cursor: e-resize;
-  right: 5px;
-}
-
-.map-home {
-  border: 1px solid #dadce0;
-  height: 25px;
-  left: 74px;
-  position: absolute;
-  top: 74px;
-  width: 25px;
-  z-index: 2;
-}
-
-.map-slider {
-  position: relative;
-  transition: left 0.3s ease-in-out, top 0.3s ease-in-out;
-}
-
-.map-panel {
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  z-index: 1;
-}
-
-.panel::-webkit-scrollbar {
-  width: 10px;
-}
-
-.panel::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-.panel::-webkit-scrollbar-thumb {
-  background-color: #dadce0;
-}
+/*# sourceMappingURL=main.css.map */

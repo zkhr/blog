@@ -1,4 +1,4 @@
-import { Map } from "./map.js";
+import { Minimap } from "./minimap.js";
 
 /** Class applied to items the user already has. */
 const OWNED_ITEM_CLASS = "owned-item";
@@ -63,7 +63,7 @@ class LootProvider {
   #triggerItemHook(item) {
     switch (item) {
       case "map":
-        new Map(this.#matrix).render();
+        new Minimap(this.#matrix).render();
         return;
     }
   }

@@ -1,0 +1,31 @@
+.home-theme {
+  background-color: #6a5b78;
+  color: #ffffff;
+}
+
+.who-theme {
+  background-color: #785b5b;
+  color: #ffffff;
+}
+
+.blog-theme {
+  background-color: #5b7863;
+  color: #ffffff;
+}
+
+.projects-theme {
+  background-color: #5b6478;
+  color: #ffffff;
+}
+
+.toolkit-theme {
+  background-color: #b5c3b6;
+  color: #111111;
+
+  & a:link,
+  & a:visited,
+  & a:hover,
+  & a:focus {
+    color: #930000;
+  }
+}

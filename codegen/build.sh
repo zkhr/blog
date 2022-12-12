@@ -9,4 +9,7 @@
 /usr/bin/node ./codegen/refresh_index.mjs
 /usr/bin/node ./codegen/refresh_blog.mjs
 
-echo "Done! Have a nice day!";
+echo "Updating ./static/css/main.css";
+sass ./static/css/main.scss ./static/css/main.css
+
+echo "\nDone! Have a nice day!";

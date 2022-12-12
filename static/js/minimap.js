@@ -1,9 +1,9 @@
 /** The size of a panel in the minimap in pixels. */
 const PANEL_SIZE = 25;
 
-class Map {
-  /** The map element on the page. */
-  #mapEl;
+class Minimap {
+  /** The minimap element on the page. */
+  #minimapEl;
 
   /** The slider that changes offset as the user moves around. */
   #sliderEl;
@@ -13,36 +13,40 @@ class Map {
 
   constructor(matrix) {
     this.#matrix = matrix;
-    this.#mapEl = null;
+    this.#minimapEl = null;
   }
 
   render() {
-    this.#buildMap();
+    this.#buildMinimap();
     this.#updateSlider();
 
-    // Clicking the map will hide/show it. Defauls hidden.
-    this.#mapEl.addEventListener("click", (evt) => {
-      this.#mapEl.classList.toggle("visible");
+    // Clicking the minimap will hide/show it. Defauls hidden.
+    this.#minimapEl.addEventListener("click", (evt) => {
+      this.#minimapEl.classList.toggle("visible");
     });
 
-    // Navigating around the grid will trigger updates for the map.
+    // Navigating around the grid will trigger updates for the minimap.
     window.addEventListener("coordinatechange", () => this.#updateSlider());
   }
 
-  #buildMap() {
-    this.#mapEl = document.createElement("div");
-    this.#mapEl.classList.add("map");
+  #buildMinimap() {
+    this.#minimapEl = document.createElement("div");
+    this.#minimapEl.classList.add("map");
+    if (window.innerWidth > 1000) {
+      // Default visible on desktop, when content won't overlap.
+      this.#minimapEl.classList.add("visible");
+    }
 
     const homeMarker = document.createElement("div");
     homeMarker.classList.add("map-home");
-    this.#mapEl.appendChild(homeMarker);
+    this.#minimapEl.appendChild(homeMarker);
 
     document.createElement("div");
-    this.#mapEl.classList.add("map");
+    this.#minimapEl.classList.add("map");
 
     this.#sliderEl = document.createElement("div");
     this.#sliderEl.classList.add("map-slider");
-    this.#mapEl.appendChild(this.#sliderEl);
+    this.#minimapEl.appendChild(this.#sliderEl);
 
     for (const panel of this.#matrix.listPanels()) {
       const panelEl = document.createElement("div");
@@ -52,7 +56,7 @@ class Map {
       this.#sliderEl.appendChild(panelEl);
     }
 
-    document.body.appendChild(this.#mapEl);
+    document.body.appendChild(this.#minimapEl);
   }
 
   #updateSlider() {
@@ -62,4 +66,4 @@ class Map {
   }
 }
 
-export { Map };
+export { Minimap };
