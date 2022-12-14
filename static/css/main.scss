@@ -7,6 +7,11 @@
   src: url("/static/fonts/TravelingTypewriter.otf") format("opentype");
 }
 
+@font-face {
+  font-family: Karla;
+  src: url("/static/fonts/Karla-Regular.ttf") format("truetype");
+}
+
 html {
   font-family: "TravelingTypewriter", serif;
 }
@@ -130,6 +135,27 @@ body {
 .section-header {
   padding-top: 30px;
   font-size: 25px;
+}
+
+.quote {
+  background-color: #b5c3b6;
+  color: #010309;
+  font-family: Karla;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 20px 0;
+  padding: 12px;
+
+  .attribution {
+    padding-top: 20px;
+  }
+}
+
+.quote.ac-quote {
+  background: #010309;
+  border-left: 2px solid #3b5489;
+  color: #50702e;
+  font-family: Arial;
 }
 
 a:link,

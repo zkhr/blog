@@ -8,8 +8,6 @@
 
 /usr/bin/node ./codegen/refresh_index.mjs
 /usr/bin/node ./codegen/refresh_blog.mjs
-
-echo "Updating ./static/css/main.css";
-sass ./static/css/main.scss ./static/css/main.css
+./codegen/refresh_css.sh
 
 echo "\nDone! Have a nice day!";

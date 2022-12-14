@@ -34,12 +34,11 @@ await writeFile(
     />
     <link rel="icon" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link type="text/css" rel="stylesheet" href="/static/css/me.css" />
+    <link type="text/css" rel="stylesheet" href="/static/css/main.css" />
   </head>
   <body>
     <div id="panel-matrix" style="display: none">${panels.join("")}
     </div>
-    <script type="module" src="/static/js/matrix.js"></script>
     <script type="module" src="/static/js/bootstrap.js"></script>
   </body>
 </html>`
