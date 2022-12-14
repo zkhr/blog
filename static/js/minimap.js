@@ -20,7 +20,7 @@ class Minimap {
     this.#buildMinimap();
     this.#updateSlider();
 
-    // Clicking the minimap will hide/show it. Defauls hidden.
+    // Clicking the minimap will hide/show it.
     this.#minimapEl.addEventListener("click", (evt) => {
       this.#minimapEl.classList.toggle("visible");
     });
@@ -40,9 +40,6 @@ class Minimap {
     const homeMarker = document.createElement("div");
     homeMarker.classList.add("map-home");
     this.#minimapEl.appendChild(homeMarker);
-
-    document.createElement("div");
-    this.#minimapEl.classList.add("map");
 
     this.#sliderEl = document.createElement("div");
     this.#sliderEl.classList.add("map-slider");
