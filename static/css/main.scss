@@ -110,6 +110,12 @@ body {
   font-size: 25px;
 }
 
+@media screen and (max-width: 1000px) {
+  .nav-link {
+    font-size: 23px;
+  }
+}
+
 .title {
   font-size: 38px;
 }

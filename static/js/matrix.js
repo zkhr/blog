@@ -127,7 +127,8 @@ class Matrix {
         y: evt.touches[0].clientY,
         atTop: !panel || panel.scrollTop === 0,
         atBottom:
-          !panel || panel.scrollHeight <= panel.scrollTop + panel.clientHeight,
+          !panel ||
+          panel.scrollHeight <= Math.ceil(panel.scrollTop + panel.clientHeight),
       };
     });
     document.addEventListener("touchmove", (evt) => {
