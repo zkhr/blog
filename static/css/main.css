@@ -147,6 +147,10 @@
   color: #930000;
 }
 
+.boardgame-theme {
+  background-color: #b0b4bd;
+}
+
 @font-face {
   font-family: TravelingTypewriter;
   src: url("/static/fonts/TravelingTypewriter.otf") format("opentype");
