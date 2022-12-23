@@ -1,20 +1,7 @@
+@use "fonts";
 @use "map";
 @use "pokemon";
 @use "themes";
-
-@font-face {
-  font-family: TravelingTypewriter;
-  src: url("/static/fonts/TravelingTypewriter.otf") format("opentype");
-}
-
-@font-face {
-  font-family: Karla;
-  src: url("/static/fonts/Karla-Regular.ttf") format("truetype");
-}
-
-html {
-  font-family: "TravelingTypewriter", serif;
-}
 
 body {
   background: #242424;
@@ -96,10 +83,10 @@ body {
   cursor: pointer;
   padding: 0 12px;
   white-space: nowrap;
-}
 
-.link:hover {
-  background-color: rgba(0, 0, 0, 0.4);
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
 }
 
 .nav-section {
@@ -120,19 +107,6 @@ body {
   font-size: 38px;
 }
 
-.blog-date {
-  font-size: 20px;
-}
-
-.blog-entries {
-  padding: 10px 0;
-}
-
-.blog-entry {
-  font-size: 20px;
-  padding: 2px 0;
-}
-
 .section {
   font-size: 20px;
   padding: 12px 0;
@@ -141,27 +115,6 @@ body {
 .section-header {
   padding-top: 30px;
   font-size: 25px;
-}
-
-.quote {
-  background-color: #b5c3b6;
-  color: #010309;
-  font-family: Karla;
-  font-size: 16px;
-  line-height: 20px;
-  margin: 20px 0;
-  padding: 12px;
-
-  .attribution {
-    padding-top: 20px;
-  }
-}
-
-.quote.ac-quote {
-  background: #010309;
-  border-left: 2px solid #3b5489;
-  color: #50702e;
-  font-family: Arial;
 }
 
 a:link,
@@ -173,36 +126,22 @@ a:focus {
 
 a {
   text-decoration: none;
-}
 
-a:hover {
-  text-decoration: underline;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 ul {
   margin: 0;
 }
 
-.code-block {
-  font-family: inherit;
-  background: #78a584;
-  font-size: 20px;
-  line-height: 24px;
-  overflow-x: auto;
-  padding: 20px;
-}
-
-.inline-code {
-  background: #78a584;
-  padding: 0 4px;
-}
-
 .grid {
+  font-family: UbuntuMono;
   font-size: 20px;
   line-height: 20px;
-  font-family: monospace;
-  white-space: pre;
   margin: 0;
+  white-space: pre;
 }
 
 .loot {

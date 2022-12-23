@@ -13,13 +13,15 @@
 }
 
 .pokemon .detail {
-  color: #c8c8c8;
+  color: #646464;
 }
 
 .pokemon .type {
   border-radius: 4px;
-  padding: 0 8px;
+  color: #fff;
+  font-family: "TravelingTypewriter";
   font-size: 16px;
+  padding: 0 8px;
 }
 
 .pokemon .bug {

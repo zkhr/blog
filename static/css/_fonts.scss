@@ -1,0 +1,43 @@
+@font-face {
+  font-family: TravelingTypewriter;
+  src: url("/static/fonts/TravelingTypewriter.otf") format("opentype");
+}
+
+@font-face {
+  font-family: dijkstra;
+  src: url("/static/fonts/dijkstra.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: UbuntuMono;
+  src: url("/static/fonts/UbuntuMono-Regular.ttf") format("truetype");
+}
+
+.font-traveling-typewriter {
+  font-family: TravelingTypewriter !important;
+}
+
+.font-dijkstra {
+  font-family: dijkstra !important;
+}
+
+.font-ubuntu-mono {
+  font-family: UbuntuMono !important;
+}
+
+html {
+  font-family: TravelingTypewriter;
+}
+
+.blog-date,
+.section {
+  font-family: dijkstra;
+}
+
+.link {
+  font-family: TravelingTypewriter;
+}
+
+.bad-kerning {
+  letter-spacing: 4px;
+}

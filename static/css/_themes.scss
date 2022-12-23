@@ -9,8 +9,72 @@
 }
 
 .blog-theme {
-  background-color: #5b7863;
-  color: #ffffff;
+  background-color: #fff8ea;
+  color: #222;
+
+  .blog-date {
+    font-size: 20px;
+  }
+
+  .blog-entries {
+    padding: 10px 0;
+  }
+
+  .blog-entry {
+    font-size: 20px;
+    padding: 2px 0;
+  }
+
+  a:link,
+  a:visited,
+  a:hover,
+  a:focus {
+    color: #2f6efd;
+  }
+
+  .inline-code,
+  .code-block {
+    background: #ffd7a5;
+    font-family: UbuntuMono;
+  }
+
+  .code-block {
+    font-size: 20px;
+    line-height: 24px;
+    overflow-x: auto;
+    padding: 12px;
+  }
+
+  .inline-code {
+    padding: 4px 8px;
+  }
+
+  .quote {
+    background: #ffd7a5;
+    font-family: Garamond;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 20px 0;
+    padding: 12px;
+
+    .attribution {
+      padding-top: 20px;
+    }
+  }
+
+  .quote.ac-quote {
+    background: #010309;
+    border-left: 2px solid #3b5489;
+    color: #50702e;
+    font-family: Arial;
+  }
+
+  .font-box {
+    background: #ffd7a5;
+    padding: 12px;
+    margin-top: 12px;
+    margin-bottom: 24px;
+  }
 }
 
 .projects-theme {
