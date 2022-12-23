@@ -145,23 +145,23 @@ ul {
 }
 
 .loot {
-  cursor: pointer;
+  font-family: TravelingTypewriter;
   padding: 0 8px;
-  color: #000;
-}
 
-.loot.new-item {
-  background: rgba(255, 255, 130, 0.5);
-}
+  &.new-item {
+    background: #4791ff;
+    cursor: grab;
+    color: #fff;
+  }
 
-.loot.new-item:hover {
-  background: rgba(255, 255, 130, 0.7);
-}
+  &.new-item:hover {
+    background: #62a1ff;
+    color: #fff;
+  }
 
-.loot.owned-item {
-  background: rgba(255, 255, 255, 0.5);
-}
-
-.loot.owned-item:hover {
-  background: rgba(255, 255, 255, 0.7);
+  &.owned-item {
+    background: #e4edff;
+    color: #000;
+    cursor: not-allowed;
+  }
 }
