@@ -183,8 +183,17 @@ html {
   padding: 10px 0;
 }
 .blog-theme .blog-entry {
+  display: flex;
   font-size: 20px;
   padding: 2px 0;
+}
+.blog-theme .blog-entry .link {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.blog-theme .blog-entry-date {
+  flex-shrink: 0;
+  padding-right: 8px;
 }
 .blog-theme a:link,
 .blog-theme a:visited,

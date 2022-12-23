@@ -25,8 +25,8 @@ for (const filename of filenames.reverse()) {
     const yCoord = panel.dataset.y;
     blogEntries.push(`
       <div class="blog-entry">
-        ${date} -
-        <span class="link" data-x="${xCoord}" data-y="${yCoord}">${title}</span>
+        <div class="blog-entry-date">${date} -</div>
+        <div class="link" data-x="${xCoord}" data-y="${yCoord}">${title}</div>
       </div>`);
   }
 }

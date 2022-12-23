@@ -21,8 +21,19 @@
   }
 
   .blog-entry {
+    display: flex;
     font-size: 20px;
     padding: 2px 0;
+
+    .link {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .blog-entry-date {
+    flex-shrink: 0;
+    padding-right: 8px;
   }
 
   a:link,
