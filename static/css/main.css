@@ -41,7 +41,7 @@ html {
 
 .map {
   background: rgba(0, 0, 0, 0.7);
-  border: 1px solid #fff;
+  border: 1px solid #444;
   cursor: w-resize;
   height: 175px;
   overflow: hidden;
@@ -77,6 +77,8 @@ html {
 }
 
 .map-panel {
+  border: 1px dotted #cdcdcd;
+  box-sizing: border-box;
   position: absolute;
   width: 25px;
   height: 25px;
