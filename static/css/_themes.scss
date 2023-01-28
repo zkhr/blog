@@ -1,15 +1,65 @@
+$bg-saturation: 14%;
+$bg-lightness: 50%;
+
+$bg-red: hsl(0deg, $bg-saturation, $bg-lightness);
+$bg-orange: hsl(30deg, $bg-saturation, $bg-lightness);
+$bg-yellow: hsl(60deg, $bg-saturation, $bg-lightness);
+$bg-yellow-green: hsl(90deg, $bg-saturation, $bg-lightness);
+$bg-green: hsl(120deg, $bg-saturation, $bg-lightness);
+$bg-blue-green: hsl(150deg, $bg-saturation, $bg-lightness);
+$bg-blue: hsl(180deg, $bg-saturation, $bg-lightness);
+$bg-dark-blue: hsl(210deg, $bg-saturation, $bg-lightness);
+$bg-purple-blue: hsl(240deg, $bg-saturation, $bg-lightness);
+$bg-purple: hsl(270deg, $bg-saturation, $bg-lightness);
+$bg-light-purple: hsl(300deg, $bg-saturation, $bg-lightness);
+$bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
+
+@function light-gradient-background($hue) {
+  @return linear-gradient(
+    to bottom,
+  );
+}
+
+@keyframes full-hue-rotation {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  50% {
+    filter: hue-rotate(180deg);
+  }
+
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
 .home-theme {
-  background-color: #6a5b78;
+  animation: full-hue-rotation 12s infinite;
+  background: linear-gradient(to right, hsl(180deg, 14%, 50%), hsl(270deg, 14%, 50%));
   color: #ffffff;
 }
 
+.home-theme::before {
+  background: linear-gradient(to right, hsl(0deg, 14%, 50%), hsl(90deg, 14%, 50%));
+  bottom: 0;
+  content: "";
+  left: 0;
+  -webkit-mask: linear-gradient(to bottom, transparent, #fff);
+  mask: linear-gradient(to bottom, transparent, #fff);
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
 .who-theme {
-  background-color: #785b5b;
+  background: radial-gradient(circle at left bottom, $bg-red, $bg-yellow);
   color: #ffffff;
 }
 
 .blog-theme {
-  background-color: #fff8ea;
+  background: radial-gradient(circle at left bottom,  hsl(40deg 100% 95%) 0%, hsl(40deg 100% 90%) 100%);
   color: #222;
 
   .blog-date {
@@ -45,7 +95,7 @@
 
   .inline-code,
   .code-block {
-    background: #ffd7a5;
+    background: #ffd7a580;
     font-family: UbuntuMono;
   }
 
@@ -89,22 +139,23 @@
 }
 
 .projects-theme {
-  background-color: #5b6478;
+  background: radial-gradient(circle at left bottom, $bg-blue, $bg-purple);
   color: #ffffff;
 }
 
 .toolkit-theme {
-  background-color: #b5c3b6;
-  color: #111111;
+  background: radial-gradient(circle at left bottom, $bg-green, $bg-blue);
+  color: #ffffff;
 
   & a:link,
   & a:visited,
   & a:hover,
   & a:focus {
-    color: #930000;
+    color: #ddffeb;
   }
 }
 
 .boardgame-theme {
-  background-color: #b0b4bd;
+  background: radial-gradient(circle at left bottom, $bg-blue-green, $bg-dark-blue);
+  color: #ffffff;
 }

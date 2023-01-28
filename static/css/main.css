@@ -164,18 +164,43 @@ html {
   background: #4592c4;
 }
 
+@keyframes full-hue-rotation {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(180deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
 .home-theme {
-  background-color: #6a5b78;
+  animation: full-hue-rotation 12s infinite;
+  background: linear-gradient(to right, hsl(180deg, 14%, 50%), hsl(270deg, 14%, 50%));
   color: #ffffff;
 }
 
+.home-theme::before {
+  background: linear-gradient(to right, hsl(0deg, 14%, 50%), hsl(90deg, 14%, 50%));
+  bottom: 0;
+  content: "";
+  left: 0;
+  -webkit-mask: linear-gradient(to bottom, transparent, #fff);
+  mask: linear-gradient(to bottom, transparent, #fff);
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
 .who-theme {
-  background-color: #785b5b;
+  background: radial-gradient(circle at left bottom, hsl(0deg, 14%, 50%), hsl(60deg, 14%, 50%));
   color: #ffffff;
 }
 
 .blog-theme {
-  background-color: #fff8ea;
+  background: radial-gradient(circle at left bottom, hsl(40deg, 100%, 95%) 0%, hsl(40deg, 100%, 90%) 100%);
   color: #222;
 }
 .blog-theme .blog-date {
@@ -205,7 +230,7 @@ html {
 }
 .blog-theme .inline-code,
 .blog-theme .code-block {
-  background: #ffd7a5;
+  background: rgba(255, 215, 165, 0.5019607843);
   font-family: UbuntuMono;
 }
 .blog-theme .code-block {
@@ -242,20 +267,21 @@ html {
 }
 
 .projects-theme {
-  background-color: #5b6478;
+  background: radial-gradient(circle at left bottom, hsl(180deg, 14%, 50%), hsl(270deg, 14%, 50%));
   color: #ffffff;
 }
 
 .toolkit-theme {
-  background-color: #b5c3b6;
-  color: #111111;
+  background: radial-gradient(circle at left bottom, hsl(120deg, 14%, 50%), hsl(180deg, 14%, 50%));
+  color: #ffffff;
 }
 .toolkit-theme a:link, .toolkit-theme a:visited, .toolkit-theme a:hover, .toolkit-theme a:focus {
-  color: #930000;
+  color: #ddffeb;
 }
 
 .boardgame-theme {
-  background-color: #b0b4bd;
+  background: radial-gradient(circle at left bottom, hsl(150deg, 14%, 50%), hsl(210deg, 14%, 50%));
+  color: #ffffff;
 }
 
 body {
@@ -411,6 +437,65 @@ ul {
   background: #e4edff;
   color: #000;
   cursor: not-allowed;
+}
+
+.block,
+.long-block,
+.square-block {
+  margin: 12px 0;
+}
+
+.block {
+  height: 100px;
+  width: 162px;
+}
+
+.long-block {
+  height: 30px;
+  width: 100%;
+}
+
+.square-block {
+  height: 200px;
+  position: relative;
+  width: 200px;
+}
+
+.square-block::before {
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.hsl-block {
+  background: linear-gradient(to right, #808080, #00f);
+}
+
+.hsl-block::before {
+  background: linear-gradient(to bottom, #fff, #000);
+  -webkit-mask: linear-gradient(to bottom, #fff, transparent, #fff);
+  mask: linear-gradient(to bottom, #fff, transparent, #fff);
+}
+
+.hwb-block {
+  background: linear-gradient(to right, #00f, #000);
+}
+
+.hwb-block::before {
+  background: linear-gradient(to right, #fff, #808080);
+  -webkit-mask: linear-gradient(to bottom, transparent, #fff);
+  mask: linear-gradient(to bottom, transparent, #fff);
+}
+
+.named-color {
+  border-radius: 4px;
+  color: #fff;
+  font-family: "TravelingTypewriter";
+  font-size: 16px;
+  padding: 0 8px;
 }
 
 /*# sourceMappingURL=main.css.map */
