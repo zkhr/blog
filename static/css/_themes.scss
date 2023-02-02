@@ -1,4 +1,4 @@
-$bg-saturation: 14%;
+$bg-saturation: 20%;
 $bg-lightness: 50%;
 
 $bg-red: hsl(0deg, $bg-saturation, $bg-lightness);
@@ -36,12 +36,12 @@ $bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
 
 .home-theme {
   animation: full-hue-rotation 12s infinite;
-  background: linear-gradient(to right, hsl(180deg, 14%, 50%), hsl(270deg, 14%, 50%));
+  background: linear-gradient(to right, $bg-blue, $bg-purple);
   color: #ffffff;
 }
 
 .home-theme::before {
-  background: linear-gradient(to right, hsl(0deg, 14%, 50%), hsl(90deg, 14%, 50%));
+  background: linear-gradient(to right, $bg-yellow-green, $bg-red);
   bottom: 0;
   content: "";
   left: 0;

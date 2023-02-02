@@ -177,12 +177,12 @@ html {
 }
 .home-theme {
   animation: full-hue-rotation 12s infinite;
-  background: linear-gradient(to right, hsl(180deg, 14%, 50%), hsl(270deg, 14%, 50%));
+  background: linear-gradient(to right, hsl(180deg, 20%, 50%), hsl(270deg, 20%, 50%));
   color: #ffffff;
 }
 
 .home-theme::before {
-  background: linear-gradient(to right, hsl(0deg, 14%, 50%), hsl(90deg, 14%, 50%));
+  background: linear-gradient(to right, hsl(90deg, 20%, 50%), hsl(0deg, 20%, 50%));
   bottom: 0;
   content: "";
   left: 0;
@@ -195,7 +195,7 @@ html {
 }
 
 .who-theme {
-  background: radial-gradient(circle at left bottom, hsl(0deg, 14%, 50%), hsl(60deg, 14%, 50%));
+  background: radial-gradient(circle at left bottom, hsl(0deg, 20%, 50%), hsl(60deg, 20%, 50%));
   color: #ffffff;
 }
 
@@ -267,12 +267,12 @@ html {
 }
 
 .projects-theme {
-  background: radial-gradient(circle at left bottom, hsl(180deg, 14%, 50%), hsl(270deg, 14%, 50%));
+  background: radial-gradient(circle at left bottom, hsl(180deg, 20%, 50%), hsl(270deg, 20%, 50%));
   color: #ffffff;
 }
 
 .toolkit-theme {
-  background: radial-gradient(circle at left bottom, hsl(120deg, 14%, 50%), hsl(180deg, 14%, 50%));
+  background: radial-gradient(circle at left bottom, hsl(120deg, 20%, 50%), hsl(180deg, 20%, 50%));
   color: #ffffff;
 }
 .toolkit-theme a:link, .toolkit-theme a:visited, .toolkit-theme a:hover, .toolkit-theme a:focus {
@@ -280,7 +280,7 @@ html {
 }
 
 .boardgame-theme {
-  background: radial-gradient(circle at left bottom, hsl(150deg, 14%, 50%), hsl(210deg, 14%, 50%));
+  background: radial-gradient(circle at left bottom, hsl(150deg, 20%, 50%), hsl(210deg, 20%, 50%));
   color: #ffffff;
 }
 
