@@ -194,33 +194,9 @@ html {
   z-index: -1;
 }
 
-.who-theme {
-  background: radial-gradient(circle at left bottom, hsl(0deg, 20%, 50%), hsl(60deg, 20%, 50%));
-  color: #ffffff;
-}
-
 .blog-theme {
   background: radial-gradient(circle at left bottom, hsl(40deg, 100%, 95%) 0%, hsl(40deg, 100%, 90%) 100%);
   color: #222;
-}
-.blog-theme .blog-date {
-  font-size: 20px;
-}
-.blog-theme .blog-entries {
-  padding: 10px 0;
-}
-.blog-theme .blog-entry {
-  display: flex;
-  font-size: 20px;
-  padding: 2px 0;
-}
-.blog-theme .blog-entry .link {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.blog-theme .blog-entry-date {
-  flex-shrink: 0;
-  padding-right: 8px;
 }
 .blog-theme a:link,
 .blog-theme a:visited,
@@ -228,21 +204,48 @@ html {
 .blog-theme a:focus {
   color: #2f6efd;
 }
-.blog-theme .inline-code,
-.blog-theme .code-block {
+
+.blog-date {
+  font-size: 20px;
+}
+
+.blog-entries {
+  padding: 10px 0;
+}
+
+.blog-entry {
+  display: flex;
+  font-size: 20px;
+  padding: 2px 0;
+}
+.blog-entry .link {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.blog-entry-date {
+  flex-shrink: 0;
+  padding-right: 8px;
+}
+
+.inline-code,
+.code-block {
   background: rgba(255, 215, 165, 0.5019607843);
   font-family: UbuntuMono;
 }
-.blog-theme .code-block {
+
+.code-block {
   font-size: 20px;
   line-height: 24px;
   overflow-x: auto;
   padding: 12px;
 }
-.blog-theme .inline-code {
+
+.inline-code {
   padding: 4px 8px;
 }
-.blog-theme .quote {
+
+.quote {
   background: #ffd7a5;
   font-family: Garamond;
   font-size: 16px;
@@ -250,29 +253,26 @@ html {
   margin: 20px 0;
   padding: 12px;
 }
-.blog-theme .quote .attribution {
+.quote .attribution {
   padding-top: 20px;
 }
-.blog-theme .quote.ac-quote {
+
+.quote.ac-quote {
   background: #010309;
   border-left: 2px solid #3b5489;
   color: #86bc4c;
   font-family: Arial;
 }
-.blog-theme .font-box {
+
+.font-box {
   background: #ffd7a5;
   padding: 12px;
   margin-top: 12px;
   margin-bottom: 24px;
 }
 
-.projects-theme {
-  background: radial-gradient(circle at left bottom, hsl(180deg, 20%, 50%), hsl(270deg, 20%, 50%));
-  color: #ffffff;
-}
-
 .toolkit-theme {
-  background: radial-gradient(circle at left bottom, hsl(120deg, 20%, 50%), hsl(180deg, 20%, 50%));
+  background: radial-gradient(circle at left bottom, hsl(120deg, 20%, 50%), hsl(210deg, 20%, 50%));
   color: #ffffff;
 }
 .toolkit-theme a:link, .toolkit-theme a:visited, .toolkit-theme a:hover, .toolkit-theme a:focus {
@@ -282,6 +282,34 @@ html {
 .boardgame-theme {
   background: radial-gradient(circle at left bottom, hsl(150deg, 20%, 50%), hsl(210deg, 20%, 50%));
   color: #ffffff;
+}
+
+.projects-theme {
+  background: radial-gradient(circle at left bottom, hsl(180deg, 20%, 50%), hsl(270deg, 20%, 50%));
+  color: #ffffff;
+}
+
+.who-theme {
+  background: radial-gradient(circle at left bottom, hsl(210deg, 20%, 50%), hsl(330deg, 20%, 50%));
+  color: #ffffff;
+}
+
+.dialogue-theme {
+  background: radial-gradient(circle at left bottom, hsl(90deg, 20%, 50%), hsl(150deg, 20%, 50%));
+  color: #ffffff;
+}
+.dialogue-theme .section {
+  font-family: TravelingTypewriter;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+.dialogue-theme .section.witty {
+  background: rgba(0, 0, 0, 0.5);
+}
+.dialogue-theme .section.zkhr {
+  background: rgba(255, 255, 255, 0.5);
+  color: #000;
 }
 
 body {
@@ -375,8 +403,12 @@ body {
 }
 
 @media screen and (max-width: 1000px) {
-  .nav-link {
+  .home-theme .nav-link {
     font-size: 23px;
+  }
+  .blog-theme .nav-link,
+  .dialogue-theme .nav-link {
+    font-size: 20px;
   }
 }
 .title {

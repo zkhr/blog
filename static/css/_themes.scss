@@ -15,9 +15,7 @@ $bg-light-purple: hsl(300deg, $bg-saturation, $bg-lightness);
 $bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
 
 @function light-gradient-background($hue) {
-  @return linear-gradient(
-    to bottom,
-  );
+  @return linear-gradient(to bottom);
 }
 
 @keyframes full-hue-rotation {
@@ -53,38 +51,13 @@ $bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
   z-index: -1;
 }
 
-.who-theme {
-  background: radial-gradient(circle at left bottom, $bg-red, $bg-yellow);
-  color: #ffffff;
-}
-
 .blog-theme {
-  background: radial-gradient(circle at left bottom,  hsl(40deg 100% 95%) 0%, hsl(40deg 100% 90%) 100%);
+  background: radial-gradient(
+    circle at left bottom,
+    hsl(40deg 100% 95%) 0%,
+    hsl(40deg 100% 90%) 100%
+  );
   color: #222;
-
-  .blog-date {
-    font-size: 20px;
-  }
-
-  .blog-entries {
-    padding: 10px 0;
-  }
-
-  .blog-entry {
-    display: flex;
-    font-size: 20px;
-    padding: 2px 0;
-
-    .link {
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  }
-
-  .blog-entry-date {
-    flex-shrink: 0;
-    padding-right: 8px;
-  }
 
   a:link,
   a:visited,
@@ -92,59 +65,78 @@ $bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
   a:focus {
     color: #2f6efd;
   }
+}
 
-  .inline-code,
-  .code-block {
-    background: #ffd7a580;
-    font-family: UbuntuMono;
-  }
+.blog-date {
+  font-size: 20px;
+}
 
-  .code-block {
-    font-size: 20px;
-    line-height: 24px;
-    overflow-x: auto;
-    padding: 12px;
-  }
+.blog-entries {
+  padding: 10px 0;
+}
 
-  .inline-code {
-    padding: 4px 8px;
-  }
+.blog-entry {
+  display: flex;
+  font-size: 20px;
+  padding: 2px 0;
 
-  .quote {
-    background: #ffd7a5;
-    font-family: Garamond;
-    font-size: 16px;
-    line-height: 20px;
-    margin: 20px 0;
-    padding: 12px;
-
-    .attribution {
-      padding-top: 20px;
-    }
-  }
-
-  .quote.ac-quote {
-    background: #010309;
-    border-left: 2px solid #3b5489;
-    color: #86bc4c;
-    font-family: Arial;
-  }
-
-  .font-box {
-    background: #ffd7a5;
-    padding: 12px;
-    margin-top: 12px;
-    margin-bottom: 24px;
+  .link {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
-.projects-theme {
-  background: radial-gradient(circle at left bottom, $bg-blue, $bg-purple);
-  color: #ffffff;
+.blog-entry-date {
+  flex-shrink: 0;
+  padding-right: 8px;
+}
+
+.inline-code,
+.code-block {
+  background: #ffd7a580;
+  font-family: UbuntuMono;
+}
+
+.code-block {
+  font-size: 20px;
+  line-height: 24px;
+  overflow-x: auto;
+  padding: 12px;
+}
+
+.inline-code {
+  padding: 4px 8px;
+}
+
+.quote {
+  background: #ffd7a5;
+  font-family: Garamond;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 20px 0;
+  padding: 12px;
+
+  .attribution {
+    padding-top: 20px;
+  }
+}
+
+.quote.ac-quote {
+  background: #010309;
+  border-left: 2px solid #3b5489;
+  color: #86bc4c;
+  font-family: Arial;
+}
+
+.font-box {
+  background: #ffd7a5;
+  padding: 12px;
+  margin-top: 12px;
+  margin-bottom: 24px;
 }
 
 .toolkit-theme {
-  background: radial-gradient(circle at left bottom, $bg-green, $bg-blue);
+  background: radial-gradient(circle at left bottom, $bg-green, $bg-dark-blue);
   color: #ffffff;
 
   & a:link,
@@ -156,6 +148,49 @@ $bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
 }
 
 .boardgame-theme {
-  background: radial-gradient(circle at left bottom, $bg-blue-green, $bg-dark-blue);
+  background: radial-gradient(
+    circle at left bottom,
+    $bg-blue-green,
+    $bg-dark-blue
+  );
   color: #ffffff;
+}
+
+.projects-theme {
+  background: radial-gradient(circle at left bottom, $bg-blue, $bg-purple);
+  color: #ffffff;
+}
+
+.who-theme {
+  background: radial-gradient(
+    circle at left bottom,
+    $bg-dark-blue,
+    $bg-purple-red
+  );
+  color: #ffffff;
+}
+
+.dialogue-theme {
+  background: radial-gradient(
+    circle at left bottom,
+    $bg-yellow-green,
+    $bg-blue-green
+  );
+  color: #ffffff;
+
+  .section {
+    font-family: TravelingTypewriter;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+
+    &.witty {
+      background: rgb(0 0 0 / 50%);
+    }
+
+    &.zkhr {
+      background: rgb(255 255 255 / 50%);
+      color: #000;
+    }
+  }
 }
