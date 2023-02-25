@@ -1,6 +1,7 @@
 import { Inventory } from "./inventory.js";
 import { Matrix } from "./matrix.js";
 import { LootProvider } from "./loot_provider.js";
+import { Three } from "./three.js";
 
 const inventory = new Inventory();
 const matrix = new Matrix().render();
@@ -14,4 +15,5 @@ window.debug = {
   inventory,
   matrix,
   loot: new LootProvider(inventory, matrix).init(),
+  three: new Three().init(),
 };

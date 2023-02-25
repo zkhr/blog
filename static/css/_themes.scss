@@ -135,6 +135,11 @@ $bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
   margin-bottom: 24px;
 }
 
+.three-theme {
+  background: radial-gradient(circle at left bottom, #222, #444);
+  color: #ffffff;
+}
+
 .toolkit-theme {
   background: radial-gradient(circle at left bottom, $bg-green, $bg-dark-blue);
   color: #ffffff;

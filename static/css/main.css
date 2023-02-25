@@ -271,6 +271,11 @@ html {
   margin-bottom: 24px;
 }
 
+.three-theme {
+  background: radial-gradient(circle at left bottom, #222, #444);
+  color: #ffffff;
+}
+
 .toolkit-theme {
   background: radial-gradient(circle at left bottom, hsl(120deg, 20%, 50%), hsl(210deg, 20%, 50%));
   color: #ffffff;
@@ -384,12 +389,14 @@ body {
   text-align: center;
 }
 
+.play,
 .link {
   background-color: rgba(0, 0, 0, 0.2);
   cursor: pointer;
   padding: 0 12px;
   white-space: nowrap;
 }
+.play:hover,
 .link:hover {
   background-color: rgba(0, 0, 0, 0.4);
 }
@@ -418,6 +425,12 @@ body {
 .section {
   font-size: 20px;
   padding: 12px 0;
+}
+.section.zkhr::before {
+  content: "[zkhr]";
+}
+.section.witty::before {
+  content: "[ChatGPT]";
 }
 
 .section-header {
@@ -528,6 +541,22 @@ ul {
   font-family: "TravelingTypewriter";
   font-size: 16px;
   padding: 0 8px;
+}
+
+.three-body {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  position: absolute;
+}
+.three-body.one {
+  background: #f6ff66;
+}
+.three-body.two {
+  background: #66ffa3;
+}
+.three-body.three {
+  background: #e766ff;
 }
 
 /*# sourceMappingURL=main.css.map */

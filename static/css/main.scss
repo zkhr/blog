@@ -78,6 +78,7 @@ body {
   text-align: center;
 }
 
+.play,
 .link {
   background-color: rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -115,6 +116,14 @@ body {
 .section {
   font-size: 20px;
   padding: 12px 0;
+
+  &.zkhr::before {
+    content: "[zkhr]";
+  }
+
+  &.witty::before {
+    content: "[ChatGPT]";
+  }
 }
 
 .section-header {
@@ -229,4 +238,23 @@ ul {
   font-family: "TravelingTypewriter";
   font-size: 16px;
   padding: 0 8px;
+}
+
+.three-body {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  position: absolute;
+
+  &.one {
+    background: #f6ff66;
+  }
+
+  &.two {
+    background: #66ffa3;
+  }
+
+  &.three {
+    background: #e766ff;
+  }
 }
