@@ -559,4 +559,13 @@ ul {
   background: #e766ff;
 }
 
+.inline-header {
+  font-family: TravelingTypewriter;
+  font-size: 24px;
+}
+
+.secondary-text {
+  color: #646464;
+}
+
 /*# sourceMappingURL=main.css.map */
