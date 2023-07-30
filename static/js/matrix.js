@@ -136,6 +136,12 @@ class Matrix {
         return;
       }
 
+      const selectedText = window.getSelection().toString();
+      if (selectedText != "") {
+        // User has selected text, don't swipe the panels.
+        return;
+      }
+
       const xDelta = startCoord.x - evt.touches[0].clientX;
       const yDelta = startCoord.y - evt.touches[0].clientY;
       if (Math.abs(xDelta) > Math.abs(yDelta) && Math.abs(xDelta) > 50) {
