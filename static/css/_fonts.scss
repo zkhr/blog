@@ -13,6 +13,11 @@
   src: url("/static/fonts/UbuntuMono-Regular.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("/static/fonts/ibmplexmono.woff2") format("woff2");
+}
+
 .font-traveling-typewriter {
   font-family: TravelingTypewriter !important;
 }
@@ -26,16 +31,7 @@
 }
 
 html {
-  font-family: TravelingTypewriter;
-}
-
-.blog-date,
-.section {
-  font-family: dijkstra;
-}
-
-.link {
-  font-family: TravelingTypewriter;
+  font-family: "IBM Plex Mono";
 }
 
 .bad-kerning {

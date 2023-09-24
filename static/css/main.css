@@ -10,6 +10,10 @@
   font-family: UbuntuMono;
   src: url("/static/fonts/UbuntuMono-Regular.ttf") format("truetype");
 }
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("/static/fonts/ibmplexmono.woff2") format("woff2");
+}
 .font-traveling-typewriter {
   font-family: TravelingTypewriter !important;
 }
@@ -23,16 +27,7 @@
 }
 
 html {
-  font-family: TravelingTypewriter;
-}
-
-.blog-date,
-.section {
-  font-family: dijkstra;
-}
-
-.link {
-  font-family: TravelingTypewriter;
+  font-family: "IBM Plex Mono";
 }
 
 .bad-kerning {
@@ -106,8 +101,7 @@ html {
 .pokemon .type {
   border-radius: 4px;
   color: #fff;
-  font-family: "TravelingTypewriter";
-  font-size: 16px;
+  font-size: 14px;
   padding: 0 8px;
 }
 
@@ -206,7 +200,7 @@ html {
 }
 
 .blog-date {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .blog-entries {
@@ -215,7 +209,7 @@ html {
 
 .blog-entry {
   display: flex;
-  font-size: 20px;
+  font-size: 16px;
   padding: 2px 0;
 }
 .blog-entry .link {
@@ -230,19 +224,20 @@ html {
 
 .inline-code,
 .code-block {
-  background: rgba(255, 215, 165, 0.5019607843);
-  font-family: UbuntuMono;
+  background: #222;
+  border-radius: 4px;
+  color: #fafafa;
 }
 
 .code-block {
-  font-size: 20px;
-  line-height: 24px;
+  font-family: "IBM Plex Mono";
+  font-size: 16px;
   overflow-x: auto;
   padding: 12px;
 }
 
 .inline-code {
-  padding: 4px 8px;
+  padding: 0 8px;
 }
 
 .quote {
@@ -297,24 +292,6 @@ html {
 .who-theme {
   background: radial-gradient(circle at left bottom, hsl(210deg, 20%, 50%), hsl(330deg, 20%, 50%));
   color: #ffffff;
-}
-
-.dialogue-theme {
-  background: radial-gradient(circle at left bottom, hsl(90deg, 20%, 50%), hsl(150deg, 20%, 50%));
-  color: #ffffff;
-}
-.dialogue-theme .section {
-  font-family: TravelingTypewriter;
-  padding: 10px;
-  border-radius: 4px;
-  margin-top: 10px;
-}
-.dialogue-theme .section.witty {
-  background: rgba(0, 0, 0, 0.5);
-}
-.dialogue-theme .section.zkhr {
-  background: rgba(255, 255, 255, 0.5);
-  color: #000;
 }
 
 body {
@@ -406,36 +383,22 @@ body {
 }
 
 .nav-link {
-  font-size: 25px;
+  font-size: 20px;
 }
 
-@media screen and (max-width: 1000px) {
-  .home-theme .nav-link {
-    font-size: 23px;
-  }
-  .blog-theme .nav-link,
-  .dialogue-theme .nav-link {
-    font-size: 20px;
-  }
-}
 .title {
-  font-size: 38px;
+  font-size: 34px;
 }
 
 .section {
-  font-size: 20px;
+  font-size: 16px;
   padding: 12px 0;
-}
-.section.zkhr::before {
-  content: "[zkhr]";
-}
-.section.witty::before {
-  content: "[ChatGPT]";
+  line-height: 22px;
 }
 
 .section-header {
   padding-top: 30px;
-  font-size: 25px;
+  font-size: 22px;
 }
 
 a:link,
@@ -466,7 +429,6 @@ ul {
 }
 
 .loot {
-  font-family: TravelingTypewriter;
   padding: 0 8px;
 }
 .loot.new-item {
@@ -538,7 +500,6 @@ ul {
 .named-color {
   border-radius: 4px;
   color: #fff;
-  font-family: "TravelingTypewriter";
   font-size: 16px;
   padding: 0 8px;
 }
@@ -559,13 +520,24 @@ ul {
   background: #e766ff;
 }
 
-.inline-header {
-  font-family: TravelingTypewriter;
-  font-size: 24px;
-}
-
 .secondary-text {
   color: #646464;
+}
+
+.hieroglyphs {
+  word-wrap: break-word;
+  font-size: 36px;
+}
+
+.unicode-bird {
+  align-items: center;
+  display: flex;
+}
+
+.unicode-char {
+  font-size: 60px;
+  line-height: 60px;
+  padding-right: 8px;
 }
 
 /*# sourceMappingURL=main.css.map */

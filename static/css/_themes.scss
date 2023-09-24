@@ -68,7 +68,7 @@ $bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
 }
 
 .blog-date {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .blog-entries {
@@ -77,7 +77,7 @@ $bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
 
 .blog-entry {
   display: flex;
-  font-size: 20px;
+  font-size: 16px;
   padding: 2px 0;
 
   .link {
@@ -93,19 +93,20 @@ $bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
 
 .inline-code,
 .code-block {
-  background: #ffd7a580;
-  font-family: UbuntuMono;
+  background: #222;
+  border-radius: 4px;
+  color: #fafafa;
 }
 
 .code-block {
-  font-size: 20px;
-  line-height: 24px;
+  font-family: "IBM Plex Mono";
+  font-size: 16px;
   overflow-x: auto;
   padding: 12px;
 }
 
 .inline-code {
-  padding: 4px 8px;
+  padding: 0 8px;
 }
 
 .quote {
@@ -173,29 +174,4 @@ $bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
     $bg-purple-red
   );
   color: #ffffff;
-}
-
-.dialogue-theme {
-  background: radial-gradient(
-    circle at left bottom,
-    $bg-yellow-green,
-    $bg-blue-green
-  );
-  color: #ffffff;
-
-  .section {
-    font-family: TravelingTypewriter;
-    padding: 10px;
-    border-radius: 4px;
-    margin-top: 10px;
-
-    &.witty {
-      background: rgb(0 0 0 / 50%);
-    }
-
-    &.zkhr {
-      background: rgb(255 255 255 / 50%);
-      color: #000;
-    }
-  }
 }
