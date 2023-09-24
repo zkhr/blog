@@ -48,34 +48,47 @@ body {
 }
 
 .home-panel {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .home-panel .links {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  padding-bottom: 40px;
+  justify-content: flex-start;
+  padding: 20px 0 40px;
+  margin-left: -8px;
 }
 
 .home-panel .link {
+  background-color: #fafafa;
+  color: #222;
   margin: 8px;
+
+  &:hover {
+    background-color: #dadada;
+  }
 }
 
 .panel-content {
   max-width: 800px;
 }
 
+.tagline,
 .name {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  font-size: 50px;
-  justify-content: center;
-  text-align: center;
+  font-family: MarvinVisions;
+}
+
+.tagline {
+  color: #fafafa;
+  font-size: 20px;
+}
+
+.name {
+  color: #ffc556;
+  font-size: 42px;
 }
 
 .play,

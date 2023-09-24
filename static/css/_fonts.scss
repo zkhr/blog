@@ -18,6 +18,11 @@
   src: url("/static/fonts/ibmplexmono.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: Visions;
+  src: url("/static/fonts/visions.woff2") format("woff2");
+}
+
 .font-traveling-typewriter {
   font-family: TravelingTypewriter !important;
 }
