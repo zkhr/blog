@@ -35,6 +35,8 @@ await writeFile(
     <link rel="icon" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link type="text/css" rel="stylesheet" href="/static/css/main.css" />
+    <link rel="preload" href="/static/fonts/ibmplexmono.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/static/fonts/visions.woff2" as="font" type="font/woff2" crossorigin>
   </head>
   <body>
     <div id="panel-matrix" style="display: none">${panels.join("")}

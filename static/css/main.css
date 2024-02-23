@@ -1,16 +1,4 @@
 @font-face {
-  font-family: TravelingTypewriter;
-  src: url("/static/fonts/TravelingTypewriter.otf") format("opentype");
-}
-@font-face {
-  font-family: dijkstra;
-  src: url("/static/fonts/dijkstra.ttf") format("truetype");
-}
-@font-face {
-  font-family: UbuntuMono;
-  src: url("/static/fonts/UbuntuMono-Regular.ttf") format("truetype");
-}
-@font-face {
   font-family: "IBM Plex Mono";
   src: url("/static/fonts/ibmplexmono.woff2") format("woff2");
 }
@@ -18,20 +6,13 @@
   font-family: Visions;
   src: url("/static/fonts/visions.woff2") format("woff2");
 }
-.font-traveling-typewriter {
-  font-family: TravelingTypewriter !important;
-}
-
-.font-dijkstra {
-  font-family: dijkstra !important;
-}
-
-.font-ubuntu-mono {
-  font-family: UbuntuMono !important;
-}
-
 html {
   font-family: "IBM Plex Mono";
+}
+
+.tagline,
+.name {
+  font-family: Visions;
 }
 
 .bad-kerning {
@@ -353,11 +334,6 @@ body {
   max-width: 800px;
 }
 
-.tagline,
-.name {
-  font-family: Visions;
-}
-
 .tagline {
   color: #fafafa;
   font-size: 20px;
@@ -423,7 +399,6 @@ ul {
 }
 
 .grid {
-  font-family: UbuntuMono;
   font-size: 20px;
   line-height: 20px;
   margin: 0;
