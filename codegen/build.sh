@@ -6,6 +6,7 @@
 #
 #    ./codegen/build.sh
 
+/usr/bin/node ./codegen/refresh_blogroll.mjs
 /usr/bin/node ./codegen/refresh_lists.mjs
 /usr/bin/node ./codegen/refresh_index.mjs
 ./codegen/refresh_css.sh

@@ -5,7 +5,7 @@
  * Usage: `node ./codegen/refresh_index.mjs`
  */
 
-import { readdir, readFile, writeFile } from "node:fs/promises";
+import { readdir, writeFile } from "node:fs/promises";
 
 const filename = "./index.html";
 

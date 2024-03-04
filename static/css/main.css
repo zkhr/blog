@@ -160,7 +160,7 @@ html {
 }
 
 .blog-theme {
-  background: radial-gradient(circle at left bottom, hsl(40deg, 100%, 95%) 0%, hsl(40deg, 100%, 90%) 100%);
+  background: radial-gradient(circle at left bottom, hsl(40, 100%, 95%) 0%, hsl(40, 100%, 90%) 100%);
   color: #222;
 }
 .blog-theme a:link,
@@ -243,7 +243,7 @@ html {
 }
 
 .toolkit-theme {
-  background: radial-gradient(circle at left bottom, hsl(120deg, 20%, 50%), hsl(210deg, 20%, 50%));
+  background: radial-gradient(circle at left bottom, hsl(120, 20%, 50%), hsl(210, 20%, 50%));
   color: #ffffff;
 }
 .toolkit-theme a:link, .toolkit-theme a:visited, .toolkit-theme a:hover, .toolkit-theme a:focus {
@@ -251,17 +251,17 @@ html {
 }
 
 .boardgame-theme {
-  background: radial-gradient(circle at left bottom, hsl(150deg, 20%, 50%), hsl(210deg, 20%, 50%));
+  background: radial-gradient(circle at left bottom, hsl(150, 20%, 50%), hsl(210, 20%, 50%));
   color: #ffffff;
 }
 
 .projects-theme {
-  background: radial-gradient(circle at left bottom, hsl(180deg, 20%, 50%), hsl(270deg, 20%, 50%));
+  background: radial-gradient(circle at left bottom, hsl(180, 20%, 50%), hsl(270, 20%, 50%));
   color: #ffffff;
 }
 
 .who-theme {
-  background: radial-gradient(circle at left bottom, hsl(210deg, 20%, 50%), hsl(330deg, 20%, 50%));
+  background: radial-gradient(circle at left bottom, hsl(210, 20%, 50%), hsl(330, 20%, 50%));
   color: #ffffff;
 }
 
@@ -519,6 +519,20 @@ ul {
 
 .author {
   color: #dadce0;
+}
+
+.feed-header:not(:first-child) {
+  margin-top: 20px;
+}
+
+.feed {
+  border-left: 2px dotted #fff;
+  margin: 8px 0;
+  padding-left: 10px;
+}
+
+.footnote {
+  font-size: 12px;
 }
 
 /*# sourceMappingURL=main.css.map */
