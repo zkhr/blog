@@ -44,6 +44,9 @@ await writeFile(
     <div class="section footnote">
       Generated from an <a href="/static/misc/feeds.opml">opml file</a> exported from Reeder.
     </div>
+    <div class="nav-section">
+      <span class="link nav-link" data-x="0" data-y="0">Home</span>
+    </div>
   </div>
 </div>`
 );
