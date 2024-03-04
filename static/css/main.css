@@ -374,6 +374,13 @@ body {
   line-height: 22px;
 }
 
+.note-section {
+  background: #f9ed7e;
+  display: inline-block;
+  padding: 12px;
+  margin: 12px 0;
+}
+
 .section-header {
   padding-top: 30px;
   font-size: 22px;
