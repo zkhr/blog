@@ -566,4 +566,12 @@ ul {
   font-size: 12px;
 }
 
+.chromostereopsis-demo {
+  background-color: red;
+  background-size: 64px 64px;
+  background-image: linear-gradient(to right, #222 0px, #222 32px, transparent 33px), linear-gradient(to bottom, #222 0px, #222 32px, transparent 33px), linear-gradient(to right, blue 16px, blue 48px, transparent 49px);
+  width: 100%;
+  height: 288px;
+}
+
 /*# sourceMappingURL=main.css.map */
