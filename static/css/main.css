@@ -1,3 +1,86 @@
+.blog-theme,
+.blog-minimap-bg {
+  background: radial-gradient(circle at left bottom, hsl(40, 100%, 95%) 0%, hsl(40, 100%, 90%) 100%);
+  color: #222;
+}
+.blog-theme a:link,
+.blog-theme a:visited,
+.blog-theme a:hover,
+.blog-theme a:focus,
+.blog-minimap-bg a:link,
+.blog-minimap-bg a:visited,
+.blog-minimap-bg a:hover,
+.blog-minimap-bg a:focus {
+  color: #2f6efd;
+}
+
+.blog-date {
+  font-size: 16px;
+}
+
+.blog-entries {
+  padding: 10px 0;
+}
+
+.blog-entry {
+  display: flex;
+  font-size: 16px;
+  padding: 2px 0;
+}
+.blog-entry .link {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.blog-entry-date {
+  flex-shrink: 0;
+  padding-right: 8px;
+}
+
+.inline-code,
+.code-block {
+  background: #222;
+  border-radius: 4px;
+  color: #fafafa;
+}
+
+.code-block {
+  font-family: "IBM Plex Mono";
+  font-size: 16px;
+  overflow-x: auto;
+  padding: 12px;
+}
+
+.inline-code {
+  padding: 0 8px;
+}
+
+.quote {
+  background: #ffd7a5;
+  font-family: Garamond;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 20px 0;
+  padding: 12px;
+}
+.quote .attribution {
+  padding-top: 20px;
+}
+
+.quote.ac-quote {
+  background: #010309;
+  border-left: 2px solid #3b5489;
+  color: #86bc4c;
+  font-family: Arial;
+}
+
+.font-box {
+  background: #ffd7a5;
+  padding: 12px;
+  margin-top: 12px;
+  margin-bottom: 24px;
+}
+
 @font-face {
   font-family: "IBM Plex Mono";
   src: url("/static/fonts/ibmplexmono.woff2") format("woff2");
@@ -143,149 +226,91 @@ html {
   background: #4592c4;
 }
 
-@keyframes full-hue-rotation {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-  50% {
-    filter: hue-rotate(180deg);
-  }
-  100% {
-    filter: hue-rotate(360deg);
-  }
-}
-.home-theme {
+.home-theme,
+.home-minimap-bg {
   background: #222;
   color: #fafafa;
 }
 
-.blog-theme {
-  background: radial-gradient(circle at left bottom, hsl(40, 100%, 95%) 0%, hsl(40, 100%, 90%) 100%);
-  color: #222;
-}
-.blog-theme a:link,
-.blog-theme a:visited,
-.blog-theme a:hover,
-.blog-theme a:focus {
-  color: #2f6efd;
-}
-
-.blog-date {
-  font-size: 16px;
-}
-
-.blog-entries {
-  padding: 10px 0;
-}
-
-.blog-entry {
-  display: flex;
-  font-size: 16px;
-  padding: 2px 0;
-}
-.blog-entry .link {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.blog-entry-date {
-  flex-shrink: 0;
-  padding-right: 8px;
-}
-
-.inline-code,
-.code-block {
-  background: #222;
-  border-radius: 4px;
-  color: #fafafa;
-}
-
-.code-block {
-  font-family: "IBM Plex Mono";
-  font-size: 16px;
-  overflow-x: auto;
-  padding: 12px;
-}
-
-.inline-code {
-  padding: 0 8px;
-}
-
-.quote {
-  background: #ffd7a5;
-  font-family: Garamond;
-  font-size: 16px;
-  line-height: 20px;
-  margin: 20px 0;
-  padding: 12px;
-}
-.quote .attribution {
-  padding-top: 20px;
-}
-
-.quote.ac-quote {
-  background: #010309;
-  border-left: 2px solid #3b5489;
-  color: #86bc4c;
-  font-family: Arial;
-}
-
-.font-box {
-  background: #ffd7a5;
-  padding: 12px;
-  margin-top: 12px;
-  margin-bottom: 24px;
-}
-
-.three-theme {
-  background: radial-gradient(circle at left bottom, #222, #444);
-  color: #ffffff;
-}
-
-.toolkit-theme {
-  background: radial-gradient(circle at left bottom, hsl(120, 20%, 50%), hsl(210, 20%, 50%));
-  color: #ffffff;
-}
-.toolkit-theme a:link, .toolkit-theme a:visited, .toolkit-theme a:hover, .toolkit-theme a:focus {
-  color: #ddffeb;
-}
-
-.boardgame-theme {
-  background: radial-gradient(circle at left bottom, hsl(150, 20%, 50%), hsl(210, 20%, 50%));
-  color: #ffffff;
-}
-
-.projects-theme {
+.grid-theme {
   background-size: 100% 100%, 16px 16px, 16px 16px;
-  background-image: radial-gradient(circle at top left, #320f32 0%, #320f32 10%, transparent 80%), linear-gradient(to right, #2f2f2f 1px, transparent 1px), linear-gradient(to bottom, #2f2f2f 1px, transparent 1px);
   color: #ffffff;
 }
-.projects-theme .title {
+.grid-theme .title {
   font-size: 40px;
   font-family: Visions;
   padding-top: 20px;
 }
-.projects-theme .section-title {
+.grid-theme .section-title {
   color: #fff;
 }
-.projects-theme .section {
+.grid-theme .section {
   color: #dadce0;
   padding-bottom: 20px;
 }
-.projects-theme .section-content {
+.grid-theme .section-content {
   padding-bottom: 4px;
 }
-.projects-theme .link {
+.grid-theme .link {
   background-color: #fafafa;
   color: #222;
   display: inline-block;
 }
-.projects-theme .link:hover {
+.grid-theme .link:hover {
   background-color: #dadada;
 }
 
-.who-theme {
-  background: radial-gradient(circle at left bottom, hsl(210, 20%, 50%), hsl(330, 20%, 50%));
+.red-grid {
+  background-image: radial-gradient(circle at bottom right, hsl(0, 54%, 13%) 0%, hsl(0, 54%, 13%) 10%, transparent 80%), linear-gradient(to right, #2f2f2f 1px, transparent 1px), linear-gradient(to bottom, #2f2f2f 1px, transparent 1px);
+}
+
+.yellow-grid {
+  background-image: radial-gradient(circle at bottom left, hsl(60, 54%, 13%) 0%, hsl(60, 54%, 13%) 10%, transparent 80%), linear-gradient(to right, #2f2f2f 1px, transparent 1px), linear-gradient(to bottom, #2f2f2f 1px, transparent 1px);
+}
+
+.green-grid {
+  background-image: radial-gradient(circle at center left, hsl(120, 54%, 13%) 0%, hsl(120, 54%, 13%) 10%, transparent 80%), linear-gradient(to right, #2f2f2f 1px, transparent 1px), linear-gradient(to bottom, #2f2f2f 1px, transparent 1px);
+}
+
+.blue-grid {
+  background-image: radial-gradient(circle at top right, hsl(180, 54%, 13%) 0%, hsl(180, 54%, 13%) 10%, transparent 80%), linear-gradient(to right, #2f2f2f 1px, transparent 1px), linear-gradient(to bottom, #2f2f2f 1px, transparent 1px);
+}
+
+.dark-blue-grid {
+  background-image: radial-gradient(circle at center right, hsl(210, 54%, 13%) 0%, hsl(210, 54%, 13%) 10%, transparent 80%), linear-gradient(to right, #2f2f2f 1px, transparent 1px), linear-gradient(to bottom, #2f2f2f 1px, transparent 1px);
+}
+
+.light-purple-grid {
+  background-image: radial-gradient(circle at top left, hsl(300, 54%, 13%) 0%, hsl(300, 54%, 13%) 10%, transparent 80%), linear-gradient(to right, #2f2f2f 1px, transparent 1px), linear-gradient(to bottom, #2f2f2f 1px, transparent 1px);
+}
+
+.red-minimap-bg {
+  background-color: hsl(0, 54%, 13%);
+}
+
+.yellow-minimap-bg {
+  background-color: hsl(60, 54%, 13%);
+}
+
+.green-minimap-bg {
+  background-color: hsl(120, 54%, 13%);
+}
+
+.blue-minimap-bg {
+  background-color: hsl(180, 54%, 13%);
+}
+
+.dark-blue-minimap-bg {
+  background-color: hsl(210, 54%, 13%);
+}
+
+.light-purple-minimap-bg {
+  background-color: hsl(300, 54%, 13%);
+}
+
+.three-theme,
+.three-minimap-bg {
+  background: radial-gradient(circle at left bottom, #222, #444);
   color: #ffffff;
 }
 

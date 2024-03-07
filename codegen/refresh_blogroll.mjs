@@ -31,10 +31,10 @@ console.log(`Updating ${outputFilename}`);
 await writeFile(
   outputFilename,
   `<div
-  class="panel boardgame-theme"
+  class="panel grid-theme green-grid"
   data-x="-1"
   data-y="1"
-  data-type="boardgame"
+  data-type="green"
   data-url-suffix="blogroll"
 >
   <div class="panel-content">

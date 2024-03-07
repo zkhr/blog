@@ -47,7 +47,7 @@ class Minimap {
 
     for (const panel of this.#matrix.listPanels()) {
       const panelEl = document.createElement("div");
-      panelEl.classList.add("map-panel", `${panel.type}-theme`);
+      panelEl.classList.add("map-panel", `${panel.type}-minimap-bg`);
       panelEl.style.left = `${PANEL_SIZE * panel.x}px`;
       panelEl.style.top = `${-1 * PANEL_SIZE * panel.y}px`;
       this.#sliderEl.appendChild(panelEl);

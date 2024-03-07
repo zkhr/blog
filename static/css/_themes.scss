@@ -1,5 +1,5 @@
-$bg-saturation: 20%;
-$bg-lightness: 50%;
+$bg-saturation: 54%;
+$bg-lightness: 13%;
 
 $bg-red: hsl(0deg, $bg-saturation, $bg-lightness);
 $bg-orange: hsl(30deg, $bg-saturation, $bg-lightness);
@@ -14,150 +14,25 @@ $bg-purple: hsl(270deg, $bg-saturation, $bg-lightness);
 $bg-light-purple: hsl(300deg, $bg-saturation, $bg-lightness);
 $bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
 
-@function light-gradient-background($hue) {
-  @return linear-gradient(to bottom);
-}
-
-@keyframes full-hue-rotation {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-
-  50% {
-    filter: hue-rotate(180deg);
-  }
-
-  100% {
-    filter: hue-rotate(360deg);
-  }
-}
-
-.home-theme {
-  background: #222;
-  color: #fafafa;
-}
-
-.blog-theme {
-  background: radial-gradient(
-    circle at left bottom,
-    hsl(40deg 100% 95%) 0%,
-    hsl(40deg 100% 90%) 100%
-  );
-  color: #222;
-
-  a:link,
-  a:visited,
-  a:hover,
-  a:focus {
-    color: #2f6efd;
-  }
-}
-
-.blog-date {
-  font-size: 16px;
-}
-
-.blog-entries {
-  padding: 10px 0;
-}
-
-.blog-entry {
-  display: flex;
-  font-size: 16px;
-  padding: 2px 0;
-
-  .link {
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
-
-.blog-entry-date {
-  flex-shrink: 0;
-  padding-right: 8px;
-}
-
-.inline-code,
-.code-block {
-  background: #222;
-  border-radius: 4px;
-  color: #fafafa;
-}
-
-.code-block {
-  font-family: "IBM Plex Mono";
-  font-size: 16px;
-  overflow-x: auto;
-  padding: 12px;
-}
-
-.inline-code {
-  padding: 0 8px;
-}
-
-.quote {
-  background: #ffd7a5;
-  font-family: Garamond;
-  font-size: 16px;
-  line-height: 20px;
-  margin: 20px 0;
-  padding: 12px;
-
-  .attribution {
-    padding-top: 20px;
-  }
-}
-
-.quote.ac-quote {
-  background: #010309;
-  border-left: 2px solid #3b5489;
-  color: #86bc4c;
-  font-family: Arial;
-}
-
-.font-box {
-  background: #ffd7a5;
-  padding: 12px;
-  margin-top: 12px;
-  margin-bottom: 24px;
-}
-
-.three-theme {
-  background: radial-gradient(circle at left bottom, #222, #444);
-  color: #ffffff;
-}
-
-.toolkit-theme {
-  background: radial-gradient(circle at left bottom, $bg-green, $bg-dark-blue);
-  color: #ffffff;
-
-  & a:link,
-  & a:visited,
-  & a:hover,
-  & a:focus {
-    color: #ddffeb;
-  }
-}
-
-.boardgame-theme {
-  background: radial-gradient(
-    circle at left bottom,
-    $bg-blue-green,
-    $bg-dark-blue
-  );
-  color: #ffffff;
-}
-
-.projects-theme {
-  background-size: 100% 100%, 16px 16px, 16px 16px;
-  background-image: radial-gradient(
-      circle at top left,
-      #320f32 0%,
-      #320f32 10%,
+@function grid-background-image($color, $position) {
+  @return radial-gradient(
+      circle at $position,
+      $color 0%,
+      $color 10%,
       transparent 80%
     ),
     linear-gradient(to right, #2f2f2f 1px, transparent 1px),
     linear-gradient(to bottom, #2f2f2f 1px, transparent 1px);
+}
+
+.home-theme,
+.home-minimap-bg {
+  background: #222;
+  color: #fafafa;
+}
+
+.grid-theme {
+  background-size: 100% 100%, 16px 16px, 16px 16px;
   color: #ffffff;
 
   .title {
@@ -190,11 +65,46 @@ $bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
   }
 }
 
-.who-theme {
-  background: radial-gradient(
-    circle at left bottom,
-    $bg-dark-blue,
-    $bg-purple-red
-  );
+.red-grid {
+  background-image: grid-background-image($bg-red, bottom right);
+}
+.yellow-grid {
+  background-image: grid-background-image($bg-yellow, bottom left);
+}
+.green-grid {
+  background-image: grid-background-image($bg-green, center left);
+}
+.blue-grid {
+  background-image: grid-background-image($bg-blue, top right);
+}
+.dark-blue-grid {
+  background-image: grid-background-image($bg-dark-blue, center right);
+}
+.light-purple-grid {
+  background-image: grid-background-image($bg-light-purple, top left);
+}
+
+.red-minimap-bg {
+  background-color: $bg-red;
+}
+.yellow-minimap-bg {
+  background-color: $bg-yellow;
+}
+.green-minimap-bg {
+  background-color: $bg-green;
+}
+.blue-minimap-bg {
+  background-color: $bg-blue;
+}
+.dark-blue-minimap-bg {
+  background-color: $bg-dark-blue;
+}
+.light-purple-minimap-bg {
+  background-color: $bg-light-purple;
+}
+
+.three-theme,
+.three-minimap-bg {
+  background: radial-gradient(circle at left bottom, #222, #444);
   color: #ffffff;
 }
