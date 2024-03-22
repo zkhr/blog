@@ -1,0 +1,74 @@
+<div
+  class="panel blog-theme"
+  data-x="0"
+  data-y="-9"
+  data-type="blog"
+  data-url-suffix="kotlin"
+>
+  <div class="panel-content">
+    <div class="title">kotlin.</div>
+    <div class="blog-date">2024-03-21</div>
+
+    <div class="section">
+      I started coding in Kotlin for a project recently and have mostly enjoyed
+      its philosophy and syntax. But I wanted to try and articulate my thoughts
+      on
+      <a href="https://kotlinlang.org/docs/extensions.html#extension-functions"
+        >extension functions</a
+      >
+      because I'm not sure yet if I like them or hate them.
+    </div>
+
+    <div class="section">
+      Other languages have supported extension methods for years, but most
+      projects I've worked on have been in languages without support (or at
+      least without idiomatic usage).
+    </div>
+
+    <div class="section">
+      The super quick overview is that they let you add methods directly on
+      classes that can be imported independently of the original code. Read the
+      docs linked above for a better description.
+    </div>
+
+    <div class="section">
+      I think I instinctively hated them, because coming from something like
+      javascript where this would be done via modifying the prototype, you have
+      no guarantees that you aren't clobbering some other code on the page. Or
+      with something like dependency injection where your framework makes data
+      available for you, but it isn't always easy to know where things are
+      coming from without decent tooling or prior knowledge of the codebase.
+    </div>
+
+    <div class="section">
+      But neither of these are concerns in Kotlin. Handling for extension
+      functions occurs at compile time, so you don't have the same concerns
+      around breaking other parts of the codebase. And extensions are imported
+      so its easy to find where they source from.
+    </div>
+
+    <div class="section">
+      I guess there is a worry that a poorly organized codebase could become
+      even more cumbersome to work with if past authors scattered different
+      parts of an object around incomprehensibly. But this seems like it would
+      be easy enough to reconcile and reason through.
+    </div>
+
+    <div class="section">
+      On the flip side, I like the syntactic sugar it brings and the simplicity
+      of adding utility functions on top of core functionality that I don't own.
+    </div>
+
+    <div class="section">
+      So I guess it's just the change aversion that comes with learning
+      something new. They'll probably grow on me as I learn all the shiny new
+      best practices that make use of them.
+    </div>
+
+    <div class="nav-section">
+      <span class="link nav-link" data-x="0" data-y="0">Home</span>
+      <span class="link nav-link" data-x="0" data-y="-1">Journal</span>
+      <span class="link nav-link" data-x="0" data-y="-8">Prev</span>
+    </div>
+  </div>
+</div>
