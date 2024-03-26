@@ -581,8 +581,13 @@ ul {
   padding-right: 8px;
 }
 
+.book {
+  color: #fff;
+  margin: 10px 0;
+}
+
 .author {
-  color: #dadce0;
+  color: #9a8585;
 }
 
 .feed-header:not(:first-child) {
