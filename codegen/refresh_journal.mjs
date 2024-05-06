@@ -2,7 +2,7 @@
  * Generates the blog.html panel based on other panels in the panels/
  * directory.
  *
- * Usage: `node ./codegen/refresh_blog.mjs`
+ * Usage: `node ./codegen/refresh_journal.mjs`
  */
 
 import { readdir, readFile, writeFile } from "node:fs/promises";
@@ -49,6 +49,7 @@ await writeFile(
 >
   <div class="panel-content">
     <div class="title">Journal</div>
+    <div class="subtitle">read below or via <a href="/rss">rss</a></div>
     <div class="blog-entries">${blogEntries.join("")}
     </div>
     <div class="nav-section">
