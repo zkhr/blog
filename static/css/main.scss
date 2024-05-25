@@ -286,6 +286,27 @@ ul {
   color: #9a8585;
 }
 
+.year,
+.tag {
+  font-size: 12px;
+  padding: 0 4px;
+}
+
+.year {
+  color: #cbbc87;
+  background: rgb(209 17 17 / 0.53);
+}
+
+.tag.fantasy {
+  color: #abcb87;
+  background: rgba(114, 209, 17, 0.53);
+}
+
+.tag.scifi {
+  color: #87c3cb;
+  background: rgba(17, 122, 209, 0.53);
+}
+
 .feed-header:not(:first-child) {
   margin-top: 20px;
 }
