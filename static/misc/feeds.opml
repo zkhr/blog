@@ -4,25 +4,28 @@
 <title>Feeds</title>
 </head>
 <body>
-<outline title="Blogs" text="Blogs">
-<outline text="Home on Simon Panrucker!" htmlUrl="https://www.simonpanrucker.com/" title="Home on Simon Panrucker!" xmlUrl="https://www.simonpanrucker.com/index.xml" type="rss" />
-<outline type="rss" htmlUrl="https://chriscoyier.net" title="Chris Coyier" text="Chris Coyier" xmlUrl="https://chriscoyier.net/feed/rss" />
+<outline text="Blogs" title="Blogs">
+<outline title="Home on Simon Panrucker!" type="rss" text="Home on Simon Panrucker!" xmlUrl="https://www.simonpanrucker.com/index.xml" htmlUrl="https://www.simonpanrucker.com/" />
+<outline xmlUrl="https://chriscoyier.net/feed/rss" title="Chris Coyier" htmlUrl="https://chriscoyier.net" type="rss" text="Chris Coyier" />
+<outline text="Oatmeal" title="Oatmeal" htmlUrl="https://eli.li" type="rss" xmlUrl="https://eli.li/feed.rss" />
+<outline text="Piper Haywood" type="rss" xmlUrl="https://piperhaywood.com/feed/" title="Piper Haywood" htmlUrl="https://piperhaywood.com/" />
 </outline>
-<outline text="Comics" title="Comics">
-<outline text="FoxTrot Comics by Bill Amend" type="rss" title="FoxTrot Comics by Bill Amend" htmlUrl="https://foxtrot.com" xmlUrl="https://foxtrot.com/feed" />
-<outline title="Extra Ordinary" text="Extra Ordinary" type="rss" htmlUrl="https://www.exocomics.com/" xmlUrl="https://exocomics.com/index.xml" />
-<outline type="rss" xmlUrl="https://www.questionablecontent.net/QCRSS.xml" text="QC RSS" htmlUrl="http://www.questionablecontent.net" title="QC RSS" />
-<outline text="RedGreenBlue" type="rss" htmlUrl="https://www.webtoons.com/en/canvas/redgreenblue/list?title_no=587922" xmlUrl="https://www.webtoons.com/en/challenge/redgreenblue/rss?title_no=587922" title="RedGreenBlue" />
-<outline title="Sarah's Scribbles" text="Sarah's Scribbles" type="rss" htmlUrl="https://sarahcandersen.com/" xmlUrl="https://sarahcandersen.com/rss" />
-<outline title="Saturday Morning Breakfast Cereal" type="rss" htmlUrl="https://www.smbc-comics.com/" xmlUrl="https://www.smbc-comics.com/comic/rss" text="Saturday Morning Breakfast Cereal" />
-<outline htmlUrl="https://xkcd.com/" type="rss" text="xkcd.com" xmlUrl="https://xkcd.com/rss.xml" title="xkcd.com" />
+<outline title="Comics" text="Comics">
+<outline xmlUrl="https://foxtrot.com/feed" type="rss" title="FoxTrot Comics by Bill Amend" text="FoxTrot Comics by Bill Amend" htmlUrl="https://foxtrot.com" />
+<outline title="Extra Ordinary" text="Extra Ordinary" htmlUrl="https://www.exocomics.com/" type="rss" xmlUrl="https://exocomics.com/index.xml" />
+<outline htmlUrl="http://www.questionablecontent.net" title="QC RSS" type="rss" text="QC RSS" xmlUrl="https://www.questionablecontent.net/QCRSS.xml" />
+<outline title="RedGreenBlue" text="RedGreenBlue" xmlUrl="https://www.webtoons.com/en/challenge/redgreenblue/rss?title_no=587922" type="rss" htmlUrl="https://www.webtoons.com/en/canvas/redgreenblue/list?title_no=587922" />
+<outline text="Sarah's Scribbles" xmlUrl="https://sarahcandersen.com/rss" htmlUrl="https://sarahcandersen.com/" title="Sarah's Scribbles" type="rss" />
+<outline type="rss" xmlUrl="https://www.smbc-comics.com/comic/rss" text="Saturday Morning Breakfast Cereal" htmlUrl="https://www.smbc-comics.com/" title="Saturday Morning Breakfast Cereal" />
+<outline xmlUrl="https://xkcd.com/rss.xml" text="xkcd.com" type="rss" htmlUrl="https://xkcd.com/" title="xkcd.com" />
+<outline text="Goomics" xmlUrl="https://goomics.net/feed.xml" title="Goomics" type="rss" htmlUrl="https://goomics.net/" />
 </outline>
-<outline text="Gaming News" title="Gaming News">
-<outline htmlUrl="https://na.finalfantasyxiv.com/lodestone/" title="Topics | FFXIV" text="Topics | FFXIV" xmlUrl="https://na.finalfantasyxiv.com/lodestone/news/topics.xml" type="rss" />
-<outline title="Factorio Blog" htmlUrl="https://factorio.com/" xmlUrl="https://factorio.com/blog/rss" text="Factorio Blog" type="rss" />
+<outline title="Gaming News" text="Gaming News">
+<outline type="rss" title="Topics | FFXIV" text="Topics | FFXIV" htmlUrl="https://na.finalfantasyxiv.com/lodestone/" xmlUrl="https://na.finalfantasyxiv.com/lodestone/news/topics.xml" />
+<outline type="rss" title="Factorio Blog" text="Factorio Blog" xmlUrl="https://factorio.com/blog/rss" htmlUrl="https://factorio.com/" />
 </outline>
 <outline text="Tech News" title="Tech News">
-<outline type="rss" xmlUrl="https://blog.unicode.org/feeds/posts/default" htmlUrl="https://blog.unicode.org/" text="The Unicode Blog" title="The Unicode Blog" />
+<outline title="The Unicode Blog" type="rss" htmlUrl="https://blog.unicode.org/" xmlUrl="https://blog.unicode.org/feeds/posts/default" text="The Unicode Blog" />
 </outline>
 </body>
 </opml>
