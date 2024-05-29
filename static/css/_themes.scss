@@ -31,6 +31,7 @@ $bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
   color: #fafafa;
 }
 
+.blog-theme,
 .grid-theme {
   background-size: 100% 100%, 16px 16px, 16px 16px;
   color: #ffffff;
@@ -63,39 +64,23 @@ $bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
   }
 }
 
+.blog-theme,
 .red-grid {
   background-image: grid-background-image($bg-red, bottom right);
 }
-.yellow-grid {
-  background-image: grid-background-image($bg-yellow, bottom left);
-}
-.green-grid {
-  background-image: grid-background-image($bg-green, center left);
-}
 .blue-grid {
   background-image: grid-background-image($bg-blue, top right);
-}
-.dark-blue-grid {
-  background-image: grid-background-image($bg-dark-blue, center right);
 }
 .light-purple-grid {
   background-image: grid-background-image($bg-light-purple, top left);
 }
 
+.blog-minimap-bg,
 .red-minimap-bg {
   background-color: $bg-red;
 }
-.yellow-minimap-bg {
-  background-color: $bg-yellow;
-}
-.green-minimap-bg {
-  background-color: $bg-green;
-}
 .blue-minimap-bg {
   background-color: $bg-blue;
-}
-.dark-blue-minimap-bg {
-  background-color: $bg-dark-blue;
 }
 .light-purple-minimap-bg {
   background-color: $bg-light-purple;

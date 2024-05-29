@@ -1,25 +1,14 @@
-.blog-theme,
-.blog-minimap-bg {
-  background: radial-gradient(circle at left bottom, hsl(40, 100%, 95%) 0%, hsl(40, 100%, 90%) 100%);
-  color: #222;
-}
-.blog-theme a:link,
-.blog-theme a:visited,
-.blog-theme a:hover,
-.blog-theme a:focus,
-.blog-minimap-bg a:link,
-.blog-minimap-bg a:visited,
-.blog-minimap-bg a:hover,
-.blog-minimap-bg a:focus {
-  color: #2f6efd;
-}
-
 .blog-date {
   font-size: 16px;
 }
 
 .blog-entries {
   padding: 10px 0;
+}
+
+.emphasis {
+  display: inline;
+  color: #fff;
 }
 
 .blog-entry {
@@ -39,7 +28,7 @@
 
 .inline-code,
 .code-block {
-  background: #222;
+  background: rgba(0, 0, 0, 0.25);
   border-radius: 4px;
   color: #fafafa;
 }
@@ -56,12 +45,12 @@
 }
 
 .quote {
-  background: #ffd7a5;
   font-family: Garamond;
   font-size: 16px;
   line-height: 20px;
   margin: 20px 0;
-  padding: 12px;
+  padding: 6px 12px;
+  border-left: 2px solid #dadce0;
 }
 .quote .attribution {
   padding-top: 20px;
@@ -170,11 +159,11 @@ html {
 }
 
 .pokemon .mon-name {
-  font-weight: bold;
+  color: #fff;
 }
 
 .pokemon .detail {
-  color: #646464;
+  color: #9a8585;
 }
 
 .pokemon .type {
@@ -243,74 +232,59 @@ html {
   color: #fafafa;
 }
 
+.blog-theme,
 .grid-theme {
   background-size: 100% 100%, 16px 16px, 16px 16px;
   color: #ffffff;
 }
+.blog-theme .title,
 .grid-theme .title {
   padding-top: 20px;
 }
+.blog-theme .section-title,
 .grid-theme .section-title {
   color: #fff;
 }
+.blog-theme .section,
 .grid-theme .section {
   color: #dadce0;
   padding-bottom: 20px;
 }
+.blog-theme .section-content,
 .grid-theme .section-content {
   padding-bottom: 4px;
 }
+.blog-theme .link,
 .grid-theme .link {
   background-color: #fafafa;
   color: #222;
   display: inline-block;
 }
+.blog-theme .link:hover,
 .grid-theme .link:hover {
   background-color: #dadada;
 }
 
+.blog-theme,
 .red-grid {
   background-image: radial-gradient(circle at bottom right, hsl(0, 54%, 13%) 0%, hsl(0, 54%, 13%) 10%, transparent 80%), linear-gradient(to right, #2f2f2f 1px, transparent 1px), linear-gradient(to bottom, #2f2f2f 1px, transparent 1px);
-}
-
-.yellow-grid {
-  background-image: radial-gradient(circle at bottom left, hsl(60, 54%, 13%) 0%, hsl(60, 54%, 13%) 10%, transparent 80%), linear-gradient(to right, #2f2f2f 1px, transparent 1px), linear-gradient(to bottom, #2f2f2f 1px, transparent 1px);
-}
-
-.green-grid {
-  background-image: radial-gradient(circle at center left, hsl(120, 54%, 13%) 0%, hsl(120, 54%, 13%) 10%, transparent 80%), linear-gradient(to right, #2f2f2f 1px, transparent 1px), linear-gradient(to bottom, #2f2f2f 1px, transparent 1px);
 }
 
 .blue-grid {
   background-image: radial-gradient(circle at top right, hsl(180, 54%, 13%) 0%, hsl(180, 54%, 13%) 10%, transparent 80%), linear-gradient(to right, #2f2f2f 1px, transparent 1px), linear-gradient(to bottom, #2f2f2f 1px, transparent 1px);
 }
 
-.dark-blue-grid {
-  background-image: radial-gradient(circle at center right, hsl(210, 54%, 13%) 0%, hsl(210, 54%, 13%) 10%, transparent 80%), linear-gradient(to right, #2f2f2f 1px, transparent 1px), linear-gradient(to bottom, #2f2f2f 1px, transparent 1px);
-}
-
 .light-purple-grid {
   background-image: radial-gradient(circle at top left, hsl(300, 54%, 13%) 0%, hsl(300, 54%, 13%) 10%, transparent 80%), linear-gradient(to right, #2f2f2f 1px, transparent 1px), linear-gradient(to bottom, #2f2f2f 1px, transparent 1px);
 }
 
+.blog-minimap-bg,
 .red-minimap-bg {
   background-color: hsl(0, 54%, 13%);
 }
 
-.yellow-minimap-bg {
-  background-color: hsl(60, 54%, 13%);
-}
-
-.green-minimap-bg {
-  background-color: hsl(120, 54%, 13%);
-}
-
 .blue-minimap-bg {
   background-color: hsl(180, 54%, 13%);
-}
-
-.dark-blue-minimap-bg {
-  background-color: hsl(210, 54%, 13%);
 }
 
 .light-purple-minimap-bg {
@@ -436,7 +410,7 @@ body {
 }
 
 .note-section {
-  background: #f9ed7e;
+  background: rgba(255, 255, 255, 0.1333333333);
   display: inline-block;
   padding: 12px;
   margin: 12px 0;
@@ -451,7 +425,7 @@ a:link,
 a:visited,
 a:hover,
 a:focus {
-  color: #cbcbff;
+  color: #8cb6ff;
 }
 
 a {

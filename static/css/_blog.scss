@@ -1,26 +1,14 @@
-.blog-theme,
-.blog-minimap-bg {
-  background: radial-gradient(
-    circle at left bottom,
-    hsl(40deg 100% 95%) 0%,
-    hsl(40deg 100% 90%) 100%
-  );
-  color: #222;
-
-  a:link,
-  a:visited,
-  a:hover,
-  a:focus {
-    color: #2f6efd;
-  }
-}
-
 .blog-date {
   font-size: 16px;
 }
 
 .blog-entries {
   padding: 10px 0;
+}
+
+.emphasis {
+  display: inline;
+  color: #fff;
 }
 
 .blog-entry {
@@ -41,7 +29,7 @@
 
 .inline-code,
 .code-block {
-  background: #222;
+  background: rgb(0 0 0 / 25%);
   border-radius: 4px;
   color: #fafafa;
 }
@@ -58,12 +46,12 @@
 }
 
 .quote {
-  background: #ffd7a5;
   font-family: Garamond;
   font-size: 16px;
   line-height: 20px;
   margin: 20px 0;
-  padding: 12px;
+  padding: 6px 12px;
+  border-left: 2px solid #dadce0;
 
   .attribution {
     padding-top: 20px;
