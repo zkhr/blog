@@ -26,7 +26,7 @@ class Three {
     this.#playEl = document.getElementById("three-play");
 
     this.#playEl.addEventListener("click", (evt) => {
-      if (this.running) {
+      if (this.#running) {
         // The user clicked the start button on a running simulation, so reset
         // the bodies.
         this.init();
@@ -36,7 +36,14 @@ class Three {
       // The user is starting the sim for the first time, kick it off.
       window.requestAnimationFrame(() => this.#step());
       this.#playEl.innerText = "Restart";
-      this.running = true;
+      this.#running = true;
+    });
+
+    window.addEventListener("coordinatechange", () => {
+      if (this.#running) {
+        this.#playEl.innerText = "Continue";
+        this.#running = false;
+      }
     });
   }
 
@@ -51,6 +58,7 @@ class Three {
       body.m = 30 + 30 * Math.random();
       body.v_x = 0;
       body.v_y = 0;
+      body.el.classList.add("show");
     }
   }
 
@@ -87,7 +95,9 @@ class Three {
     c.v_y += (-1 * force_ac_y - force_bc_y) / c.m;
     this.#setCoord(c, c.x + c.v_x * PF, c.y + c.v_y * PF);
 
-    window.requestAnimationFrame(() => this.#step());
+    if (this.#running) {
+      window.requestAnimationFrame(() => this.#step());
+    }
   }
 
   /** Computes the distance between two bodies. */
@@ -105,4 +115,8 @@ class Three {
   }
 }
 
-export { Three };
+function loadModule() {
+  new Three().init();
+}
+
+export { loadModule };

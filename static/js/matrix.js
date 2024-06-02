@@ -43,6 +43,12 @@ class Matrix {
     return this.#currentCoord;
   }
 
+  /** Returns the metadata for the current coordinates. */
+  getCurrentMetadata() {
+    const { x, y } = this.#currentCoord;
+    return this.#panelMetadataMap.get(this.#getPanelMetadataMapKey(x, y));
+  }
+
   /**
    * Builds a map from coordinates to metadata about the panel at the
    * coordinate.
@@ -64,6 +70,7 @@ class Matrix {
         y,
         type: panelEl.dataset.type,
         urlSuffix: panelEl.dataset.urlSuffix,
+        js: panelEl.dataset.js,
       });
     }
     return results;
