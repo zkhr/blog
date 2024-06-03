@@ -4,6 +4,8 @@
  */
 const DEFAULT_COORDINATES = { x: 0, y: 0 };
 
+const ZOOM_FACTORS = [1, 0.5, 0.25];
+
 class Matrix {
   /** The main matrix element on the page. */
   #panelMatrixEl;
@@ -14,10 +16,14 @@ class Matrix {
   /** Tracks the coordinates of the currently rendered panel. */
   #currentCoord;
 
+  /** The current zoom level. */
+  #zoomLevel;
+
   constructor() {
     this.#panelMatrixEl = document.getElementById("panel-matrix");
     this.#panelMetadataMap = this.#loadPanels();
     this.#currentCoord = this.#getStartingCoordinates();
+    this.#zoomLevel = 0;
   }
 
   render() {
@@ -120,6 +126,12 @@ class Matrix {
         case "ArrowRight":
           this.goRight();
           break;
+        case "]":
+          this.zoomOut();
+          break;
+        case "[":
+          this.zoomIn();
+          break;
       }
     });
   }
@@ -186,10 +198,30 @@ class Matrix {
     this.goToCoordinate(this.#currentCoord.x, this.#currentCoord.y - 1);
   }
 
+  /** Zooms out of the panel. */
+  zoomOut() {
+    if (this.#zoomLevel < ZOOM_FACTORS.length - 1) {
+      this.#zoomLevel += 1;
+      const { x, y } = this.#currentCoord;
+      this.goToCoordinate(x, y);
+    }
+  }
+
+  /** Zooms in to the panel. */
+  zoomIn() {
+    if (this.#zoomLevel > 0) {
+      this.#zoomLevel -= 1;
+      const { x, y } = this.#currentCoord;
+      this.goToCoordinate(x, y);
+    }
+  }
+
   /** Navigates the page to the provided coordinates. */
   goToCoordinate(x, y) {
-    this.#panelMatrixEl.style.left = `${-100 * x}vw`;
-    this.#panelMatrixEl.style.top = `${100 * y}vh`;
+    const offset = 100 * ZOOM_FACTORS[this.#zoomLevel];
+    const translate = `translate(${-1 * offset * x}vw, ${offset * y}vh)`;
+    const scale = `scale(${ZOOM_FACTORS[this.#zoomLevel]})`;
+    this.#panelMatrixEl.style.transform = `${translate} ${scale}`;
     this.#currentCoord = { x, y };
     const path = this.#getCoordinatePath(x, y);
     window.history.replaceState(null, "", path);

@@ -3,11 +3,18 @@
   <title>ari.blumenthal.dev</title>
   <link href="https://ari.blumenthal.dev/" />
   <link href="https://ari.blumenthal.dev/rss" rel="self" />
-  <updated>2024-05-29T04:10:42.100Z</updated>
+  <updated>2024-06-03T01:25:13.654Z</updated>
   <author>
     <name>Ari Blumenthal</name>
   </author>
   <id>https://ari.blumenthal.dev/rss</id>
+  <entry>
+    <title>zoom.</title>
+    <link href="https://ari.blumenthal.dev/!/2/-8/zoom"/>
+    <id>https://ari.blumenthal.dev/!/2/-8/zoom</id>
+    <updated>2024-06-02T12:34:56Z</updated>
+    <content type="html">&lt;p&gt;If you're on desktop, you can now zoom in and out on the grid with the [ and ] keys.&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>feed.</title>
     <link href="https://ari.blumenthal.dev/!/1/-8/feed"/>
@@ -140,12 +147,5 @@
     <id>https://ari.blumenthal.dev/!/3/-2/hilbert-curve</id>
     <updated>2022-12-11T12:34:56Z</updated>
     <content type="html">&lt;p&gt;As mentioned in the new site, who dis. blog post, this site is an infinite grid, with each page on the site being a panel on that grid. This raises the question, how do I decide where on the grid to place new pages?&lt;/p&gt;&lt;p&gt;Being an infinite grid, there are an infinite number of options! For example, we could just go off in an arbitrary direction:&lt;/p&gt;&lt;p&gt;But that doesn't really take advantage of the dimensionality of the grid. Instead, we could spiral around a point:&lt;/p&gt;&lt;p&gt;Or we could use the Cantor Pairing Function or even pick randomly!&lt;/p&gt;&lt;p&gt;So, what did I go with? Well, for blog posts, I decided to use the Hilbert curve, a space filling fractal, since it has some nice properties:&lt;/p&gt;&lt;p&gt;This blog post is at 'x' on the curve.&lt;/p&gt;&lt;p&gt;If you get lost navigating the grid, you can always grab a map to check your position.&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>pokémon scarlet.</title>
-    <link href="https://ari.blumenthal.dev/!/2/-2/pokemon-scarlet"/>
-    <id>https://ari.blumenthal.dev/!/2/-2/pokemon-scarlet</id>
-    <updated>2022-12-08T12:34:56Z</updated>
-    <content type="html">&lt;p&gt;The last year or so has been great for the pokémon franchise with several games hitting that nostalgic itch and innovating in interesting directions.&lt;/p&gt;&lt;p&gt;In April 2021, New Pokémon Snap revisited the best N64 rails shooter and in Jan 2022, Pokémon Legends: Arceus took a spin on the standard formula.&lt;/p&gt;&lt;p&gt;Pokémon Scarlet and Violet continue this with another solid entry in the franchise. While many reviews rightfully criticize the performance and graphical issues, having grown up with the graphics of n64 and gamecube games, that didn't really bother me too much. Instead, I could enjoy a really engaging gameplay loop of just wandering around an open world, catching pokémon, and taking down gyms.&lt;/p&gt;&lt;p&gt;my squad&lt;/p&gt;&lt;p&gt;This time around, I tried to have a balance of pokémon from different generations with good type coverage. Here is the lineup:&lt;/p&gt;&lt;p&gt;Scizor #212 gen ii bug steel Gardevoir #282 gen iii psychic fairy Garchomp #445 gen iv dragon ground Drednaw #834 gen viii water rock Skeledirge #911 gen ix fire ghost Pawmot #923 gen ix electric fighting&lt;/p&gt;&lt;p&gt;I started with the fire croc Fuecoco, so its evolution Skeledirge was the first pick. Running into Pawmi early on meant that of course Pawmmot would take spot #2. I have a sweet spot for any mon that can learn false swipe, so Scizor, Drednaw, and Garchomp all made the cut. Finally, to round out the team with some fairy and psychic coverage, Gardevoir took spot #6.&lt;/p&gt;</content>
   </entry>
 </feed>

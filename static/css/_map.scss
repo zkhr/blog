@@ -8,7 +8,8 @@
   right: -155px;
   top: 5px;
   width: 175px;
-  transition: right 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transform: translate3d(0, 0, 0);
 }
 
 .map:hover {
@@ -17,7 +18,7 @@
 
 .map.visible {
   cursor: e-resize;
-  right: 5px;
+  transform: translate3d(-160px, 0, 0);
 }
 
 .map-home {
