@@ -108,7 +108,7 @@ html {
   cursor: w-resize;
   height: 175px;
   overflow: hidden;
-  position: absolute;
+  position: fixed;
   right: -155px;
   top: 5px;
   width: 175px;
