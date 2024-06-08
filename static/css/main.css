@@ -19,6 +19,7 @@
 .blog-entry .link {
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 20px;
 }
 
 .blog-entry-date {
