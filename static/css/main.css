@@ -71,6 +71,36 @@
   margin-bottom: 24px;
 }
 
+.book {
+  color: #fff;
+  margin: 10px 0;
+}
+
+.author {
+  color: #9a8585;
+}
+
+.tag {
+  font-size: 12px;
+  padding: 0 4px;
+}
+.tag.year {
+  color: #cbbc87;
+  background: rgba(209, 17, 17, 0.53);
+}
+.tag.fantasy {
+  color: #abcb87;
+  background: rgba(114, 209, 17, 0.53);
+}
+.tag.scifi {
+  color: #87c3cb;
+  background: rgba(17, 122, 209, 0.53);
+}
+.tag.murderbot {
+  color: #c89fe4;
+  background: rgba(141, 43, 226, 0.53);
+}
+
 @font-face {
   font-family: "IBM Plex Mono";
   src: url("/static/fonts/ibmplexmono.woff2") format("woff2");
@@ -563,36 +593,6 @@ ul {
   font-size: 60px;
   line-height: 60px;
   padding-right: 8px;
-}
-
-.book {
-  color: #fff;
-  margin: 10px 0;
-}
-
-.author {
-  color: #9a8585;
-}
-
-.year,
-.tag {
-  font-size: 12px;
-  padding: 0 4px;
-}
-
-.year {
-  color: #cbbc87;
-  background: rgba(209, 17, 17, 0.53);
-}
-
-.tag.fantasy {
-  color: #abcb87;
-  background: rgba(114, 209, 17, 0.53);
-}
-
-.tag.scifi {
-  color: #87c3cb;
-  background: rgba(17, 122, 209, 0.53);
 }
 
 .feed-header:not(:first-child) {
