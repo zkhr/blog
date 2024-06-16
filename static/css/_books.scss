@@ -10,24 +10,44 @@
 .tag {
   font-size: 12px;
   padding: 0 4px;
+  white-space: nowrap;
 
-  &.year {
+  &.year,
+  &.chem {
     color: #cbbc87;
     background: rgb(209 17 17 / 0.53);
   }
 
-  &.fantasy {
+  &.fantasy,
+  &.math {
     color: #abcb87;
     background: rgba(114 209 17 / 0.53);
   }
 
-  &.scifi {
+  &.scifi,
+  &.cs {
     color: #87c3cb;
     background: rgba(17 122 209 / 0.53);
   }
 
-  &.murderbot {
+  &.murderbot,
+  &.eng {
     color: #c89fe4;
     background: rgba(141 43 226 / 0.53);
+  }
+
+  &.phys {
+    color: #d9e49f;
+    background: rgb(221 224 136 / 0.53);
+  }
+
+  &.mech {
+    color: #e4bb9f;
+    background: rgb(226 118 43 / 0.53);
+  }
+
+  &.other {
+    color: #e7e8eb;
+    background: rgba(137 137 171 / 0.53);
   }
 }
