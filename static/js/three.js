@@ -110,8 +110,7 @@ class Three {
   #setCoord(body, x, y) {
     body.x = x;
     body.y = y;
-    body.el.style.left = x + "px";
-    body.el.style.bottom = y + "px";
+    body.el.style.transform = `translate(${x}px, ${y}px)`;
   }
 }
 
