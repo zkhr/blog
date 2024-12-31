@@ -1,0 +1,154 @@
+<div
+  class="panel blog-theme"
+  data-x="2"
+  data-y="-7"
+  data-type="blog"
+  data-url-suffix="artifacts"
+>
+  <div class="panel-content">
+    <div class="title">artifacts.</div>
+    <div class="blog-date">2024-12-30</div>
+
+    <div class="section">
+      <div class="quote ac-quote">
+        <div>
+          Superior training and superior weaponry have, when taken together, a
+          geometric effect on overall military strength. Well-trained,
+          well-equipped troops can stand up to many more times their lesser
+          brethren than linear arithmetic would seem to indicate.
+        </div>
+        <div class="attribution">-- Spartan Battle Manual</div>
+      </div>
+    </div>
+
+    <div class="section-header">Not the valve one.</div>
+
+    <div class="section">
+      After playing
+      <span class="link" data-x="3" data-y="-8">spacetraders</span> a few months
+      ago, I've once again found myself playing an API game. In
+      <a href="https://artifactsmmo.com/">Artifacts</a>, you're automating
+      characters in an mmorpg.
+    </div>
+
+    <div class="section">
+      Last time around I wrote everything in JS to go fast, but wished I'd tried
+      out something new. This time around, I went with
+      <div class="emphasis">Rust.</div>
+    </div>
+
+    <div class="section">
+      I haven't used any languages with memory management since C/C++ at
+      <span class="link" data-x="3" data-y="-9">university</span>, so actually
+      thinking about the stack and heap and reference counting and all that was
+      an interesting change of pace.
+    </div>
+
+    <div class="section">
+      For some definition of interesting. Was that a
+      <span class="inline-code">&amp;str</span>
+      or a <span class="inline-code">String</span> that I wanted?
+
+      <div class="section-header">Read the book.</div>
+
+      <div class="section">
+        I don't remember what blog I found it on, but a few days into using
+        Rust, I read a comment like "you can't just jump into using Rust, you
+        have to read <i>the book</i>". Whoops, I guess.
+      </div>
+
+      <div class="section-header">Personas.</div>
+
+      <div class="section">
+        My implementation for artifacts is pretty similar to what I'd done for
+        spacetraders with personas I could attach to my characters, but just a
+        different set of tasks. Usually characters stuck to a specific persona,
+        but sometimes I would have them all do the same one overnight (e.g. to
+        get a bunch of resources or level up). The ones I ended up settling on
+        were:
+      </div>
+
+      <div class="section">
+        The
+        <div class="emphasis">Crafter</div>
+        persona to make weapons, gear, or jewelry.
+      </div>
+
+      <div class="section">
+        The
+        <div class="emphasis">Gatherer</div>
+        persona to chop wood and mine ore.
+      </div>
+
+      <div class="section">
+        The
+        <div class="emphasis">Fighter</div>
+        persona for characters to farm individual monsters or tasks coins.
+      </div>
+
+      <div class="section">
+        The
+        <div class="emphasis">Angler</div>
+        persona to fish and cook.
+      </div>
+
+      At one point I also had a
+      <div class="emphasis">Chicken Chaser</div>
+      that just battled chickens.
+
+      <div class="section-header">Rust positives.</div>
+
+      <div class="section">
+        As a fan of <span class="inline-code">Optional</span> introduced
+        recently in Java 8 (okay so I guess 2014 isn't considered recent
+        anymore, but at least that isn't as old as that chicken chaser reference
+        (Fable came out in 2004) and I did have a coworker whose license plate
+        was JAVA 8, but that's unrelated) as a way of making code more explicit
+        and readable, Rust's <span class="inline-code">Option</span> is pretty
+        handy as well. <span class="inline-code">Result</span> is handy for
+        similar reasons.
+      </div>
+
+      <div class="section">
+        Spinning up and coordinating multiple threads was super painless. If
+        something went wrong with one of them during the night, the other
+        characters could still do their thing.
+      </div>
+
+      <div class="section">
+        <span class="inline-code">loop {}</span> is rad.
+      </div>
+
+      <div class="section">
+        Grabbing code from other crates was relatively straightforward. I used
+        chrono (for dealing with time stuff), reqwest (for making the API
+        calls), and serde (for handling json).
+      </div>
+
+      <div class="section">
+        Error messages during compilation are excellent. No notes. For someone
+        totally new to the language, they provided great starting points for
+        learning more.
+      </div>
+
+      <div class="section-header">Skies.</div>
+
+      <div class="section">
+        My five characters are named after protagonists from Skies of Arcadia,
+        the best RPG ever made (when wearing my particular set of nostalgia
+        goggles): Vyse, Aika, Fina, Enrique, and Drachma.
+      </div>
+
+      <div class="section">
+        It is surprising that in ~2 years of doing this blog I haven't written
+        anything about that game yet. Guess I have to replay it in 2025.
+      </div>
+
+      <div class="nav-section">
+        <span class="link nav-link" data-x="0" data-y="0">Home</span>
+        <span class="link nav-link" data-x="0" data-y="-1">Journal</span>
+        <span class="link nav-link" data-x="3" data-y="-7">Prev</span>
+      </div>
+    </div>
+  </div>
+</div>
