@@ -102,7 +102,7 @@
   color: #c89fe4;
   background: rgba(141, 43, 226, 0.53);
 }
-.tag.phys {
+.tag.discworld, .tag.phys {
   color: #d9e49f;
   background: rgba(221, 224, 136, 0.53);
 }
