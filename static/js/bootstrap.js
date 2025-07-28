@@ -1,7 +1,8 @@
+import { Commander } from "./commander.js";
 import { Inventory } from "./inventory.js";
-import { Matrix } from "./matrix.js";
 import { LootProvider } from "./loot_provider.js";
 import { Loader } from "./loader.js";
+import { Matrix } from "./matrix.js";
 
 const inventory = new Inventory();
 const matrix = new Matrix().render();
@@ -16,4 +17,5 @@ window.debug = {
   matrix,
   loot: new LootProvider(inventory, matrix).init(),
   loader: new Loader(matrix).init(),
+  commander: new Commander(matrix).init(),
 };

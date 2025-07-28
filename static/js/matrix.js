@@ -28,7 +28,6 @@ class Matrix {
 
   render() {
     this.#initMatrixLinks();
-    this.#initKeyboardNavigation();
     this.#initTouchscreenNavigation();
 
     this.goToCoordinate(this.#currentCoord.x, this.#currentCoord.y);
@@ -96,44 +95,6 @@ class Matrix {
         this.goToCoordinate(newX, newY);
       });
     }
-  }
-
-  /** Initializes keyboard navigation. */
-  #initKeyboardNavigation() {
-    document.addEventListener("keydown", (evt) => {
-      if (evt.repeat) {
-        return;
-      }
-
-      switch (evt.key) {
-        case "h":
-        case "a":
-        case "ArrowLeft":
-          this.goLeft();
-          break;
-        case "j":
-        case "s":
-        case "ArrowDown":
-          this.goDown();
-          break;
-        case "k":
-        case "w":
-        case "ArrowUp":
-          this.goUp();
-          break;
-        case "l":
-        case "d":
-        case "ArrowRight":
-          this.goRight();
-          break;
-        case "]":
-          this.zoomOut();
-          break;
-        case "[":
-          this.zoomIn();
-          break;
-      }
-    });
   }
 
   /** Initializes touchscreen navigation. */
