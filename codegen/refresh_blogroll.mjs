@@ -40,7 +40,9 @@ await writeFile(
   <div class="panel-content">
     <div class="title">Blogroll</div>
     <div class="section">RSS feeds I follow.</div>
-    <div class="section">${listItems.join("")}</div>
+    <div class="section">
+      ${listItems.join("\n      ")}
+    </div>
     <div class="section footnote">
       Generated from an <a href="/static/misc/feeds.opml">opml file</a> exported from Reeder.
     </div>
