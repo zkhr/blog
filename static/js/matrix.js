@@ -231,9 +231,6 @@ class Matrix {
         const x1 = parseInt(panelEl.dataset.x);
         const y1 = parseInt(panelEl.dataset.y);
         if (Math.abs(curr.x - x1) > z || Math.abs(curr.y - y1) > z) {
-          const panelMetadata = this.#panelMetadataMap.get(
-            this.#getPanelMetadataMapKey(x1, y1)
-          );
           panelEl.remove();
         }
       }
