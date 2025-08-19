@@ -19,15 +19,18 @@ class Matrix {
   /** The current zoom level. */
   #zoomLevel;
 
+  /** The current pending callback to clear panels. */
+  #deletePanelsTimeout;
+
   constructor() {
     this.#panelMatrixEl = document.getElementById("panel-matrix");
+    this.#initMatrixLinks();
     this.#panelMetadataMap = this.#loadPanels();
     this.#currentCoord = this.#getStartingCoordinates();
     this.#zoomLevel = 0;
   }
 
   render() {
-    this.#initMatrixLinks();
     this.#initTouchscreenNavigation();
 
     this.goToCoordinate(this.#currentCoord.x, this.#currentCoord.y);
@@ -61,7 +64,8 @@ class Matrix {
   #loadPanels() {
     const panelEls = document.getElementsByClassName("panel");
     const results = new Map();
-    for (const panelEl of panelEls) {
+    while (panelEls.length > 0) {
+      const panelEl = panelEls[0];
       const x = parseInt(panelEl.dataset.x);
       const y = parseInt(panelEl.dataset.y);
 
@@ -71,12 +75,14 @@ class Matrix {
 
       // Track panel metadata for user later in code.
       results.set(this.#getPanelMetadataMapKey(x, y), {
+        panelEl,
         x,
         y,
         type: panelEl.dataset.type,
         urlSuffix: panelEl.dataset.urlSuffix,
         js: panelEl.dataset.js,
       });
+      panelEl.remove();
     }
     return results;
   }
@@ -179,6 +185,7 @@ class Matrix {
 
   /** Navigates the page to the provided coordinates. */
   goToCoordinate(x, y) {
+    this.#updatePanelVisibility(x, y);
     const offset = 100 * ZOOM_FACTORS[this.#zoomLevel];
     const translate = `translate(${-1 * offset * x}vw, ${offset * y}vh)`;
     const scale = `scale(${ZOOM_FACTORS[this.#zoomLevel]})`;
@@ -187,6 +194,51 @@ class Matrix {
     const path = this.#getCoordinatePath(x, y);
     window.history.replaceState(null, "", path);
     window.dispatchEvent(new Event("coordinatechange"));
+  }
+
+  /**
+   * Updates the panels rendered in the dom. Note that we originally rendered
+   * *all* panels, but as the blog grew, this started to crash certain browsers
+   * (*cough* mobile safari). So instead, we just render the panels needed to
+   * show everything on the page at the current zoom level.
+   */
+  #updatePanelVisibility(x, y) {
+    // Add any panels the user will see.
+    const zl = this.#zoomLevel;
+    for (let i = x - zl; i <= x + zl; i++) {
+      for (let j = y - zl; j <= y + zl; j++) {
+        const metadata = this.#panelMetadataMap.get(
+          this.#getPanelMetadataMapKey(i, j)
+        );
+        if (metadata) {
+          this.#panelMatrixEl.append(metadata.panelEl);
+        }
+      }
+    }
+
+    // And schedule to delete panels that are no longer visible.
+    if (this.#deletePanelsTimeout) {
+      // But first, clear any existing timeouts so that we don't hide any
+      // panels too early in the animation.
+      clearTimeout(this.#deletePanelsTimeout);
+      this.#deletePanelsTimeout = null;
+    }
+    this.#deletePanelsTimeout = setTimeout(() => {
+      const curr = this.#currentCoord;
+      const z = this.#zoomLevel;
+      const panelEls = document.getElementsByClassName("panel");
+      for (const panelEl of [...panelEls]) {
+        const x1 = parseInt(panelEl.dataset.x);
+        const y1 = parseInt(panelEl.dataset.y);
+        if (Math.abs(curr.x - x1) > z || Math.abs(curr.y - y1) > z) {
+          const panelMetadata = this.#panelMetadataMap.get(
+            this.#getPanelMetadataMapKey(x1, y1)
+          );
+          panelEl.remove();
+        }
+      }
+      this.#deletePanelsTimeout = null;
+    }, 550);
   }
 
   /** Returns the path to use in the URL for the provided coordinates. */
