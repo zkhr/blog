@@ -210,7 +210,7 @@ class Matrix {
         const metadata = this.#panelMetadataMap.get(
           this.#getPanelMetadataMapKey(i, j)
         );
-        if (metadata) {
+        if (metadata && metadata.panelEl.parentNode === null) {
           this.#panelMatrixEl.append(metadata.panelEl);
         }
       }
@@ -250,7 +250,7 @@ class Matrix {
     return path;
   }
 
-  /** Returns the starting coordinates based on the curent url. */
+  /** Returns the starting coordinates based on the current url. */
   #getStartingCoordinates() {
     const results = /\!\/([-\d]+)\/([-\d]+)/.exec(window.location.href);
     if (!results) {
