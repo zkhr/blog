@@ -1,7 +1,7 @@
 /**
  * Generates an atom feed containing the most recent 20 posts.
  *
- * Usage: `node ./codegen/refresh_blogroll.mjs`
+ * Usage: `node ./codegen/refresh_atom.mjs`
  */
 
 import { readdir, readFile, writeFile } from "node:fs/promises";
