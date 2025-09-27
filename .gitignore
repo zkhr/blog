@@ -1,2 +1,2 @@
-codegen/node_modules
+dist/*
 static/fonts/*

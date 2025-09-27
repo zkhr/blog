@@ -1,0 +1,12 @@
+{
+  "tasks": {
+    "watch": "deno run -A --watch ./build.ts",
+    "dev": "deno run watch & deno run -RN dev.ts",
+    "build": "deno run -a ./build.ts"
+  },
+  "imports": {
+    "@b-fuze/deno-dom": "jsr:@b-fuze/deno-dom@^0.1.56",
+    "@std/http": "jsr:@std/http@^1.0.20",
+    "sass-embedded": "npm:sass-embedded@^1.93.2"
+  }
+}
