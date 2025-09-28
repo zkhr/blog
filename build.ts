@@ -1,9 +1,3 @@
-/**
- * Prerenders the site content.
- *
- * Usage: `deno run codegen`
- */
-
 import { DOMParser, HTMLDocument } from "jsr:@b-fuze/deno-dom";
 import * as sass from "npm:sass-embedded";
 
