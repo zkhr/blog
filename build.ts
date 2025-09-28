@@ -29,6 +29,7 @@ await buildAtomFeed(journalPanels, `${DIST_DIR}/rss`);
 await buildBlogroll(`${DIST_DIR}/panels/blogroll.html`);
 const cssFilename = await compileCss();
 await buildIndex(`${DIST_DIR}/index.html`, cssFilename);
+await buildFileNotFoundPage(`${DIST_DIR}/404.html`);
 
 /** Copies all static content to the dist/ directory. */
 async function copyStaticContentToDist() {
@@ -256,6 +257,16 @@ async function buildIndex(filename: string, cssFilename: string) {
     <script type="module" src="/js/bootstrap.js"></script>
   </body>
 </html>`,
+  );
+}
+
+/** Generates a 404 page. */
+async function buildFileNotFoundPage(filename: string) {
+  console.log(`Building ${filename}`);
+
+  await Deno.writeTextFile(
+    filename,
+    `<!DOCTYPE HTML><head><title>404</title></head>`,
   );
 }
 
