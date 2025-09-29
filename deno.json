@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "watch": "deno run -A --watch=./src ./build.ts",
+    "watch": "deno run -A --watch=./src,./panels,./static ./build.ts",
     "dev": "deno run watch & deno run -RN dev.ts",
     "build": "deno run -A ./build.ts"
   },
@@ -8,6 +8,8 @@
     "@b-fuze/deno-dom": "jsr:@b-fuze/deno-dom@^0.1.56",
     "@deno/emit": "jsr:@deno/emit@^0.46.0",
     "@std/http": "jsr:@std/http@^1.0.20",
+    "gray-matter": "npm:gray-matter@^4.0.3",
+    "marked": "npm:marked@^16.3.0",
     "sass-embedded": "npm:sass-embedded@^1.93.2"
   }
 }

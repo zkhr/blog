@@ -115,10 +115,23 @@ body {
   font-size: 16px;
 }
 
+ol, ul {
+  padding-bottom: 20px;
+  padding-top: 12px;
+  line-height: 22px;
+}
+
+p,
 .section {
   font-size: 16px;
-  padding: 12px 0;
   line-height: 22px;
+  margin: 0;
+  padding: 12px 0;
+}
+
+ol p,
+ul p {
+  padding: 0;
 }
 
 .note-section {
@@ -128,9 +141,11 @@ body {
   margin: 12px 0;
 }
 
+h1,
 .section-header {
-  padding-top: 30px;
   font-size: 22px;
+  margin: 0;
+  padding-top: 30px;
 }
 
 a:link,
@@ -151,13 +166,6 @@ a {
 ol,
 ul {
   margin: 0;
-}
-
-.grid {
-  font-size: 20px;
-  line-height: 20px;
-  margin: 0;
-  white-space: pre;
 }
 
 .loot {

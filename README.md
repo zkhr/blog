@@ -52,7 +52,9 @@ $ deno run build
 
 ### What are panels?
 
-See https://ari.blumenthal.dev/!/1/-3/new-site-who-dis to learn more.
+Panels are markdown content with
+[YAML Front Matter](https://jekyllrb.com/docs/front-matter/) that provide
+metadata about where they exist in the 2D grid that is my website.
 
 ### Why not use _POPULAR FRAMEWORK_ instead?
 

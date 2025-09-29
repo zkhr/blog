@@ -1,6 +1,7 @@
 import { DOMParser, HTMLDocument } from "jsr:@b-fuze/deno-dom";
 import * as sass from "npm:sass-embedded";
 import { bundle } from "jsr:@deno/emit";
+import { panelToHtml } from "./panels.ts";
 
 interface JournalPanel {
   title: string;
@@ -54,7 +55,20 @@ async function copyPanelsToDist() {
   console.log(`Copying ${src} to ${dest}`);
   await Deno.mkdir(`${DIST_DIR}/panels`, { recursive: true });
   for await (const file of Deno.readDir("./panels")) {
-    Deno.copyFile(`./panels/${file.name}`, `${DIST_DIR}/panels/${file.name}`);
+    const src = `./panels/${file.name}`;
+    const [filename, suffix] = file.name.split(".");
+    const dest = `${DIST_DIR}/panels/${filename}.html`;
+    switch (suffix) {
+      case "html":
+        Deno.copyFile(src, dest);
+        break;
+      case "md": {
+        const panelText = await Deno.readTextFile(src);
+        const panelHtml = panelToHtml(panelText, file.name);
+        await Deno.writeTextFile(dest, panelHtml);
+        break;
+      }
+    }
   }
 }
 
@@ -67,7 +81,9 @@ async function loadJournalPanels(): Promise<JournalPanel[]> {
       continue;
     }
 
-    const htmlContent = await Deno.readTextFile(`./panels/${file.name}`);
+    const htmlContent = await Deno.readTextFile(
+      `${DIST_DIR}/panels/${file.name}`,
+    );
     const doc = new DOMParser().parseFromString(htmlContent, "text/html");
     const panel = doc.querySelector(".panel");
     const date = panel?.querySelector(".blog-date")?.textContent;
@@ -76,7 +92,7 @@ async function loadJournalPanels(): Promise<JournalPanel[]> {
     const y = panel?.dataset.y;
     const urlSuffix = panel?.dataset.urlSuffix;
     if (!date || !title || !urlSuffix || !x || !y) {
-      console.log("Skipping ${file.name}");
+      console.log(`Skipping ${file.name}`);
       continue;
     }
     panels.push({ title, date, doc, x, y, urlSuffix });

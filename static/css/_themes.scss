@@ -44,9 +44,20 @@ $bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
     color: #fff;
   }
 
+  p,
   .section {
     color: #dadce0;
     padding-bottom: 20px;
+  }
+
+  ol, ul {
+    color: #dadce0;
+  }
+
+  blockquote p,
+  ul p,
+  ol p {
+    padding-bottom: 0;
   }
 
   .section-content {
