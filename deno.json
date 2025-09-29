@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "watch": "deno run -A --watch ./build.ts",
+    "watch": "deno run -A --watch=./src ./build.ts",
     "dev": "deno run watch & deno run -RN dev.ts",
     "build": "deno run -A ./build.ts"
   },

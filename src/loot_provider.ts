@@ -21,27 +21,30 @@ export default class LootProvider {
   }
 
   init() {
-    const lootEls = document.querySelectorAll<HTMLElement>(".loot");
-    for (const lootEl of lootEls) {
-      const item = lootEl.dataset.loot;
+    for (const panelMetadata of this.matrix.panelMetadataMap.values()) {
+      const panel = panelMetadata.panelEl;
+      const lootEls = panel.querySelectorAll<HTMLElement>(".loot");
+      for (const lootEl of lootEls) {
+        const item = lootEl.dataset.loot;
 
-      // Update the loot style, based on whether the user has the item.
-      lootEl.classList.add(
-        this.inventory.hasItem(item) ? OWNED_ITEM_CLASS : NEW_ITEM_CLASS,
-      );
+        // Update the loot style, based on whether the user has the item.
+        lootEl.classList.add(
+          this.inventory.hasItem(item) ? OWNED_ITEM_CLASS : NEW_ITEM_CLASS,
+        );
 
-      // Make the loot selectable.
-      lootEl.addEventListener("click", () => {
+        // Make the loot selectable.
+        lootEl.addEventListener("click", () => {
+          if (this.inventory.hasItem(item)) {
+            this.showOwnedItemError(item);
+          } else {
+            this.getItem(lootEl);
+          }
+        });
+
+        // Trigger item effects for owned items.
         if (this.inventory.hasItem(item)) {
-          this.showOwnedItemError(item);
-        } else {
-          this.getItem(lootEl);
+          this.triggerItemHook(item);
         }
-      });
-
-      // Trigger item effects for owned items.
-      if (this.inventory.hasItem(item)) {
-        this.triggerItemHook(item);
       }
     }
 
