@@ -210,14 +210,14 @@ async function buildBlogroll(filename: string) {
   await Deno.writeTextFile(
     filename,
     `<div
-  class="panel grid-theme light-purple-grid"
+  class="panel whoami-theme"
   data-x="-1"
   data-y="1"
-  data-type="light-purple"
+  data-type="whoami"
   data-url-suffix="blogroll"
 >
   <div class="panel-content">
-    <div class="title">Blogroll</div>
+    <div class="title">Blogroll.</div>
     <div class="section">RSS feeds I follow.</div>
     <div class="section">
       ${entries.join("\n      ")}

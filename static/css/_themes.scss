@@ -32,7 +32,8 @@ $bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
 }
 
 .blog-theme,
-.grid-theme {
+.misc-theme,
+.whoami-theme {
   background-size: 100% 100%, 16px 16px, 16px 16px;
   color: #ffffff;
 
@@ -75,24 +76,22 @@ $bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
   }
 }
 
-.blog-theme,
-.red-grid {
+.blog-theme {
   background-image: grid-background-image($bg-red, bottom right);
 }
-.blue-grid {
+.misc-theme {
   background-image: grid-background-image($bg-blue, top right);
 }
-.light-purple-grid {
+.whoami-theme {
   background-image: grid-background-image($bg-light-purple, top left);
 }
 
-.blog-minimap-bg,
-.red-minimap-bg {
+.blog-minimap-bg {
   background-color: $bg-red;
 }
-.blue-minimap-bg {
+.misc-minimap-bg {
   background-color: $bg-blue;
 }
-.light-purple-minimap-bg {
+.whoami-minimap-bg {
   background-color: $bg-light-purple;
 }

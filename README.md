@@ -18,6 +18,7 @@ blog/
 ├── deno.json            # Deno (runtime & package mgr) config and tasks
 ├── deno.lock            # Deno lock file for checking module integrity
 ├── dev.ts               # Starts a local dev server
+├── panels.ts            # Renders the markdown panels as html
 ├── tsconfig.json        # TypeScript compiler options
 └── tsconfig.src.json    # TypeScript compiler options (for FE)
 ```
@@ -55,6 +56,11 @@ $ deno run build
 Panels are markdown content with
 [YAML Front Matter](https://jekyllrb.com/docs/front-matter/) that provide
 metadata about where they exist in the 2D grid that is my website.
+
+The YAML is stripped and parsed using the
+[jonschlinkert/gray-matter](https://github.com/jonschlinkert/gray-matter)
+library. The remaining markdown content is rendered with the
+[markedjs/marked](https://github.com/markedjs/marked) library.
 
 ### Why not use _POPULAR FRAMEWORK_ instead?
 

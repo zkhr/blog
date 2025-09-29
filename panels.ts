@@ -9,7 +9,7 @@ interface PanelMetadata {
   navLinks: NavLink[];
 }
 
-type PanelType = "blog";
+type PanelType = "blog" | "whoami" | "misc";
 
 interface Coordinates {
   x: number;
@@ -34,7 +34,7 @@ export function panelToHtml(panelText: string, filename: string) {
 >
   <div class="panel-content">
     <div class="title">${metadata.title ?? ""}.</div>
-    <div class="blog-date">${metadata.date ?? ""}</div>
+    ${metadata.date ? `<div class="blog-date">${metadata.date}</div>` : ""}
     ${html}    <div class="nav-section">
       ${metadata.navLinks.map((l) => renderNavLink(l)).join("\n      ")}
     </div>
@@ -47,11 +47,12 @@ function toPanelMetadata(
   data: { [key: string]: unknown },
   filename: string,
 ): PanelMetadata {
+  const type = parseString(data.type, filename, "type") as PanelType;
   return {
     title: parseString(data.title, filename, "title"),
     coordinates: parseCoordinates(data.coordinates, filename),
-    date: parseDate(data.date, filename),
-    type: parseString(data.type, filename, "type") as PanelType,
+    date: type === "blog" ? parseDate(data.date, filename) : undefined,
+    type,
     navLinks: parseLinks(data.navLinks, filename),
   };
 }
