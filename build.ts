@@ -144,7 +144,7 @@ async function buildAtomFeed(panels: JournalPanel[], filename: string) {
   const entries = [];
   let count = 0;
   for (const panel of panels) {
-    let content = [...panel.doc.querySelectorAll(".section, .section-header")]
+    let content = [...panel.doc.querySelectorAll("p, h1, .section")]
       .map((x) => x.textContent.replace(/\s+/g, " ").trim())
       .join("</p><p>");
     content = `<p>${content}</p>`

@@ -9,6 +9,7 @@ body {
   background: #242424;
   overflow: hidden;
   overscroll-behavior: contain;
+  margin: 0;
   position: fixed;
 }
 
@@ -43,10 +44,6 @@ body,
   &::-webkit-scrollbar-thumb {
     background-color: #dadce0;
   }
-}
-
-body {
-  margin: 0;
 }
 
 .home-panel {
@@ -87,7 +84,6 @@ body {
   color: #ffc556;
 }
 
-.play,
 .link {
   background-color: rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -141,8 +137,7 @@ ul p {
   margin: 12px 0;
 }
 
-h1,
-.section-header {
+h1 {
   font-size: 22px;
   margin: 0;
   padding-top: 30px;
@@ -284,7 +279,8 @@ ul {
 .chromostereopsis-demo {
   background-color: red;
   background-size: 64px 64px;
-  background-image: linear-gradient(
+  background-image:
+    linear-gradient(
       to right,
       #222 0px,
       #222 32px,
