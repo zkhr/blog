@@ -1,5 +1,6 @@
 import { DOMParser, HTMLDocument } from "jsr:@b-fuze/deno-dom";
 import * as sass from "npm:sass-embedded";
+import { bundle } from "jsr:@deno/emit";
 
 interface JournalPanel {
   title: string;
@@ -28,12 +29,13 @@ await buildJournalPanel(journalPanels, `${DIST_DIR}/panels/journal.html`);
 await buildAtomFeed(journalPanels, `${DIST_DIR}/rss`);
 await buildBlogroll(`${DIST_DIR}/panels/blogroll.html`);
 const cssFilename = await compileCss();
-await buildIndex(`${DIST_DIR}/index.html`, cssFilename);
+const jsFilename = await compileJs();
+await buildIndex(`${DIST_DIR}/index.html`, jsFilename, cssFilename);
 await buildFileNotFoundPage(`${DIST_DIR}/404.html`);
 
 /** Copies all static content to the dist/ directory. */
 async function copyStaticContentToDist() {
-  const staticDirs = ["fonts", "images", "js", "misc"];
+  const staticDirs = ["fonts", "images", "misc"];
   for (const staticDir of staticDirs) {
     const src = `./static/${staticDir}`;
     const dest = `${DIST_DIR}/${staticDir}`;
@@ -218,7 +220,11 @@ async function buildBlogroll(filename: string) {
 /**
  * Generates the index with all available panels from the panels/ directory.
  */
-async function buildIndex(filename: string, cssFilename: string) {
+async function buildIndex(
+  filename: string,
+  jsFilename: string,
+  cssFilename: string,
+) {
   console.log(`Building ${filename}`);
 
   const panels = [];
@@ -254,7 +260,7 @@ async function buildIndex(filename: string, cssFilename: string) {
     <div id="panel-matrix" style="display: none">
       ${panels.sort().join("\n      ")}
     </div>
-    <script type="module" src="/js/bootstrap.js"></script>
+    <script src="/${jsFilename}"></script>
   </body>
 </html>`,
   );
@@ -270,13 +276,23 @@ async function buildFileNotFoundPage(filename: string) {
   );
 }
 
-/** Builds CSS from SCSS. Returns the unique suffix used for the generated css. */
+/** Builds CSS from SCSS. Returns the filename of the generated css. */
 async function compileCss(): Promise<string> {
   const filename = `index-${genRandomString()}.css`;
   console.log(`Building ${DIST_DIR}/${filename}`);
 
   const result = await sass.compileAsync("./static/css/main.scss");
   await Deno.writeTextFile(`${DIST_DIR}/${filename}`, result.css);
+  return filename;
+}
+
+/** Builds JS from TS sources. Returns the filename of the generated js. */
+async function compileJs(): Promise<string> {
+  const filename = `index-${genRandomString()}.js`;
+  console.log(`Building ${DIST_DIR}/${filename}`);
+
+  const result = await bundle("src/app.ts");
+  await Deno.writeTextFile(`${DIST_DIR}/${filename}`, result.code);
   return filename;
 }
 

@@ -6,6 +6,7 @@
   },
   "imports": {
     "@b-fuze/deno-dom": "jsr:@b-fuze/deno-dom@^0.1.56",
+    "@deno/emit": "jsr:@deno/emit@^0.46.0",
     "@std/http": "jsr:@std/http@^1.0.20",
     "sass-embedded": "npm:sass-embedded@^1.93.2"
   }
