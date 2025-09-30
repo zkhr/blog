@@ -21,11 +21,13 @@ export default class LootProvider {
   }
 
   init() {
-    for (const panelMetadata of this.matrix.panelMetadataMap.values()) {
-      const panel = panelMetadata.panelEl;
-      const lootEls = panel.querySelectorAll<HTMLElement>(".loot");
+    for (const panel of this.matrix.listPanels()) {
+      const lootEls = panel.el.querySelectorAll<HTMLElement>(".loot");
       for (const lootEl of lootEls) {
         const item = lootEl.dataset.loot;
+        if (!item) {
+          continue;
+        }
 
         // Update the loot style, based on whether the user has the item.
         lootEl.classList.add(
@@ -57,7 +59,11 @@ export default class LootProvider {
 
   private getItem(lootEl: HTMLElement) {
     const item = lootEl.dataset.loot;
-    this.inventory.addItem(lootEl.dataset.loot);
+    if (!item) {
+      return;
+    }
+
+    this.inventory.addItem(item);
     lootEl.classList.remove(NEW_ITEM_CLASS);
     lootEl.classList.add(OWNED_ITEM_CLASS);
 

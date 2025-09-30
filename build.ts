@@ -1,16 +1,8 @@
-import { DOMParser, HTMLDocument } from "jsr:@b-fuze/deno-dom";
+import { DOMParser } from "jsr:@b-fuze/deno-dom";
 import * as sass from "npm:sass-embedded";
 import { bundle } from "jsr:@deno/emit";
 import { panelToHtml } from "./panels.ts";
-
-interface JournalPanel {
-  title: string;
-  date: string;
-  doc: HTMLDocument;
-  x: string;
-  y: string;
-  urlSuffix: string;
-}
+import { RenderedPanel, toRenderedPanel } from "./common/rendered_panel.ts";
 
 /** The destination directory, which can be served to render the frontend. */
 const DIST_DIR = "./dist";
@@ -73,7 +65,7 @@ async function copyPanelsToDist() {
 }
 
 /** Returns the blog panels in reverse chronological order. */
-async function loadJournalPanels(): Promise<JournalPanel[]> {
+async function loadJournalPanels(): Promise<RenderedPanel[]> {
   const panels = [];
   for await (const file of Deno.readDir(`${DIST_DIR}/panels`)) {
     const isBlog = file.name.indexOf("blog-") >= 0;
@@ -85,32 +77,30 @@ async function loadJournalPanels(): Promise<JournalPanel[]> {
       `${DIST_DIR}/panels/${file.name}`,
     );
     const doc = new DOMParser().parseFromString(htmlContent, "text/html");
-    const panel = doc.querySelector(".panel");
-    const date = panel?.querySelector(".blog-date")?.textContent;
-    const title = panel?.querySelector(".title")?.textContent;
-    const x = panel?.dataset.x;
-    const y = panel?.dataset.y;
-    const urlSuffix = panel?.dataset.urlSuffix;
-    if (!date || !title || !urlSuffix || !x || !y) {
-      console.log(`Skipping ${file.name}`);
+    const panel = doc.querySelector<HTMLElement>(".panel");
+    if (!panel) {
+      console.log(`Panel not found for ${file.name}`);
       continue;
     }
-    panels.push({ title, date, doc, x, y, urlSuffix });
+    panels.push(toRenderedPanel(panel));
   }
 
-  return panels.sort((a, b) => b.date.localeCompare(a.date));
+  return panels.sort((a, b) =>
+    b.metadata.date!.localeCompare(a.metadata.date!)
+  );
 }
 
 /** Generates the journal overview panel using the provided panels. */
-async function buildJournalPanel(panels: JournalPanel[], filename: string) {
+async function buildJournalPanel(panels: RenderedPanel[], filename: string) {
   console.log(`Building ${filename}`);
 
   const blogEntries = [];
   for (const panel of panels) {
+    const metadata = panel.metadata;
     blogEntries.push(
       `<div class="blog-entry">
-        <div class="blog-entry-date">${panel.date} -</div>
-        <div class="link" data-x="${panel.x}" data-y="${panel.y}">${panel.title}</div>
+        <div class="blog-entry-date">${metadata.date} -</div>
+        <div class="link" data-x="${metadata.coordinates.x}" data-y="${metadata.coordinates.y}">${metadata.title}</div>
       </div>`,
     );
   }
@@ -139,27 +129,28 @@ async function buildJournalPanel(panels: JournalPanel[], filename: string) {
 }
 
 /** Generates the atom feed using the provided panels. */
-async function buildAtomFeed(panels: JournalPanel[], filename: string) {
+async function buildAtomFeed(panels: RenderedPanel[], filename: string) {
   console.log(`Building ${filename}`);
   const entries = [];
   let count = 0;
   for (const panel of panels) {
-    let content = [...panel.doc.querySelectorAll("p, h1, .section")]
-      .map((x) => x.textContent.replace(/\s+/g, " ").trim())
+    let content = [...panel.el.querySelectorAll("p, h1, .section")]
+      .map((x) => x.textContent?.replace(/\s+/g, " ").trim())
       .join("</p><p>");
     content = `<p>${content}</p>`
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;");
+    const metadata = panel.metadata;
     const url =
-      `https://ari.blumenthal.dev/!/${panel.x}/${panel.y}/${panel.urlSuffix}`;
+      `https://ari.blumenthal.dev/!/${metadata.coordinates.x}/${metadata.coordinates.y}/${metadata.urlSuffix}`;
 
     entries.push(
       `<entry>
-    <title>${panel.title}</title>
+    <title>${metadata.title}</title>
     <link href="${url}"/>
     <id>${url}</id>
-    <updated>${panel.date}T12:34:56Z</updated>
+    <updated>${metadata.date}T12:34:56Z</updated>
     <content type="html">${content}</content>
   </entry>`,
     );

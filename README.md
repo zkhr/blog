@@ -9,9 +9,10 @@ Let's walk through the key files and folders in this project:
 
 ```
 blog/
+├── common/              # Defines shared code (for codegen and FE)
 ├── dist/                # Generated static content served by the FE
-├── panels/              # Contains all "panels" renderable by the FE
-├── src/                 # Contains the ad-hoc FE TS code.
+├── panels/              # Contains all panels renderable by the FE
+├── src/                 # Contains the FE TS code.
 ├── static/              # Additional static content (css, fonts, images, misc)
 ├── .gitignore           # Files that aren't tracked by git
 ├── build.ts             # Generates the dist/ directory
@@ -19,8 +20,6 @@ blog/
 ├── deno.lock            # Deno lock file for checking module integrity
 ├── dev.ts               # Starts a local dev server
 ├── panels.ts            # Renders the markdown panels as html
-├── tsconfig.json        # TypeScript compiler options
-└── tsconfig.src.json    # TypeScript compiler options (for FE)
 ```
 
 ## Prerequisites

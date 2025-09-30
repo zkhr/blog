@@ -1,25 +1,11 @@
 import { marked } from "npm:marked";
 import matter from "npm:gray-matter";
-
-interface PanelMetadata {
-  title: string;
-  coordinates: Coordinates;
-  date?: string;
-  type: PanelType;
-  navLinks: NavLink[];
-}
-
-type PanelType = "blog" | "whoami" | "misc";
-
-interface Coordinates {
-  x: number;
-  y: number;
-}
-
-interface NavLink {
-  coordinates: Coordinates;
-  label: string;
-}
+import {
+  Coordinates,
+  NavLink,
+  PanelMetadata,
+  PanelType,
+} from "./common/rendered_panel.ts";
 
 export function panelToHtml(panelText: string, filename: string) {
   const matterResponse = matter(panelText);
@@ -30,7 +16,7 @@ export function panelToHtml(panelText: string, filename: string) {
   data-x="${metadata.coordinates?.x}"
   data-y="${metadata.coordinates?.y}"
   data-type="${metadata.type}"
-  data-url-suffix="${toUrlSuffix(metadata.title ?? "")}"
+  data-url-suffix="${metadata.urlSuffix}"
 >
   <div class="panel-content">
     <div class="title">${metadata.title ?? ""}.</div>
@@ -47,13 +33,15 @@ function toPanelMetadata(
   data: { [key: string]: unknown },
   filename: string,
 ): PanelMetadata {
+  const title = parseString(data.title, filename, "title");
   const type = parseString(data.type, filename, "type") as PanelType;
   return {
-    title: parseString(data.title, filename, "title"),
+    title,
+    type,
     coordinates: parseCoordinates(data.coordinates, filename),
     date: type === "blog" ? parseDate(data.date, filename) : undefined,
-    type,
     navLinks: parseLinks(data.navLinks, filename),
+    urlSuffix: toUrlSuffix(title),
   };
 }
 

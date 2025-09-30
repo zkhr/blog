@@ -1,3 +1,9 @@
+import {
+  Coordinates,
+  RenderedPanel,
+  toRenderedPanel,
+} from "../common/rendered_panel.ts";
+
 /**
  * The default matrix coordinates to use when no valid ones are provided in the
  * URL.
@@ -6,43 +12,38 @@ const DEFAULT_COORDINATES: Coordinates = { x: 0, y: 0 };
 
 const ZOOM_FACTORS = [1, 0.5, 0.25];
 
-type PanelMetadataKey = string;
+type RenderedPanelKey = string;
 
-interface Coordinates {
+interface TouchMetadata {
   x: number;
   y: number;
-}
-
-interface PanelMetadata {
-  panelEl: HTMLElement;
-  x: number;
-  y: number;
-  type: string;
-  urlSuffix: string;
+  atTop: boolean;
+  atBottom: boolean;
 }
 
 export default class Matrix {
   /** The main matrix element on the page. */
-  panelMatrixEl: HTMLElement;
+  private panelMatrixEl: HTMLElement;
 
-  /** A map from coordinates to metadata about a panel. */
-  panelMetadataMap: Map<PanelMetadataKey, PanelMetadata>;
+  /** A map from coordinates to the rendered panel. */
+  private panelMap: Map<RenderedPanelKey, RenderedPanel>;
 
   /** Tracks the coordinates of the currently rendered panel. */
-  currentCoord: Coordinates;
+  private currentCoord: Coordinates;
 
   /** The current zoom level. */
-  zoomLevel: number;
+  private zoomLevel: number;
 
   /** The current pending callback to clear panels. */
-  deletePanelsTimeout: number;
+  private deletePanelsTimeout: number | null;
 
   constructor() {
-    this.panelMatrixEl = document.getElementById("panel-matrix");
+    this.panelMatrixEl = document.getElementById("panel-matrix")!;
     this.initMatrixLinks();
-    this.panelMetadataMap = this.loadPanels();
+    this.panelMap = this.loadPanels();
     this.currentCoord = this.getStartingCoordinates();
     this.zoomLevel = 0;
+    this.deletePanelsTimeout = null;
   }
 
   render() {
@@ -55,10 +56,10 @@ export default class Matrix {
   }
 
   /**
-   * Returns metadata for all panels in the grid, in no particular order.
+   * Returns all panels in the grid, in no particular order.
    */
-  listPanels() {
-    return [...this.panelMetadataMap.values()];
+  listPanels(): RenderedPanel[] {
+    return [...this.panelMap.values()];
   }
 
   /** Returns the current coordinates. */
@@ -67,9 +68,8 @@ export default class Matrix {
   }
 
   /** Returns the metadata for the current coordinates. */
-  getCurrentMetadata() {
-    const { x, y } = this.currentCoord;
-    return this.panelMetadataMap.get(this.getPanelMetadataMapKey(x, y));
+  getCurrentMetadata(): RenderedPanel | undefined {
+    return this.panelMap.get(this.getPanelMapKey(this.currentCoord));
   }
 
   /**
@@ -80,28 +80,25 @@ export default class Matrix {
     const panelEls = document.querySelectorAll<HTMLElement>(".panel");
     const results = new Map();
     for (const panelEl of panelEls) {
-      const x = parseInt(panelEl.dataset.x);
-      const y = parseInt(panelEl.dataset.y);
+      const x = parseInt(panelEl.dataset.x ?? "0");
+      const y = parseInt(panelEl.dataset.y ?? "0");
+      const coordinates = { x, y };
 
       // Set the coordinates for the panel in the grid.
       panelEl.style.left = `${100 * x}vw`;
       panelEl.style.top = `${-100 * y}vh`;
 
-      // Track panel metadata for user later in code.
-      results.set(this.getPanelMetadataMapKey(x, y), {
-        panelEl,
-        x,
-        y,
-        type: panelEl.dataset.type,
-        urlSuffix: panelEl.dataset.urlSuffix,
-      });
+      // Track panel information for use later in code.
+      results.set(this.getPanelMapKey(coordinates), toRenderedPanel(panelEl));
+
+      // And remove the DOM until it is time to render the panel.
       panelEl.remove();
     }
     return results;
   }
 
-  getPanelMetadataMapKey(x: number, y: number) {
-    return `(${x},${y})`;
+  getPanelMapKey(coordinates: Coordinates): RenderedPanelKey {
+    return `(${coordinates.x},${coordinates.y})`;
   }
 
   /** Initializes all links for the panel matrix. */
@@ -110,8 +107,8 @@ export default class Matrix {
     for (const linkEl of linkEls) {
       linkEl.addEventListener("click", (e) => {
         const target = e.target as HTMLElement;
-        const newX = parseInt(target.dataset.x);
-        const newY = parseInt(target.dataset.y);
+        const newX = parseInt(target.dataset.x ?? "0");
+        const newY = parseInt(target.dataset.y ?? "0");
         this.goToCoordinate(newX, newY);
       });
     }
@@ -119,7 +116,7 @@ export default class Matrix {
 
   /** Initializes touchscreen navigation. */
   initTouchscreenNavigation() {
-    let startCoord = null;
+    let startCoord: TouchMetadata | null = null;
     document.addEventListener("touchstart", (e) => {
       const target = e.target as HTMLElement;
       const panel = target.closest(".panel");
@@ -136,7 +133,7 @@ export default class Matrix {
         return;
       }
 
-      const selectedText = getSelection().toString();
+      const selectedText = getSelection()?.toString();
       if (selectedText != "") {
         // User has selected text, don't swipe the panels.
         return;
@@ -205,7 +202,7 @@ export default class Matrix {
     const scale = `scale(${ZOOM_FACTORS[this.zoomLevel]})`;
     this.panelMatrixEl.style.transform = `${translate} ${scale}`;
     this.currentCoord = { x, y };
-    const path = this.getCoordinatePath(x, y);
+    const path = this.getCoordinatePath(this.currentCoord);
     history.replaceState(null, "", path);
     dispatchEvent(new Event("coordinatechange"));
   }
@@ -221,11 +218,11 @@ export default class Matrix {
     const zl = this.zoomLevel;
     for (let i = x - zl; i <= x + zl; i++) {
       for (let j = y - zl; j <= y + zl; j++) {
-        const metadata = this.panelMetadataMap.get(
-          this.getPanelMetadataMapKey(i, j),
+        const panel = this.panelMap.get(
+          this.getPanelMapKey({ x: i, y: j }),
         );
-        if (metadata && metadata.panelEl.parentNode === null) {
-          this.panelMatrixEl.append(metadata.panelEl);
+        if (panel && panel.el.parentNode === null) {
+          this.panelMatrixEl.append(panel.el);
         }
       }
     }
@@ -242,8 +239,8 @@ export default class Matrix {
       const z = this.zoomLevel;
       const panelEls = document.querySelectorAll<HTMLElement>(".panel");
       for (const panelEl of panelEls) {
-        const x1 = parseInt(panelEl.dataset.x);
-        const y1 = parseInt(panelEl.dataset.y);
+        const x1 = parseInt(panelEl.dataset.x ?? "0");
+        const y1 = parseInt(panelEl.dataset.y ?? "0");
         if (Math.abs(curr.x - x1) > z || Math.abs(curr.y - y1) > z) {
           panelEl.remove();
         }
@@ -253,19 +250,17 @@ export default class Matrix {
   }
 
   /** Returns the path to use in the URL for the provided coordinates. */
-  getCoordinatePath(x: number, y: number) {
-    const metadata = this.panelMetadataMap.get(
-      this.getPanelMetadataMapKey(x, y),
-    );
-    let path = `/!/${x}/${y}`;
-    if (metadata && metadata.urlSuffix) {
-      path += `/${metadata.urlSuffix}`;
+  getCoordinatePath(coordinates: Coordinates) {
+    const panel = this.panelMap.get(this.getPanelMapKey(coordinates));
+    let path = `/!/${coordinates.x}/${coordinates.y}`;
+    if (panel && panel.metadata.urlSuffix) {
+      path += `/${panel.metadata.urlSuffix}`;
     }
     return path;
   }
 
   /** Returns the starting coordinates based on the current url. */
-  getStartingCoordinates() {
+  getStartingCoordinates(): Coordinates {
     const results = /\!\/([-\d]+)\/([-\d]+)/.exec(location.href);
     if (!results) {
       return DEFAULT_COORDINATES;
