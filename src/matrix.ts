@@ -102,6 +102,7 @@ export default class Matrix {
     const linkEls = document.querySelectorAll(".link");
     for (const linkEl of linkEls) {
       linkEl.addEventListener("click", (e) => {
+        e.preventDefault();
         const target = e.target as HTMLElement;
         const newX = parseInt(target.dataset.x ?? "0");
         const newY = parseInt(target.dataset.y ?? "0");

@@ -30,8 +30,8 @@ released in 2022.
 
 First, in no particular order, are some runner ups. Games I still enjoyed, but
 didn't make the cut:
-<span class="link" data-x="2" data-y="-2">pokémon scarlet</span> the latest
-entry in the long-running pokémon franchise, the tactical rpg
+<a class="link" data-x="2" data-y="-2">pokémon scarlet</a> the latest entry in
+the long-running pokémon franchise, the tactical rpg
 [Triangle Strategy](https://store.steampowered.com/app/1850510/TRIANGLE_STRATEGY/)
 with the Octopath-like HD-2D visual style, the short innovative solitaire
 village builder

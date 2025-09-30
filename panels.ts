@@ -106,5 +106,5 @@ function toUrlSuffix(title: string) {
 }
 
 function renderNavLink(navLink: Link) {
-  return `<span class="link nav-link" data-x="${navLink.coordinates.x}" data-y="${navLink.coordinates.y}">${navLink.label}</span>`;
+  return `<a class="link nav-link" data-x="${navLink.coordinates.x}" data-y="${navLink.coordinates.y}">${navLink.label}</a>`;
 }

@@ -12,7 +12,7 @@ navLinks:
 
 I put together a minimal website over at [cookbook.lol] to start storing my
 recipes. This is the start of the cookbookbook idea from
-<span class="link" data-x="0" data-y="-6">project ideas i.</span>
+<a class="link" data-x="0" data-y="-6">project ideas i.</a>
 
 It does a couple cool things:
 

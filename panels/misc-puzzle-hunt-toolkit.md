@@ -7,7 +7,7 @@ navLinks:
 ---
 
 Assorted tools that I've found useful when working on
-<span class="link" data-x="1" data-y="-2">puzzle hunts</span>.
+<a class="link" data-x="1" data-y="-2">puzzle hunts</a>.
 
 # my tools
 

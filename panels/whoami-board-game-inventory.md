@@ -7,9 +7,9 @@ navLinks:
 ---
 
 As mentioned in my
-<span class="link" data-x="2" data-y="-3">board game roundup</span> blog post, I
-love the variety of games out there these days. This page is an inventory of the
-ones in my closet right now.
+<a class="link" data-x="2" data-y="-3">board game roundup</a> blog post, I love
+the variety of games out there these days. This page is an inventory of the ones
+in my closet right now.
 
 If you think there are games I might like based on what I tend to play, send me
 a message with your recommendations!
@@ -19,7 +19,7 @@ a message with your recommendations!
 - 7 Wonders
 - Android: Netrunner
 - Between Two Cities
-- Boggle (see also <span class="link" data-x="0" data-y="-3">booggle</span>)
+- Boggle (see also <a class="link" data-x="0" data-y="-3">booggle</a>)
 - Broom Service
 - Bunny Kingdom
 - Ca$h 'n Guns: Second Edition

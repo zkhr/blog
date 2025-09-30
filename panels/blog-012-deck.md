@@ -14,11 +14,11 @@ With a nearly 3 month old at home, portable pausable gaming has allowed me to
 relax during my downtime when the little guy naps or feeds, but still lets me
 jump in on a moment's notice. After a couple of months doing this on the switch
 (with games like
-<span class="link" data-x="2" data-y="-2">pokemon scarlet</span> and
-<span class="link" data-x="3" data-y="-4">monster sanctuary</span>) or on my
-phone with
-<span class="link" data-x="2" data-y="-3">board game arena</span>, I decided to
-unlock my steam library and pick up a deck.
+<a class="link" data-x="2" data-y="-2">pokemon scarlet</a> and
+<a class="link" data-x="3" data-y="-4">monster sanctuary</a>) or on my phone
+with
+<a class="link" data-x="2" data-y="-3">board game arena</a>, I decided to unlock
+my steam library and pick up a deck.
 
 And I enjoy using it immensely! The biggest technical issue I've encountered
 involves the screen not turning back on after sleeping, but with its short boot

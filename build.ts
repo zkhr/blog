@@ -25,6 +25,7 @@ const panels = await loadPanels();
 addJournalPanel(panels);
 await addBlogrollPanel(panels);
 addBacklinksToPanels(panels);
+addHrefsToLinks(panels);
 
 // Setup index
 const cssFilename = await compileCss();
@@ -142,9 +143,18 @@ function renderBacklinks(
   for (const srcKey of srcKeys.values()) {
     const metadata = panels.get(srcKey)?.metadata;
     result +=
-      `<span class="link backlink" data-x="${metadata?.coordinates.x}" data-y="${metadata?.coordinates.y}">${metadata?.title}</span>`;
+      `<a class="link backlink" data-x="${metadata?.coordinates.x}" data-y="${metadata?.coordinates.y}">${metadata?.title}</a>`;
   }
   return result;
+}
+
+function addHrefsToLinks(panels: Map<PanelKey, RenderedPanel>) {
+  for (const panel of panels.values()) {
+    const links = panel.el.querySelectorAll<HTMLElement>("a.link");
+    for (const link of links) {
+      link.setAttribute("href", `/!/${link.dataset.x}/${link.dataset.y}`);
+    }
+  }
 }
 
 /** Filters the provided panels to just journal panels, sorted chronologically. */
@@ -166,7 +176,7 @@ function addJournalPanel(
     blogEntries.push(
       `<div class="blog-entry">
         <div class="blog-entry-date">${metadata.date} -</div>
-        <div class="link journal-link" data-x="${metadata.coordinates.x}" data-y="${metadata.coordinates.y}">${metadata.title}</div>
+        <a class="link journal-link" data-x="${metadata.coordinates.x}" data-y="${metadata.coordinates.y}">${metadata.title}</a>
       </div>`,
     );
   }
@@ -187,7 +197,7 @@ function addJournalPanel(
       ${blogEntries.join("\n      ")}
     </div>
     <div class="nav-section">
-      <span class="link nav-link" data-x="0" data-y="0">Home</span>
+      <a class="link nav-link" data-x="0" data-y="0">Home</a>
     </div>
   </div>
 </div>`,
@@ -284,7 +294,7 @@ async function addBlogrollPanel(panels: Map<PanelKey, RenderedPanel>) {
       Generated from an <a href="/misc/feeds.opml">opml file</a> exported from Reeder.
     </div>
     <div class="nav-section">
-      <span class="link nav-link" data-x="0" data-y="0">Home</span>
+      <a class="link nav-link" data-x="0" data-y="0">Home</a>
     </div>
   </div>
 </div>`,

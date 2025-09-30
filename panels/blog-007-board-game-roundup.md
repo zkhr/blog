@@ -11,7 +11,7 @@ navLinks:
 ---
 
 The last few decades have seen a
-<span class="link" data-x="-2" data-y="0">board game</span> renaissance, with a
+<a class="link" data-x="-2" data-y="0">board game</a> renaissance, with a
 tremendous number of amazing games coming out. Even better, they have made their
 way online where you can play against folks from around the world.
 

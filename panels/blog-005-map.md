@@ -11,10 +11,9 @@ navLinks:
 ---
 
 As mentioned in the
-<span class="link" data-x="1" data-y="-3">new site, who dis.</span> blog post,
-this site is an infinite grid, with each page on the site being a panel on that
-grid. This raises the question, how do I decide where on the grid to place new
-pages?
+<a class="link" data-x="1" data-y="-3">new site, who dis.</a> blog post, this
+site is an infinite grid, with each page on the site being a panel on that grid.
+This raises the question, how do I decide where on the grid to place new pages?
 
 Being an infinite grid, there are an infinite number of options! For example, we
 could just go off in an arbitrary direction:

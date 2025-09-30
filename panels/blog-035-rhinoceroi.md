@@ -10,8 +10,8 @@ navLinks:
 ---
 
 After updating the dictionary used by my
-<span class="link" data-x="0" data-y="-3">booggle</span> app, I noticed several
-words had been removed. One of them was **rhinoceroi**.
+<a class="link" data-x="0" data-y="-3">booggle</a> app, I noticed several words
+had been removed. One of them was **rhinoceroi**.
 
 # what is a dictionary?
 

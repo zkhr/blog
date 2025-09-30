@@ -22,8 +22,8 @@ You can find me as
 - [zakhar](https://tildes.net/user/zakhar) on tildes
 
 You can see what I've read recently in my
-<span class="link" data-x="-1" data-y="-1">reading log</span> and
-<span class="link" data-x="-1" data-y="1">blogroll</span>, and what board games
-I'm playing over in my
-<span class="link" data-x="-2" data-y="0">board game inventory</span>. Want to
-reach out? Message me at <i>blog@ariblumenthal.com</i>
+<a class="link" data-x="-1" data-y="-1">reading log</a> and
+<a class="link" data-x="-1" data-y="1">blogroll</a>, and what board games I'm
+playing over in my
+<a class="link" data-x="-2" data-y="0">board game inventory</a>. Want to reach
+out? Message me at <i>blog@ariblumenthal.com</i>

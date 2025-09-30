@@ -25,8 +25,8 @@ navLinks:
 # Not the valve one.
 
 After playing
-<span class="link" data-x="3" data-y="-8">spacetraders</span> a few months ago,
-I've once again found myself playing an API game. In
+<a class="link" data-x="3" data-y="-8">spacetraders</a> a few months ago, I've
+once again found myself playing an API game. In
 [Artifacts](https://artifactsmmo.com/), you're automating characters in an
 mmorpg.
 
@@ -34,9 +34,9 @@ Last time around I wrote everything in JS to go fast, but wished I'd tried out
 something new. This time around, I went with **Rust**.
 
 I haven't used any languages with memory management since C/C++ at
-<span class="link" data-x="3" data-y="-9">university</span>, so actually
-thinking about the stack and heap and reference counting and all that was an
-interesting change of pace.
+<a class="link" data-x="3" data-y="-9">university</a>, so actually thinking
+about the stack and heap and reference counting and all that was an interesting
+change of pace.
 
 For some definition of interesting. Was that a `&str` or a `String` that I
 wanted?

@@ -68,9 +68,9 @@ With previous Civ games releasing in 1991 (I), 1996 (II), 2001 (III), 2005 (IV),
 releases.
 
 Last year I launched
-<span class="link" data-x="2" data-y="-5">roze</span>, a discord bot for
-tracking turns for multiplayer Civ 6 games. She is now a verified bot in over
-100 servers, which is pretty exciting (and required me to do some extra data
+<a class="link" data-x="2" data-y="-5">roze</a>, a discord bot for tracking
+turns for multiplayer Civ 6 games. She is now a verified bot in over 100
+servers, which is pretty exciting (and required me to do some extra data
 retention cleanups and introduce a terms of service). If they don't include
 built-in support for something similar in Civ 7, I'll try and get roze up and
 running pretty quickly after launch.

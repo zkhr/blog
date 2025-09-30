@@ -82,10 +82,10 @@ but my runaway favorite card is the [Mabel, Heir to Cragflame] I drafted.
 
 Another on again, off again game I've played over the years are the various
 iterations of Final Fantasy (e.g. see me previously trying to replay FFXV in the
-<span class="link" data-x="3" data-y="-5">2022 epilogue</span> before my son was
-born (spoiler, he got here 2 weeks early) and
-<span class="link" data-x="2" data-y="-9">looking forward</span> to Dawntrail
-earlier this year (spoiler, it was great)).
+<a class="link" data-x="3" data-y="-5">2022 epilogue</a> before my son was born
+(spoiler, he got here 2 weeks early) and
+<a class="link" data-x="2" data-y="-9">looking forward</a> to Dawntrail earlier
+this year (spoiler, it was great)).
 
 So it's no wonder I'm excited for the upcoming
 [collaboration](https://magic.wizards.com/en/products/final-fantasy) between

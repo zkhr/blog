@@ -16,8 +16,8 @@ fast-moving technical domain of metadata syndication is **Atom**, defined in
 [rfc 4287](https://www.ietf.org/rfc/rfc4287.txt).
 
 It's auto-generated using the same scripts I use for generating this
-<span class="link" data-x="3" data-y="-2">hilbert curve</span> journal itself,
-so it should stay up to date with the latest 20 entries.
+<a class="link" data-x="3" data-y="-2">hilbert curve</a> journal itself, so it
+should stay up to date with the latest 20 entries.
 
 And at least at time of writing this entry, it is
 [a valid Atom 1.0 feed](https://validator.w3.org/feed/check.cgi?url=https%3A%2F%2Fari.blumenthal.dev%2Frss).

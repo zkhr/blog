@@ -11,8 +11,8 @@ navLinks:
 ---
 
 As mentioned in
-<span class="link" data-x="5" data-y="-6">an update on</span> last week, I left
-my job.
+<a class="link" data-x="5" data-y="-6">an update on</a> last week, I left my
+job.
 
 After over a decade working for _the company_, there's a lot I'll miss. But the
 three at the top of my mind right now are:
@@ -39,9 +39,9 @@ intersection in the venn diagram of being
 - Something that others would find fun or helpful to use
 
 I had an idea in
-<span class="link" data-x="0" data-y="-6">project ideas i</span> called
-**Sherwalk Holmes** that I've started tinkering with, since it seems like it
-_might_ hit all those criteria.
+<a class="link" data-x="0" data-y="-6">project ideas i</a> called **Sherwalk
+Holmes** that I've started tinkering with, since it seems like it _might_ hit
+all those criteria.
 
 # The Web
 

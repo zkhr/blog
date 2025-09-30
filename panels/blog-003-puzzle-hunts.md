@@ -78,5 +78,5 @@ puzzles.
 
 # Any tips or tricks?
 
-The <span class="link" data-x="1" data-y="-1">Puzzle Hunt Toolkit</span> is a
+The <a class="link" data-x="1" data-y="-1">Puzzle Hunt Toolkit</a> is a
 collection of tools I've found useful while solving hunts.

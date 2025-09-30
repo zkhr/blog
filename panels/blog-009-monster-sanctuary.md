@@ -11,8 +11,8 @@ navLinks:
 ---
 
 After beating the main story in
-<span class="link" data-x="2" data-y="-2">pokémon scarlet</span> a few weeks
-ago, I decided to keep the creature catching going with
+<a class="link" data-x="2" data-y="-2">pokémon scarlet</a> a few weeks ago, I
+decided to keep the creature catching going with
 [monster sanctuary](https://store.steampowered.com/app/814370/Monster_Sanctuary/)
 on switch.
 
