@@ -11,10 +11,10 @@ export interface PanelMetadata {
   type: PanelType;
   urlSuffix: string;
   date?: string;
-  navLinks: NavLink[];
+  navLinks: Link[];
 }
 
-export interface NavLink {
+export interface Link {
   coordinates: Coordinates;
   label: string;
 }
@@ -25,6 +25,9 @@ export interface RenderedPanel {
   metadata: PanelMetadata;
 }
 
+/** Uniquely identifies a panel. Useful for map lookups that require strings. */
+export type PanelKey = string;
+
 /** Converts an html element to a panel with its associated metadata. */
 export function toRenderedPanel(el: HTMLElement): RenderedPanel {
   const metadata = {
@@ -33,17 +36,17 @@ export function toRenderedPanel(el: HTMLElement): RenderedPanel {
     type: (el.dataset.type ?? "") as PanelType,
     urlSuffix: el.dataset.urlSuffix ?? "",
     date: el.querySelector(".blog-date")?.textContent ?? "",
-    navLinks: getNavLinks(el),
+    navLinks: getPanelLinks(el, ".nav-link"),
   };
   return { metadata, el };
 }
 
-function getNavLinks(el: HTMLElement): NavLink[] {
-  return [...el.querySelectorAll<HTMLElement>(".nav-link")]
+export function getPanelLinks(el: HTMLElement, selector: string): Link[] {
+  return [...el.querySelectorAll<HTMLElement>(selector)]
     .map(
-      (navLinkEl) => ({
-        label: navLinkEl.textContent ?? "",
-        coordinates: getCoordinates(navLinkEl),
+      (linkEl) => ({
+        label: linkEl.textContent ?? "",
+        coordinates: getCoordinates(linkEl),
       }),
     );
 }
@@ -53,4 +56,8 @@ function getCoordinates(el: HTMLElement): Coordinates {
     x: parseInt(el.dataset.x ?? "0"),
     y: parseInt(el.dataset.y ?? "0"),
   };
+}
+
+export function toPanelKey(coordinates: Coordinates): PanelKey {
+  return `(${coordinates.x},${coordinates.y})`;
 }

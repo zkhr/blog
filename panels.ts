@@ -2,7 +2,7 @@ import { marked } from "npm:marked";
 import matter from "npm:gray-matter";
 import {
   Coordinates,
-  NavLink,
+  Link,
   PanelMetadata,
   PanelType,
 } from "./common/rendered_panel.ts";
@@ -79,7 +79,7 @@ function parseCoordinates(value: unknown, filename: string): Coordinates {
   return { x: parseInt(x), y: parseInt(y) };
 }
 
-function parseLinks(value: unknown, filename: string): NavLink[] {
+function parseLinks(value: unknown, filename: string): Link[] {
   if (!value) {
     console.log(`Error parsing ${filename}. Missing links.`);
     return [];
@@ -105,6 +105,6 @@ function toUrlSuffix(title: string) {
   return title.replaceAll(",", "").replaceAll(":", "").replaceAll(" ", "-");
 }
 
-function renderNavLink(navLink: NavLink) {
+function renderNavLink(navLink: Link) {
   return `<span class="link nav-link" data-x="${navLink.coordinates.x}" data-y="${navLink.coordinates.y}">${navLink.label}</span>`;
 }

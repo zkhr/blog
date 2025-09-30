@@ -1,6 +1,8 @@
 import {
   Coordinates,
+  PanelKey,
   RenderedPanel,
+  toPanelKey,
   toRenderedPanel,
 } from "../common/rendered_panel.ts";
 
@@ -11,8 +13,6 @@ import {
 const DEFAULT_COORDINATES: Coordinates = { x: 0, y: 0 };
 
 const ZOOM_FACTORS = [1, 0.5, 0.25];
-
-type RenderedPanelKey = string;
 
 interface TouchMetadata {
   x: number;
@@ -26,7 +26,7 @@ export default class Matrix {
   private panelMatrixEl: HTMLElement;
 
   /** A map from coordinates to the rendered panel. */
-  private panelMap: Map<RenderedPanelKey, RenderedPanel>;
+  private panelMap: Map<PanelKey, RenderedPanel>;
 
   /** Tracks the coordinates of the currently rendered panel. */
   private currentCoord: Coordinates;
@@ -69,7 +69,7 @@ export default class Matrix {
 
   /** Returns the metadata for the current coordinates. */
   getCurrentMetadata(): RenderedPanel | undefined {
-    return this.panelMap.get(this.getPanelMapKey(this.currentCoord));
+    return this.panelMap.get(toPanelKey(this.currentCoord));
   }
 
   /**
@@ -89,16 +89,12 @@ export default class Matrix {
       panelEl.style.top = `${-100 * y}vh`;
 
       // Track panel information for use later in code.
-      results.set(this.getPanelMapKey(coordinates), toRenderedPanel(panelEl));
+      results.set(toPanelKey(coordinates), toRenderedPanel(panelEl));
 
       // And remove the DOM until it is time to render the panel.
       panelEl.remove();
     }
     return results;
-  }
-
-  getPanelMapKey(coordinates: Coordinates): RenderedPanelKey {
-    return `(${coordinates.x},${coordinates.y})`;
   }
 
   /** Initializes all links for the panel matrix. */
@@ -218,9 +214,7 @@ export default class Matrix {
     const zl = this.zoomLevel;
     for (let i = x - zl; i <= x + zl; i++) {
       for (let j = y - zl; j <= y + zl; j++) {
-        const panel = this.panelMap.get(
-          this.getPanelMapKey({ x: i, y: j }),
-        );
+        const panel = this.panelMap.get(toPanelKey({ x: i, y: j }));
         if (panel && panel.el.parentNode === null) {
           this.panelMatrixEl.append(panel.el);
         }
@@ -251,7 +245,7 @@ export default class Matrix {
 
   /** Returns the path to use in the URL for the provided coordinates. */
   getCoordinatePath(coordinates: Coordinates) {
-    const panel = this.panelMap.get(this.getPanelMapKey(coordinates));
+    const panel = this.panelMap.get(toPanelKey(coordinates));
     let path = `/!/${coordinates.x}/${coordinates.y}`;
     if (panel && panel.metadata.urlSuffix) {
       path += `/${panel.metadata.urlSuffix}`;

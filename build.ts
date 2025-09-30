@@ -2,7 +2,13 @@ import { DOMParser } from "jsr:@b-fuze/deno-dom";
 import * as sass from "npm:sass-embedded";
 import { bundle } from "jsr:@deno/emit";
 import { panelToHtml } from "./panels.ts";
-import { RenderedPanel, toRenderedPanel } from "./common/rendered_panel.ts";
+import {
+  getPanelLinks,
+  PanelKey,
+  RenderedPanel,
+  toPanelKey,
+  toRenderedPanel,
+} from "./common/rendered_panel.ts";
 
 /** The destination directory, which can be served to render the frontend. */
 const DIST_DIR = "./dist";
@@ -12,18 +18,27 @@ try {
 } catch (_) {
   // If we couldn't remove the directory, it probably didn't exist yet.
 }
+await Deno.mkdir(`${DIST_DIR}/`, { recursive: true });
 
-await copyStaticContentToDist();
-await copyPanelsToDist();
+// Setup panels
+const panels = await loadPanels();
+addJournalPanel(panels);
+await addBlogrollPanel(panels);
+addBacklinksToPanels(panels);
 
-const journalPanels = await loadJournalPanels();
-
-await buildJournalPanel(journalPanels, `${DIST_DIR}/panels/journal.html`);
-await buildAtomFeed(journalPanels, `${DIST_DIR}/rss`);
-await buildBlogroll(`${DIST_DIR}/panels/blogroll.html`);
+// Setup index
 const cssFilename = await compileCss();
 const jsFilename = await compileJs();
-await buildIndex(`${DIST_DIR}/index.html`, jsFilename, cssFilename);
+await buildIndex(
+  [...panels.values()],
+  `${DIST_DIR}/index.html`,
+  jsFilename,
+  cssFilename,
+);
+
+// Setup supplemental files
+await copyStaticContentToDist();
+await buildAtomFeed(panels, `${DIST_DIR}/rss`);
 await buildFileNotFoundPage(`${DIST_DIR}/404.html`);
 
 /** Copies all static content to the dist/ directory. */
@@ -40,73 +55,124 @@ async function copyStaticContentToDist() {
   }
 }
 
-/** Copies all source panels to the dist/ directory. */
-async function copyPanelsToDist() {
-  const src = `./panels`;
-  const dest = `${DIST_DIR}/panels`;
-  console.log(`Copying ${src} to ${dest}`);
-  await Deno.mkdir(`${DIST_DIR}/panels`, { recursive: true });
+async function loadPanels() {
+  const panels = new Map<PanelKey, RenderedPanel>();
   for await (const file of Deno.readDir("./panels")) {
     const src = `./panels/${file.name}`;
-    const [filename, suffix] = file.name.split(".");
-    const dest = `${DIST_DIR}/panels/${filename}.html`;
-    switch (suffix) {
-      case "html":
-        Deno.copyFile(src, dest);
-        break;
-      case "md": {
-        const panelText = await Deno.readTextFile(src);
-        const panelHtml = panelToHtml(panelText, file.name);
-        await Deno.writeTextFile(dest, panelHtml);
-        break;
-      }
-    }
-  }
-}
-
-/** Returns the blog panels in reverse chronological order. */
-async function loadJournalPanels(): Promise<RenderedPanel[]> {
-  const panels = [];
-  for await (const file of Deno.readDir(`${DIST_DIR}/panels`)) {
-    const isBlog = file.name.indexOf("blog-") >= 0;
-    if (!isBlog) {
-      continue;
-    }
-
-    const htmlContent = await Deno.readTextFile(
-      `${DIST_DIR}/panels/${file.name}`,
-    );
+    const suffix = file.name.split(".")[1];
+    const htmlContent = await getPanelHtml(suffix, src, file.name);
     const doc = new DOMParser().parseFromString(htmlContent, "text/html");
-    const panel = doc.querySelector<HTMLElement>(".panel");
-    if (!panel) {
+    const panelEl = doc.querySelector<HTMLElement>(".panel");
+    if (!panelEl) {
       console.log(`Panel not found for ${file.name}`);
       continue;
     }
-    panels.push(toRenderedPanel(panel));
+    const panel = toRenderedPanel(panelEl);
+    panels.set(toPanelKey(panel.metadata.coordinates), panel);
   }
+  return panels;
+}
 
-  return panels.sort((a, b) =>
-    b.metadata.date!.localeCompare(a.metadata.date!)
-  );
+async function getPanelHtml(suffix: string, src: string, filename: string) {
+  switch (suffix) {
+    case "html": {
+      return Deno.readTextFile(src);
+    }
+    case "md": {
+      const panelText = await Deno.readTextFile(src);
+      return panelToHtml(panelText, filename);
+    }
+  }
+  return "";
+}
+
+function addBacklinksToPanels(panels: Map<PanelKey, RenderedPanel>) {
+  const backlinkMap = buildBacklinks(panels);
+  for (const [destKey, srcKeys] of backlinkMap) {
+    const panel = panels.get(destKey);
+    if (!panel) {
+      console.log(`No panel found with key: ${destKey}`);
+      continue;
+    }
+    const contentEl = panel.el.querySelector<HTMLElement>(".panel-content");
+    if (!contentEl) {
+      console.log(`Error building backlink for ${panel.metadata.title}.`);
+      continue;
+    }
+    const doc = new DOMParser().parseFromString(
+      `<div class="backlinks">
+        <div class="backlinks-title">⇐ Backlinks:</div>
+        <div class="backlinks-content">
+          ${renderBacklinks(srcKeys, panels)}
+        </div>
+      </div>`,
+      "text/html",
+    );
+    contentEl.appendChild(doc.querySelector<HTMLElement>(".backlinks")!);
+  }
+}
+
+function buildBacklinks(
+  panels: Map<PanelKey, RenderedPanel>,
+): Map<PanelKey, Set<PanelKey>> {
+  const backlinkMap = new Map<PanelKey, Set<PanelKey>>();
+  for (const [srcKey, panel] of panels.entries()) {
+    const links = getPanelLinks(
+      panel.el,
+      ".link:not(.nav-link):not(.journal-link)",
+    );
+    for (const link of links) {
+      const destKey = toPanelKey(link.coordinates);
+      let destBackLinks = backlinkMap.get(destKey);
+      if (!destBackLinks) {
+        destBackLinks = new Set<PanelKey>();
+        backlinkMap.set(destKey, destBackLinks);
+      }
+      destBackLinks.add(srcKey);
+    }
+  }
+  return backlinkMap;
+}
+
+function renderBacklinks(
+  srcKeys: Set<PanelKey>,
+  panels: Map<PanelKey, RenderedPanel>,
+) {
+  let result = "";
+  for (const srcKey of srcKeys.values()) {
+    const metadata = panels.get(srcKey)?.metadata;
+    result +=
+      `<span class="link backlink" data-x="${metadata?.coordinates.x}" data-y="${metadata?.coordinates.y}">${metadata?.title}</span>`;
+  }
+  return result;
+}
+
+/** Filters the provided panels to just journal panels, sorted chronologically. */
+function filterToJournalPanels(
+  panels: Map<PanelKey, RenderedPanel>,
+): RenderedPanel[] {
+  return [...panels.values()]
+    .filter((panel) => panel.metadata.type === "blog")
+    .sort((a, b) => b.metadata.date!.localeCompare(a.metadata.date!));
 }
 
 /** Generates the journal overview panel using the provided panels. */
-async function buildJournalPanel(panels: RenderedPanel[], filename: string) {
-  console.log(`Building ${filename}`);
-
+function addJournalPanel(
+  panels: Map<PanelKey, RenderedPanel>,
+) {
   const blogEntries = [];
-  for (const panel of panels) {
+  for (const panel of filterToJournalPanels(panels)) {
     const metadata = panel.metadata;
     blogEntries.push(
       `<div class="blog-entry">
         <div class="blog-entry-date">${metadata.date} -</div>
-        <div class="link" data-x="${metadata.coordinates.x}" data-y="${metadata.coordinates.y}">${metadata.title}</div>
+        <div class="link journal-link" data-x="${metadata.coordinates.x}" data-y="${metadata.coordinates.y}">${metadata.title}</div>
       </div>`,
     );
   }
 
-  await Deno.writeTextFile(
-    filename,
+  addPanel(
+    panels,
     `<div
   class="panel blog-theme"
   data-x="0"
@@ -129,11 +195,14 @@ async function buildJournalPanel(panels: RenderedPanel[], filename: string) {
 }
 
 /** Generates the atom feed using the provided panels. */
-async function buildAtomFeed(panels: RenderedPanel[], filename: string) {
+async function buildAtomFeed(
+  panels: Map<PanelKey, RenderedPanel>,
+  filename: string,
+) {
   console.log(`Building ${filename}`);
   const entries = [];
   let count = 0;
-  for (const panel of panels) {
+  for (const panel of filterToJournalPanels(panels)) {
     let content = [...panel.el.querySelectorAll("p, h1, .section")]
       .map((x) => x.textContent?.replace(/\s+/g, " ").trim())
       .join("</p><p>");
@@ -178,9 +247,7 @@ async function buildAtomFeed(panels: RenderedPanel[], filename: string) {
   );
 }
 
-async function buildBlogroll(filename: string) {
-  console.log(`Building ${filename}`);
-
+async function addBlogrollPanel(panels: Map<PanelKey, RenderedPanel>) {
   const xmlContent = await Deno.readTextFile(`./static/misc/feeds.opml`);
   const doc = new DOMParser().parseFromString(xmlContent, "text/html");
   const outlines = doc.querySelectorAll("outline");
@@ -198,8 +265,8 @@ async function buildBlogroll(filename: string) {
     }
   }
 
-  await Deno.writeTextFile(
-    filename,
+  addPanel(
+    panels,
     `<div
   class="panel whoami-theme"
   data-x="-1"
@@ -224,23 +291,23 @@ async function buildBlogroll(filename: string) {
   );
 }
 
+function addPanel(panels: Map<PanelKey, RenderedPanel>, htmlContent: string) {
+  const doc = new DOMParser().parseFromString(htmlContent, "text/html");
+  const panelEl = doc.querySelector<HTMLElement>(".panel")!;
+  const panel = toRenderedPanel(panelEl);
+  panels.set(toPanelKey(panel.metadata.coordinates), panel);
+}
+
 /**
  * Generates the index with all available panels from the panels/ directory.
  */
 async function buildIndex(
+  panels: RenderedPanel[],
   filename: string,
   jsFilename: string,
   cssFilename: string,
 ) {
   console.log(`Building ${filename}`);
-
-  const panels = [];
-  for await (const panelFile of Deno.readDir(`${DIST_DIR}/panels`)) {
-    const panelContent = await Deno.readTextFile(
-      `${DIST_DIR}/panels/${panelFile.name}`,
-    );
-    panels.push(panelContent);
-  }
 
   await Deno.writeTextFile(
     filename,
@@ -265,7 +332,7 @@ async function buildIndex(
   </head>
   <body>
     <div id="panel-matrix" style="display: none">
-      ${panels.sort().join("\n      ")}
+      ${panels.map((p) => p.el.outerHTML).join("\n      ")}
     </div>
     <script src="/${jsFilename}"></script>
   </body>

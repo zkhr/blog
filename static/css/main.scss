@@ -23,7 +23,7 @@ body,
 
 #panel-matrix {
   position: relative;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.25s ease-in-out;
 }
 
 .panel {
@@ -101,6 +101,24 @@ body,
 
 .nav-link {
   font-size: 20px;
+}
+
+.backlinks {
+  display: flex;
+  font-size: 13px;
+  gap: 8px;
+  padding: 34px 0 24px;
+
+  .backlinks-title {
+    flex-shrink: 0;
+  }
+
+  .backlinks-content {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
 }
 
 .title {
