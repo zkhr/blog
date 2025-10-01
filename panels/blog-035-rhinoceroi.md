@@ -7,6 +7,7 @@ navLinks:
   - 0 0 Home
   - 0 -1 Journal
   - 5 -7 Prev
+  - 4 -8 Next
 ---
 
 After updating the dictionary used by my
