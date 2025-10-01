@@ -1,0 +1,100 @@
+import { Panel, PanelKey } from "../common/panel.ts";
+import { filterToJournalPanels } from "./utils.ts";
+import { compileCss } from "./css_loader.ts";
+import { compileJs } from "./js_loader.ts";
+
+/** The destination directory, which can be served to render the frontend. */
+const DIST_DIR = "./dist";
+
+interface StaticContentPaths {
+  cssFilename: string;
+  jsFilename: string;
+  root: string;
+}
+
+export async function buildStaticContent(
+  panels: Map<PanelKey, Panel>,
+): Promise<StaticContentPaths> {
+  await cleanDistDir();
+  const cssFilename = await compileCss(DIST_DIR);
+  const jsFilename = await compileJs(DIST_DIR, panels);
+  await copyStaticContentToDist();
+  await buildAtomFeed(panels, `${DIST_DIR}/rss`);
+  return { cssFilename, jsFilename, root: DIST_DIR };
+}
+
+async function cleanDistDir() {
+  try {
+    await Deno.remove(DIST_DIR, { recursive: true });
+  } catch (_) {
+    // If we couldn't remove the directory, it probably didn't exist yet.
+  }
+  await Deno.mkdir(`${DIST_DIR}/`, { recursive: true });
+}
+
+/** Copies all static content to the dist/ directory. */
+async function copyStaticContentToDist() {
+  const staticDirs = ["fonts", "images", "misc"];
+  for (const staticDir of staticDirs) {
+    const src = `./public/${staticDir}`;
+    const dest = `${DIST_DIR}/${staticDir}`;
+    console.log(`Copying ${src} to ${dest}`);
+    await Deno.mkdir(dest, { recursive: true });
+    for await (const file of Deno.readDir(src)) {
+      Deno.copyFile(`${src}/${file.name}`, `${dest}/${file.name}`);
+    }
+  }
+}
+
+/** Generates the atom feed using the provided panels. */
+async function buildAtomFeed(
+  panels: Map<PanelKey, Panel>,
+  filename: string,
+) {
+  console.log(`Building ${filename}`);
+  const entries = [];
+  let count = 0;
+  for (const panel of filterToJournalPanels(panels)) {
+    let content = [...panel.el.querySelectorAll("p, h1, .section")]
+      .map((x) => x.textContent?.replace(/\s+/g, " ").trim())
+      .join("</p><p>");
+    content = `<p>${content}</p>`
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+    const metadata = panel.metadata;
+    const url =
+      `https://ari.blumenthal.dev/!/${metadata.coordinates.x}/${metadata.coordinates.y}/${metadata.urlSuffix}`;
+
+    entries.push(
+      `<entry>
+    <title>${metadata.title}</title>
+    <link href="${url}"/>
+    <id>${url}</id>
+    <updated>${metadata.date}T12:34:56Z</updated>
+    <content type="html">${content}</content>
+  </entry>`,
+    );
+
+    count++;
+    if (count >= 20) {
+      break;
+    }
+  }
+
+  await Deno.writeTextFile(
+    filename,
+    `<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>ari.blumenthal.dev</title>
+  <link href="https://ari.blumenthal.dev/" />
+  <link href="https://ari.blumenthal.dev/rss" rel="self" />
+  <updated>${new Date().toISOString()}</updated>
+  <author>
+    <name>Ari Blumenthal</name>
+  </author>
+  <id>https://ari.blumenthal.dev/rss</id>
+  ${entries.join("\n  ")}
+</feed>`,
+  );
+}

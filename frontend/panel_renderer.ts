@@ -1,13 +1,38 @@
+import { DOMParser } from "jsr:@b-fuze/deno-dom";
 import { marked } from "npm:marked";
 import matter from "npm:gray-matter";
 import {
   Coordinates,
   Link,
+  Panel,
   PanelMetadata,
   PanelType,
-} from "./common/rendered_panel.ts";
+  toPanel,
+} from "../common/panel.ts";
 
-export function panelToHtml(panelText: string, filename: string) {
+export async function renderPanel(filename: string): Promise<Panel | null> {
+  const src = `./panels/${filename}`;
+  const suffix = filename.split(".")[1];
+  const htmlContent = await getPanelHtml(suffix, src, filename);
+  const doc = new DOMParser().parseFromString(htmlContent, "text/html");
+  const panelEl = doc.querySelector<HTMLElement>(".panel");
+  return panelEl ? toPanel(panelEl) : null;
+}
+
+async function getPanelHtml(suffix: string, src: string, filename: string) {
+  switch (suffix) {
+    case "html": {
+      return Deno.readTextFile(src);
+    }
+    case "md": {
+      const panelText = await Deno.readTextFile(src);
+      return mdToHtml(panelText, filename);
+    }
+  }
+  return "";
+}
+
+function mdToHtml(panelText: string, filename: string) {
   const matterResponse = matter(panelText);
   const metadata = toPanelMetadata(matterResponse.data, filename);
   const html = marked.parse(matterResponse.content);

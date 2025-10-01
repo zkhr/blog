@@ -9,43 +9,33 @@ Let's walk through the key files and folders in this project:
 
 ```
 blog/
-├── common/              # Defines shared code (for codegen and FE)
-├── dist/                # Generated static content served by the FE
-├── panels/              # Contains all panels renderable by the FE
-├── src/                 # Contains the FE TS code.
-├── static/              # Additional static content (css, fonts, images, misc)
+├── client/              # Contains the code running on visitor's devices
+│   ├── css/             # SASS code (to be compiled compiled to CSS)
+│   └── js/              # Client-side TS code (to be compiled to JS)
+├── common/              # Defines code shared between clients and the frontend
+├── dist/                # Generated static content (served by the frontend)
+├── frontend/            # Server-side TS code (for running the frontend)
+├── panels/              # Contains all renderable panels
+├── public/              # Additional static content
+│   ├── fonts/
+│   ├── images/
+│   └── misc/
 ├── .gitignore           # Files that aren't tracked by git
-├── build.ts             # Generates the dist/ directory
 ├── deno.json            # Deno (runtime & package mgr) config and tasks
-├── deno.lock            # Deno lock file for checking module integrity
-├── dev.ts               # Starts a local dev server
-├── panels.ts            # Renders the markdown panels as html
+└── deno.lock            # Deno lock file for checking module integrity
 ```
 
 ## Prerequisites
 
-ari.blumenthal.dev is rendered by the [Deno](https://docs.deno.com) JS runtime.
-It can then be served by any frontend that serves static content (e.g. the
-provided dev server, nginx, etc).
-
-## Testing and development
-
-For running the server in your local environment, run:
-
-```sh
-$ deno run dev
-```
-
-This will spun up the `dev.ts` server for your FE on port 8000 and watch for any
-local changes.
+ari.blumenthal.dev is served by the [Deno](https://docs.deno.com) JS runtime.
 
 ## Running the FE
 
-To build the server for production (i.e. generate or update the `dist/`
-directory), run:
+To run the server (i.e. update static content, respond to requests, and watch
+for any local changes), run:
 
 ```sh
-$ deno run build
+$ deno run app
 ```
 
 ## FAQ

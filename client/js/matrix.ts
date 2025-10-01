@@ -1,10 +1,10 @@
 import {
   Coordinates,
+  Panel,
   PanelKey,
-  RenderedPanel,
+  toPanel,
   toPanelKey,
-  toRenderedPanel,
-} from "../common/rendered_panel.ts";
+} from "../../common/panel.ts";
 
 /**
  * The default matrix coordinates to use when no valid ones are provided in the
@@ -26,7 +26,7 @@ export default class Matrix {
   private panelMatrixEl: HTMLElement;
 
   /** A map from coordinates to the rendered panel. */
-  private panelMap: Map<PanelKey, RenderedPanel>;
+  private panelMap: Map<PanelKey, Panel>;
 
   /** Tracks the coordinates of the currently rendered panel. */
   private currentCoord: Coordinates;
@@ -37,10 +37,9 @@ export default class Matrix {
   /** The current pending callback to clear panels. */
   private deletePanelsTimeout: number | null;
 
-  constructor() {
+  constructor(panels: string[]) {
     this.panelMatrixEl = document.getElementById("panel-matrix")!;
-    this.initMatrixLinks();
-    this.panelMap = this.loadPanels();
+    this.panelMap = this.loadPanels(panels);
     this.currentCoord = this.getStartingCoordinates();
     this.zoomLevel = 0;
     this.deletePanelsTimeout = null;
@@ -58,7 +57,7 @@ export default class Matrix {
   /**
    * Returns all panels in the grid, in no particular order.
    */
-  listPanels(): RenderedPanel[] {
+  listPanels(): Panel[] {
     return [...this.panelMap.values()];
   }
 
@@ -68,7 +67,7 @@ export default class Matrix {
   }
 
   /** Returns the metadata for the current coordinates. */
-  getCurrentMetadata(): RenderedPanel | undefined {
+  getCurrentMetadata(): Panel | undefined {
     return this.panelMap.get(toPanelKey(this.currentCoord));
   }
 
@@ -76,10 +75,15 @@ export default class Matrix {
    * Builds a map from coordinates to metadata about the panel at the
    * coordinate.
    */
-  loadPanels() {
-    const panelEls = document.querySelectorAll<HTMLElement>(".panel");
+  loadPanels(panels: string[]) {
+    const parser = new DOMParser();
     const results = new Map();
-    for (const panelEl of panelEls) {
+    for (const panelStr of panels) {
+      const doc = parser.parseFromString(panelStr, "text/html");
+      const panelEl = doc.querySelector<HTMLElement>(".panel");
+      if (!panelEl) {
+        continue;
+      }
       const x = parseInt(panelEl.dataset.x ?? "0");
       const y = parseInt(panelEl.dataset.y ?? "0");
       const coordinates = { x, y };
@@ -89,17 +93,17 @@ export default class Matrix {
       panelEl.style.top = `${-100 * y}vh`;
 
       // Track panel information for use later in code.
-      results.set(toPanelKey(coordinates), toRenderedPanel(panelEl));
+      results.set(toPanelKey(coordinates), toPanel(panelEl));
 
-      // And remove the DOM until it is time to render the panel.
+      this.initMatrixLinks(panelEl);
       panelEl.remove();
     }
     return results;
   }
 
-  /** Initializes all links for the panel matrix. */
-  initMatrixLinks() {
-    const linkEls = document.querySelectorAll(".link");
+  /** Initializes all links for the provided panel. */
+  initMatrixLinks(panelEl: HTMLElement) {
+    const linkEls = panelEl.querySelectorAll(".link");
     for (const linkEl of linkEls) {
       linkEl.addEventListener("click", (e) => {
         e.preventDefault();
