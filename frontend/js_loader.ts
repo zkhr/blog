@@ -8,7 +8,7 @@ export async function compileJs(
   panels: Map<PanelKey, Panel>,
 ): Promise<string> {
   const filename = `index-${genRandomString()}.js`;
-  console.log(`Building ${distDir}/${filename}`);
+  console.log(`    Adding ${distDir}/${filename}`);
 
   const result = await bundle("client/js/app.ts");
   result.code = genPanelCode(panels) + result.code;

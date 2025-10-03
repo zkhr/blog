@@ -19,6 +19,12 @@ app.use(handle404);
 
 app.listen({ port: 3001 });
 
+console.log("\n╔═══════════════════════════════════════════════════╗");
+console.log("║  Ready... Set... Go!                              ║");
+console.log("║                                                   ║");
+console.log("║  zkhr/blog frontend is listening on port 3001.    ║");
+console.log("╚═══════════════════════════════════════════════════╝");
+
 /** Renders a panel at the requested coordinates */
 function servePanel(ctx: Context, x: string, y: string) {
   const panel = panels.get(toPanelKey({ x: parseInt(x), y: parseInt(y) }));

@@ -23,3 +23,8 @@ exploring, discussing, and modifying recipes.
 The premier way to get turn notifications in Discord for Sid Meier's
 Civilization VI.
 <a class="link" data-x="2" data-y="-5">Learn more.</a>
+
+# sherwalk
+
+A step counting game based on the works of Sir Arthur Conan Doyle.
+<a class="link" data-x="4" data-y="-9">Learn more.</a>

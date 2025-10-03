@@ -15,11 +15,13 @@ interface StaticContentPaths {
 export async function buildStaticContent(
   panels: Map<PanelKey, Panel>,
 ): Promise<StaticContentPaths> {
+  console.log("\nPopulating static content... ");
+
   await cleanDistDir();
   const cssFilename = await compileCss(DIST_DIR);
   const jsFilename = await compileJs(DIST_DIR, panels);
-  await copyStaticContentToDist();
   await buildAtomFeed(panels, `${DIST_DIR}/rss`);
+  await copyStaticContentToDist();
   return { cssFilename, jsFilename, root: DIST_DIR };
 }
 
@@ -38,7 +40,7 @@ async function copyStaticContentToDist() {
   for (const staticDir of staticDirs) {
     const src = `./public/${staticDir}`;
     const dest = `${DIST_DIR}/${staticDir}`;
-    console.log(`Copying ${src} to ${dest}`);
+    console.log(`    Copying ${src} to ${dest}`);
     await Deno.mkdir(dest, { recursive: true });
     for await (const file of Deno.readDir(src)) {
       Deno.copyFile(`${src}/${file.name}`, `${dest}/${file.name}`);
@@ -51,7 +53,7 @@ async function buildAtomFeed(
   panels: Map<PanelKey, Panel>,
   filename: string,
 ) {
-  console.log(`Building ${filename}`);
+  console.log(`    Adding ${filename}`);
   const entries = [];
   let count = 0;
   for (const panel of filterToJournalPanels(panels)) {

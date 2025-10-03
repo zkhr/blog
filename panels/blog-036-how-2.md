@@ -7,6 +7,7 @@ navLinks:
   - 0 0 Home
   - 0 -1 Journal
   - 4 -7 Prev
+  - 4 -9 Next
 ---
 
 Nothing like writing <a class="link" data-x="3" data-y="-6">how</a> your site is
