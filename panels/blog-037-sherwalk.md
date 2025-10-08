@@ -7,6 +7,7 @@ navLinks:
   - 0 0 Home
   - 0 -1 Journal
   - 4 -8 Prev
+  - 5 -9 Next
 ---
 
 During <a class="link" data-x="5" data-y="-7">week 0</a>, I started working on
