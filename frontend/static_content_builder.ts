@@ -21,6 +21,7 @@ export async function buildStaticContent(
   const cssFilename = await compileCss(DIST_DIR);
   const jsFilename = await compileJs(DIST_DIR, panels);
   await buildAtomFeed(panels, `${DIST_DIR}/rss`);
+  await buildSitemap(panels, `${DIST_DIR}/sitemap.txt`);
   await copyStaticContentToDist();
   return { cssFilename, jsFilename, root: DIST_DIR };
 }
@@ -99,4 +100,35 @@ async function buildAtomFeed(
   ${entries.join("\n  ")}
 </feed>`,
   );
+}
+
+/** Generates the sitemap using the provided panels. */
+async function buildSitemap(
+  panels: Map<PanelKey, Panel>,
+  filename: string,
+) {
+  console.log(`    Adding ${filename}`);
+  const entries = [];
+  const sortedPanels = [...panels.values()].sort((a, b) =>
+    a.metadata.coordinates.y === b.metadata.coordinates.y
+      ? a.metadata.coordinates.x - b.metadata.coordinates.x
+      : b.metadata.coordinates.y - a.metadata.coordinates.y
+  );
+  for (const panel of sortedPanels) {
+    const metadata = panel.metadata;
+    const url =
+      `https://ari.blumenthal.dev/!/${metadata.coordinates.x}/${metadata.coordinates.y}/${metadata.urlSuffix}`;
+    entries.push(url);
+  }
+
+  // Add additional entries for other pages under ari.blumenthal.dev
+  entries.push(
+    "https://ari.blumenthal.dev/ariados/",
+    "https://ari.blumenthal.dev/ariados/pokemon",
+    "https://ari.blumenthal.dev/ariados/codes",
+    "https://ari.blumenthal.dev/ariados/anagrams",
+    "https://ari.blumenthal.dev/booggle/",
+  );
+
+  await Deno.writeTextFile(filename, entries.join("\n"));
 }
