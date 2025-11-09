@@ -140,9 +140,15 @@ export default class Matrix {
         return;
       }
 
+      const target = e.target as HTMLElement;
+      const preEl = target.closest("pre");
+      const isScrollableCodeBlock = preEl !== null &&
+        preEl.scrollWidth > preEl.offsetWidth;
       const xDelta = startCoord.x - e.touches[0].clientX;
       const yDelta = startCoord.y - e.touches[0].clientY;
-      if (Math.abs(xDelta) > Math.abs(yDelta) && Math.abs(xDelta) > 50) {
+      const isHorizontalScroll = Math.abs(xDelta) > Math.abs(yDelta) &&
+        Math.abs(xDelta) > 50;
+      if (isHorizontalScroll && !isScrollableCodeBlock) {
         xDelta > 0 ? this.goRight() : this.goLeft();
         startCoord = null;
       } else if (Math.abs(yDelta) > 50) {
