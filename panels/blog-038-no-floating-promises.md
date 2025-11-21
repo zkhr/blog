@@ -7,6 +7,7 @@ navLinks:
   - 0 0 Home
   - 0 -1 Journal
   - 4 -9 Prev
+  - 5 -8 Next
 ---
 
 I'm taking another swing at
