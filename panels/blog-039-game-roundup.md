@@ -48,8 +48,8 @@ In my <a class="link" data-x="3" data-y="-5">2022 epilogue</a>, Strange
 Horticulture (an occult puzzle game of identifying plants and uncovering plots)
 came in as my #3 game of the year.
 
-Yesterday, I started playing its sequel, Strange Antiquities, which replaces
-plants and plots with artifacts and puzzles... and plots.
+Yesterday, I started playing its sequel, Strange Antiquities, which with a quick
+`s/plants/artifacts/` made for another fun set of puzzles.
 
 # Tiny Bookshop
 
