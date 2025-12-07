@@ -11,6 +11,12 @@ A quick look at what I've read recently.
 # 2025
 
 <div class="book">
+  Brigands & Breadknives
+  <span class="author">by Travis Baldree</span>
+  <span class="tag year">2025</span>
+  <span class="tag fantasy">fantasy</span>
+</div>
+<div class="book">
   Mort
   <span class="author">by Terry Pratchett</span>
   <span class="tag year">1987</span>
