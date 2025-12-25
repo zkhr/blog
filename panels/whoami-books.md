@@ -11,6 +11,13 @@ A quick look at what I've read recently.
 # 2025
 
 <div class="book">
+  A Game of Thrones
+  <span class="author">George R. R. Martin</span>
+  <span class="tag year">1996</span>
+  <span class="tag fantasy">fantasy</span>
+  <span class="tag asoiaf">asoiaf</span>
+</div>
+<div class="book">
   Brigands & Breadknives
   <span class="author">by Travis Baldree</span>
   <span class="tag year">2025</span>
