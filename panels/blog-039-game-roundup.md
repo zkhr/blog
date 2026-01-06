@@ -7,6 +7,7 @@ navLinks:
   - 0 0 Home
   - 0 -1 Journal
   - 5 -9 Prev
+  - 6 -8 Next
 ---
 
 I don't game nearly as much these days, what with competing hobbies and

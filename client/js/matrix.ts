@@ -48,6 +48,13 @@ export default class Matrix {
   render() {
     this.initTouchscreenNavigation();
 
+    // Remove the server-side rendered panel. It is no longer needed if JS has
+    // loaded.
+    const panelEls = document.querySelectorAll<HTMLElement>(".panel");
+    for (const panelEl of panelEls) {
+      panelEl.remove();
+    }
+
     this.goToCoordinate(this.currentCoord.x, this.currentCoord.y);
     this.panelMatrixEl.style.display = "";
 

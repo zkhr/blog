@@ -32,6 +32,7 @@ a message with your recommendations!
 - Gloomhaven: Jaws of the Lion
 - Gloomhaven
 - Hanamikoji
+- Harmonies
 - Horrified
 - Jaipur
 - Jenga
