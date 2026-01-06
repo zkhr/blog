@@ -127,7 +127,10 @@ export default class Matrix {
     let startCoord: TouchMetadata | null = null;
     document.addEventListener("touchstart", (e) => {
       const target = e.target as HTMLElement;
-      const panel = target.closest(".panel");
+      const panel = target.closest(".panel") as HTMLElement | null;
+      if (panel && panel.dataset.type === "canvas") {
+        return;
+      }
       startCoord = {
         x: e.touches[0].clientX,
         y: e.touches[0].clientY,
