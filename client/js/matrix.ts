@@ -151,6 +151,12 @@ export default class Matrix {
       }
 
       const target = e.target as HTMLElement;
+      const panel = target.closest(".panel") as HTMLElement | null;
+      if (panel && panel.dataset.type === "canvas") {
+        // User is drawing, don't swipe the panels.
+        return;
+      }
+
       const preEl = target.closest("pre");
       const isScrollableCodeBlock = preEl !== null &&
         preEl.scrollWidth > preEl.offsetWidth;

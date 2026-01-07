@@ -43,7 +43,8 @@ export default class Chalkboard {
 
     document.addEventListener("mousedown", (e) => {
       if (isCurrentCoordinate(this.matrix.getCurrentCoordinates(), panel)) {
-        mouseHandler = (event) => handleMove(event, null, ctx, coord);
+        const color = getColor(panel);
+        mouseHandler = (event) => handleMove(event, null, ctx, coord, color);
         document.addEventListener("mousemove", mouseHandler);
         updateCoordinates(e, null, coord);
       }
@@ -61,8 +62,9 @@ export default class Chalkboard {
     let touchHandler: (event: TouchEvent) => void;
 
     document.addEventListener("touchstart", (e) => {
+      const color = getColor(panel);
       if (isCurrentCoordinate(this.matrix.getCurrentCoordinates(), panel)) {
-        touchHandler = (event) => handleMove(null, event, ctx, coord);
+        touchHandler = (event) => handleMove(null, event, ctx, coord, color);
         document.addEventListener("touchmove", touchHandler);
         updateCoordinates(null, e, coord);
       }
@@ -74,6 +76,11 @@ export default class Chalkboard {
       }
     });
   }
+}
+
+function getColor(panel: Panel) {
+  const colorEl = panel.el.querySelector(".canvas-color") as HTMLInputElement;
+  return colorEl ? colorEl.value : "#fff";
 }
 
 function updateCanvasSize(ctx: CanvasRenderingContext2D) {
@@ -101,11 +108,12 @@ function handleMove(
   touchEvent: TouchEvent | null,
   ctx: CanvasRenderingContext2D,
   coord: CanvasCoordinate,
+  color: string,
 ) {
   ctx.beginPath();
   ctx.lineWidth = 5;
   ctx.lineCap = "round";
-  ctx.strokeStyle = "#fff";
+  ctx.strokeStyle = color;
   ctx.moveTo(coord.x, coord.y);
   updateCoordinates(mouseEvent, touchEvent, coord);
   ctx.lineTo(coord.x, coord.y);
