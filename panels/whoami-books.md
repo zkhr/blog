@@ -8,6 +8,16 @@ navLinks:
 
 A quick look at what I've read recently.
 
+# 2026
+
+<div class="book">
+  A Clash of Kings
+  <span class="author">George R. R. Martin</span>
+  <span class="tag year">1998</span>
+  <span class="tag fantasy">fantasy</span>
+  <span class="tag asoiaf">asoiaf</span>
+</div>
+
 # 2025
 
 <div class="book">
