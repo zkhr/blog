@@ -36,6 +36,9 @@ export default class Chalkboard {
   /** The current mouse action that is in progress, if any. */
   private mouseHandler: ((event: MouseEvent) => void) | null = null;
 
+  /** Whether primary clicks should be interpreted as drags. */
+  private isDragging = false;
+
   constructor(matrix: Matrix) {
     this.matrix = matrix;
   }
@@ -53,6 +56,8 @@ export default class Chalkboard {
 
         this.handleMouseEvents(panel, ctx);
         this.handleTouchEvents(panel, ctx);
+
+        this.handleKeyEvents(panel);
 
         globalThis.addEventListener("resize", () => this.updateCanvasSize(ctx));
         this.updateCanvasSize(ctx);
@@ -76,22 +81,17 @@ export default class Chalkboard {
       }
 
       let coord = getCoordinates(e, null);
-      switch (e.button) {
-        case MouseButton.MAIN: {
-          const color = getColor(panel);
-          path = { color, points: [] };
+      if (e.button === MouseButton.AUXILIARY || this.isDragging) {
+        canvasEl?.classList.add("dragging");
+        this.mouseHandler = (event) => this.handleDrag(event, ctx, coord);
+      } else if (e.button === MouseButton.MAIN) {
+        const color = getColor(panel);
+        path = { color, points: [] };
+        this.addPointToPath(path, coord);
+        this.mouseHandler = (event) => {
+          coord = this.handleMove(event, null, ctx, coord, color);
           this.addPointToPath(path, coord);
-          this.mouseHandler = (event) => {
-            coord = this.handleMove(event, null, ctx, coord, color);
-            this.addPointToPath(path, coord);
-          };
-          break;
-        }
-        case MouseButton.AUXILIARY: {
-          canvasEl?.classList.add("dragging");
-          this.mouseHandler = (event) => this.handleDrag(event, ctx, coord);
-          break;
-        }
+        };
       }
 
       if (this.mouseHandler) {
@@ -106,7 +106,9 @@ export default class Chalkboard {
       if (path && path.points.length > 1) {
         this.paths.push(path);
       }
-      canvasEl?.classList.remove("dragging");
+      if (!this.isDragging) {
+        canvasEl?.classList.remove("dragging");
+      }
     });
   }
 
@@ -140,6 +142,22 @@ export default class Chalkboard {
       }
       if (path && path.points.length > 1) {
         this.paths.push(path);
+      }
+    });
+  }
+
+  handleKeyEvents(panel: Panel) {
+    const canvasEl = panel.el.querySelector("canvas");
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Meta") {
+        this.isDragging = true;
+        canvasEl?.classList.add("dragging");
+      }
+    });
+    document.addEventListener("keyup", (e) => {
+      if (e.key === "Meta") {
+        this.isDragging = false;
+        canvasEl?.classList.remove("dragging");
       }
     });
   }

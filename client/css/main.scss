@@ -5,10 +5,14 @@
 @use "pokemon";
 @use "themes";
 
+html,
+body {
+  overscroll-behavior: none;
+}
+
 body {
   background: #242424;
   overflow: hidden;
-  overscroll-behavior: contain;
   margin: 0;
   position: fixed;
 }
