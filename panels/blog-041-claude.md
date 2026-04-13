@@ -7,6 +7,7 @@ navLinks:
   - 0 0 Home
   - 0 -1 Journal
   - 6 -8 Prev
+  - 7 -9 Next
 ---
 
 So between a past coworker's recent recommendation, antirez's <a
