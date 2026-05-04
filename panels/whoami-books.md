@@ -11,6 +11,13 @@ A quick look at what I've read recently.
 # 2026
 
 <div class="book">
+  The Ghost Brigades
+  <span class="author">by John Scalzi</span>
+  <span class="tag year">2006</span>
+  <span class="tag scifi">scifi</span>
+  <span class="tag omw">omw</span>
+</div>
+<div class="book">
   A Clash of Kings
   <span class="author">George R. R. Martin</span>
   <span class="tag year">1998</span>
@@ -52,6 +59,7 @@ A quick look at what I've read recently.
   <span class="author">by John Scalzi</span>
   <span class="tag year">2005</span>
   <span class="tag scifi">scifi</span>
+  <span class="tag omw">omw</span>
 </div>
 <div class="book">
   Starter Villain
