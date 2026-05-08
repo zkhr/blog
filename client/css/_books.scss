@@ -12,10 +12,15 @@
   padding: 0 4px;
   white-space: nowrap;
 
+  &.sameyear {
+    color: #fcfcfc;
+    background: rgb(255 0 0 / 0.80);
+  }
+
   &.year,
   &.chem {
     color: #cbbc87;
-    background: rgb(209 17 17 / 0.53);
+    background: rgb(209 17 17 / 0.33);
   }
 
   &.fantasy,

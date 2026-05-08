@@ -11,6 +11,13 @@ A quick look at what I've read recently.
 # 2026
 
 <div class="book">
+  Platform Decay
+  <span class="author">by Martha Wells</span>
+  <span class="tag sameyear">2026</span>
+  <span class="tag scifi">scifi</span>
+  <span class="tag murderbot">murderbot</span>
+</div>
+<div class="book">
   The Ghost Brigades
   <span class="author">by John Scalzi</span>
   <span class="tag year">2006</span>
@@ -37,7 +44,7 @@ A quick look at what I've read recently.
 <div class="book">
   Brigands & Breadknives
   <span class="author">by Travis Baldree</span>
-  <span class="tag year">2025</span>
+  <span class="tag sameyear">2025</span>
   <span class="tag fantasy">fantasy</span>
 </div>
 <div class="book">
