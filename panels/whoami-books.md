@@ -11,6 +11,13 @@ A quick look at what I've read recently.
 # 2026
 
 <div class="book">
+  Assassin's Apprentice
+  <span class="author">by Robin Hobb</span>
+  <span class="tag year">1995</span>
+  <span class="tag fantasy">fantasy</span>
+  <span class="tag elderlings">elderlings</span>
+</div>
+<div class="book">
   Platform Decay
   <span class="author">by Martha Wells</span>
   <span class="tag sameyear">2026</span>
