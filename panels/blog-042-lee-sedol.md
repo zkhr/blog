@@ -7,6 +7,7 @@ navLinks:
   - 0 0 Home
   - 0 -1 Journal
   - 6 -9 Prev
+  - 7 -8 Next
 ---
 
 <div class="section">
