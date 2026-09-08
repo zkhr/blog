@@ -14,15 +14,22 @@ on my shelves right now.
 If you think there are games I might like based on what I tend to play, send me
 a message with your recommendations!
 
-# Inventory
+# Kiddo's inventory
+
+- Acorn Soup
+- Building Site
+- First Orchard
+- Outfoxed!
+- The Sandcastles of Burgundy
+- Zingo!
+
+# My inventory
 
 - 7 Wonders
-- Acorn Soup
 - Android: Netrunner
 - Between Two Cities
 - Boggle (see also <a class="link" data-x="0" data-y="-3">booggle</a>)
 - Broom Service
-- Building Site
 - Bunny Kingdom
 - Ca$h 'n Guns: Second Edition
 - Codenames Duet
@@ -30,7 +37,6 @@ a message with your recommendations!
 - Direwild
 - Dragonfire
 - Eminent Domain
-- First Orchard
 - Flamecraft
 - Gloomhaven: Jaws of the Lion
 - Gloomhaven
@@ -40,7 +46,6 @@ a message with your recommendations!
 - Jaipur
 - Jenga
 - Lords of Waterdeep
-- Outfoxed!
 - Patchwork
 - Race for the Galaxy
 - Radlands
@@ -55,4 +60,3 @@ a message with your recommendations!
 - The Castles of Burgandy
 - The Fox in the Forest
 - Trogdor!! The Board Game
-- Zingo!

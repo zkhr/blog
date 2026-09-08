@@ -122,7 +122,7 @@ Great loop. Rewarding. Less so now.
 
 Instead, I'm reviewing Claude's code. Which is fine, I already mentioned above
 that you absolutely need to do this. But you don't get to see Claude grow. Also
-this doesn't really fell like being a SWE anymore. It's a new role. Like
+this doesn't really feel like being a SWE anymore. It's a new role. Like
 Software Dispatcher or something.
 
 Or alternatively, when I'm reviewing my coworkers code, more often than not, my

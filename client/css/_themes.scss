@@ -1,41 +1,24 @@
-$bg-saturation: 54%;
-$bg-lightness: 13%;
-
-$bg-red: hsl(0deg, $bg-saturation, $bg-lightness);
-$bg-orange: hsl(30deg, $bg-saturation, $bg-lightness);
-$bg-yellow: hsl(60deg, $bg-saturation, $bg-lightness);
-$bg-yellow-green: hsl(90deg, $bg-saturation, $bg-lightness);
-$bg-green: hsl(120deg, $bg-saturation, $bg-lightness);
-$bg-blue-green: hsl(150deg, $bg-saturation, $bg-lightness);
-$bg-blue: hsl(180deg, $bg-saturation, $bg-lightness);
-$bg-dark-blue: hsl(210deg, $bg-saturation, $bg-lightness);
-$bg-purple-blue: hsl(240deg, $bg-saturation, $bg-lightness);
-$bg-purple: hsl(270deg, $bg-saturation, $bg-lightness);
-$bg-light-purple: hsl(300deg, $bg-saturation, $bg-lightness);
-$bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
-
-@function grid-background-image($color, $position) {
-  @return radial-gradient(
-      circle at $position,
-      $color 0%,
-      $color 10%,
-      transparent 80%
-    ),
-    linear-gradient(to right, #2f2f2f 1px, transparent 1px),
-    linear-gradient(to bottom, #2f2f2f 1px, transparent 1px);
-}
-
 .home-theme,
 .home-minimap-bg {
   background: #222;
   color: #fafafa;
 }
 
+.blog-minimap-bg,
+.misc-minimap-bg,
+.whoami-minimap-bg,
+.canvas-minimap-bg {
+  background: #222;
+}
+
 .blog-theme,
 .canvas-theme,
 .misc-theme,
 .whoami-theme {
-  background-size: 100% 100%, 16px 16px, 16px 16px;
+  background-size: 16px 16px;
+  background-image:
+    linear-gradient(to right, #2d2d2d 1px, transparent 1px),
+    linear-gradient(to bottom, #2d2d2d 1px, transparent 1px);
   color: #ffffff;
 
   .title {
@@ -52,7 +35,8 @@ $bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
     padding-bottom: 20px;
   }
 
-  ol, ul {
+  ol,
+  ul {
     color: #dadce0;
   }
 
@@ -75,30 +59,4 @@ $bg-purple-red: hsl(330deg, $bg-saturation, $bg-lightness);
       background-color: #dadada;
     }
   }
-}
-
-.blog-theme {
-  background-image: grid-background-image($bg-red, bottom right);
-}
-.misc-theme {
-  background-image: grid-background-image($bg-blue, top right);
-}
-.whoami-theme {
-  background-image: grid-background-image($bg-light-purple, top left);
-}
-.canvas-theme {
-  background-image: grid-background-image(transparent, bottom left);
-}
-
-.blog-minimap-bg {
-  background-color: $bg-red;
-}
-.misc-minimap-bg {
-  background-color: $bg-blue;
-}
-.whoami-minimap-bg {
-  background-color: $bg-light-purple;
-}
-.canvas-minimap-bg {
-  background-color: $bg-dark-blue;
 }

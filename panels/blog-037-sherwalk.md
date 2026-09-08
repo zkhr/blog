@@ -30,8 +30,13 @@ There is tons of room for improvement, but after not touching it for about a
 month, I figured I should probably put it out there and see if there is any
 interest in me building it out further and adding new features or adventures.
 
-You can check out the website for the app at https://sherwalk.com or download it
-for iOS on the [app store](https://apps.apple.com/us/app/sherwalk/id6751060871).
+~~You can check out the website for the app at sherwalk.com or download it for
+iOS on the app store.~~
+
+```
+NOTE(2026-09-08): I let this stuff lapse, so if there is anything at that domain
+anymore, it isn't me.
+```
 
 I already wrote a little bit in that _week 0_ post about my very first
 impressions of developing in Swift, but here are a few more thoughts about the

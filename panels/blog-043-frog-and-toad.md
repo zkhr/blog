@@ -7,6 +7,7 @@ navLinks:
   - 0 0 Home
   - 0 -1 Journal
   - 7 -9 Prev
+  - 7 -7 Next
 ---
 
 We've read a lot of books with the kiddo over the last few years, but Lobel's
