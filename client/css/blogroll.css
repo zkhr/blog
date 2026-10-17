@@ -1,0 +1,9 @@
+.feed-header:not(:first-child) {
+  margin-top: 20px;
+}
+
+.feed {
+  border-left: 2px dotted #fff;
+  margin: 8px 0;
+  padding-left: 10px;
+}

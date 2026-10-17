@@ -37,6 +37,7 @@
 }
 
 .map-panel {
+  background: #222;
   border: 1px dotted #cdcdcd;
   box-sizing: border-box;
   position: absolute;

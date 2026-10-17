@@ -1,0 +1,214 @@
+html,
+body {
+  overscroll-behavior: none;
+}
+
+body {
+  background: #242424;
+  overflow: hidden;
+  margin: 0;
+  position: fixed;
+}
+
+html,
+body,
+#panel-matrix,
+.panel {
+  height: 100%;
+  width: 100%;
+}
+
+#panel-matrix {
+  position: relative;
+  transition: transform 0.25s ease-in-out;
+}
+
+.panel {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 20px;
+  position: absolute;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #dadce0;
+  }
+}
+
+.home-panel {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.home-panel .links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 20px 0 40px;
+  margin-left: -8px;
+}
+
+.home-panel .link {
+  background-color: #fafafa;
+  color: #222;
+  margin: 8px;
+
+  &:hover {
+    background-color: #dadada;
+  }
+}
+
+.panel-content {
+  max-width: 800px;
+}
+
+.tagline {
+  color: #fafafa;
+  font-size: 20px;
+}
+
+.name {
+  color: #ffc556;
+}
+
+.link {
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  padding: 0 12px;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+  }
+}
+
+.nav-section {
+  margin-top: 20px;
+}
+
+.nav-link {
+  font-size: 20px;
+}
+
+.backlinks {
+  display: flex;
+  font-size: 13px;
+  gap: 8px;
+  padding: 34px 0 24px;
+
+  .backlinks-title {
+    flex-shrink: 0;
+  }
+
+  .backlinks-content {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+.title {
+  font-size: 34px;
+}
+
+.subtitle {
+  font-size: 16px;
+}
+
+ol,
+ul {
+  padding-bottom: 20px;
+  padding-top: 12px;
+  line-height: 22px;
+}
+
+p,
+.section {
+  font-size: 16px;
+  line-height: 22px;
+  margin: 0;
+  padding: 12px 0;
+}
+
+ol p,
+ul p {
+  padding: 0;
+}
+
+.note-section {
+  background: #fff2;
+  display: inline-block;
+  padding: 12px;
+  margin: 12px 0;
+}
+
+h1 {
+  font-size: 22px;
+  margin: 0;
+  padding-top: 30px;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:focus {
+  color: #8cb6ff;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+ol,
+ul {
+  margin: 0;
+}
+
+.loot {
+  padding: 0 8px;
+
+  &.new-item {
+    background: #4791ff;
+    cursor: grab;
+    color: #fff;
+  }
+
+  &.new-item:hover {
+    background: #62a1ff;
+    color: #fff;
+  }
+
+  &.owned-item {
+    background: #e4edff;
+    color: #000;
+    cursor: not-allowed;
+  }
+}
+
+.secondary-text {
+  color: #646464;
+}
+
+.secondary-text a {
+  color: #556f9c;
+}
+
+.footnote {
+  font-size: 12px;
+}

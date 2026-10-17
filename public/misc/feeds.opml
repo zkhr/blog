@@ -4,38 +4,38 @@
 <title>Feeds</title>
 </head>
 <body>
-<outline text="Blogs" title="Blogs">
-<outline text="Home on Simon Panrucker!" type="rss" title="Home on Simon Panrucker!" htmlUrl="https://www.simonpanrucker.com/" xmlUrl="https://www.simonpanrucker.com/index.xml" />
-<outline xmlUrl="https://chriscoyier.net/feed/rss" text="Chris Coyier" title="Chris Coyier" type="rss" htmlUrl="https://chriscoyier.net" />
-<outline title="Oatmeal" type="rss" text="Oatmeal" htmlUrl="https://eli.li" xmlUrl="https://eli.li/feed.rss" />
-<outline xmlUrl="https://piperhaywood.com/feed/" text="Piper Haywood" type="rss" htmlUrl="https://piperhaywood.com/" title="Piper Haywood" />
-<outline xmlUrl="https://sive.rs/en.atom" text="Derek Sivers blog" htmlUrl="https://sive.rs" type="rss" title="Derek Sivers blog" />
-<outline text="eieio.games" type="rss" title="eieio.games" htmlUrl="https://eieio.games" xmlUrl="https://eieio.games/feed.xml" />
-<outline title="Steph Ango" type="rss" xmlUrl="https://stephango.com/feed.xml" htmlUrl="https://stephango.com/feed.xml" text="Steph Ango" />
-<outline htmlUrl="https://localthunk.com/" type="rss" xmlUrl="https://localthunk.com/?format=rss" title="LocalThunk" text="LocalThunk" />
+<outline title="Blogs" text="Blogs">
+<outline text="Chris Coyier" title="Chris Coyier" htmlUrl="https://chriscoyier.net" type="rss" xmlUrl="https://chriscoyier.net/feed/rss" />
+<outline title="Oatmeal" text="Oatmeal" type="rss" xmlUrl="https://eli.li/feed.rss" htmlUrl="https://eli.li" />
+<outline type="rss" title="eieio.games" htmlUrl="https://eieio.games" xmlUrl="https://eieio.games/feed.xml" text="eieio.games" />
+<outline text="Steph Ango" xmlUrl="https://stephango.com/feed.xml" title="Steph Ango" type="rss" htmlUrl="https://stephango.com/feed.xml" />
+<outline xmlUrl="https://localthunk.com/?format=rss" title="LocalThunk" text="LocalThunk" htmlUrl="https://localthunk.com/" type="rss" />
+<outline xmlUrl="https://www.simonpanrucker.com/index.xml" title="Home on Simon Panrucker!" type="rss" text="Home on Simon Panrucker!" htmlUrl="https://www.simonpanrucker.com/" />
+<outline type="rss" title="Ky Decker" xmlUrl="https://ky.fyi/rss.xml" text="Ky Decker" htmlUrl="https://ky.fyi" />
+<outline text="Ivy" xmlUrl="https://ivy.boo/rss" title="Ivy" type="rss" htmlUrl="https://ivy.boo" />
 </outline>
-<outline text="Comics" title="Comics">
-<outline htmlUrl="https://foxtrot.com" text="FoxTrot" xmlUrl="https://foxtrot.com/feed" type="rss" title="FoxTrot" />
-<outline text="Extra Ordinary" htmlUrl="https://www.exocomics.com/" xmlUrl="https://exocomics.com/index.xml" title="Extra Ordinary" type="rss" />
-<outline text="Questionable Content" htmlUrl="http://www.questionablecontent.net" title="Questionable Content" type="rss" xmlUrl="https://www.questionablecontent.net/QCRSS.xml" />
-<outline text="RedGreenBlue" type="rss" title="RedGreenBlue" htmlUrl="https://www.webtoons.com/en/canvas/redgreenblue/list?title_no=587922" xmlUrl="https://www.webtoons.com/en/challenge/redgreenblue/rss?title_no=587922" />
-<outline xmlUrl="https://sarahcandersen.com/rss" type="rss" text="Sarah's Scribbles" title="Sarah's Scribbles" htmlUrl="https://sarahcandersen.com/" />
-<outline type="rss" text="xkcd" xmlUrl="https://xkcd.com/rss.xml" htmlUrl="https://xkcd.com/" title="xkcd" />
-<outline htmlUrl="https://goomics.net/" title="Goomics" type="rss" xmlUrl="https://goomics.net/feed.xml" text="Goomics" />
+<outline title="Comics" text="Comics">
+<outline type="rss" htmlUrl="https://foxtrot.com" text="FoxTrot" xmlUrl="https://foxtrot.com/feed" title="FoxTrot" />
+<outline type="rss" xmlUrl="https://www.questionablecontent.net/QCRSS.xml" htmlUrl="http://www.questionablecontent.net" title="Questionable Content" text="Questionable Content" />
+<outline title="xkcd" type="rss" xmlUrl="https://xkcd.com/rss.xml" htmlUrl="https://xkcd.com/" text="xkcd" />
+<outline xmlUrl="https://goomics.net/feed.xml" htmlUrl="https://goomics.net/" type="rss" title="Goomics" text="Goomics" />
 </outline>
 <outline title="Dad Stuff" text="Dad Stuff">
-<outline htmlUrl="https://www.bluey.tv/" xmlUrl="https://www.bluey.tv/feed/" type="rss" text="Bluey Official Website" title="Bluey Official Website" />
+<outline type="rss" text="Bluey Official Website" title="Bluey Official Website" htmlUrl="https://www.bluey.tv/" xmlUrl="https://www.bluey.tv/feed/" />
+</outline>
+<outline text="Food blogs" title="Food blogs">
+<outline xmlUrl="https://pixelatedprovisions.com/rss" text="Pixelated Provisions" type="rss" title="Pixelated Provisions" htmlUrl="https://pixelatedprovisions.com/" />
 </outline>
 <outline title="Gaming News" text="Gaming News">
-<outline xmlUrl="https://na.finalfantasyxiv.com/lodestone/news/topics.xml" htmlUrl="https://na.finalfantasyxiv.com/lodestone/" type="rss" title="Topics | FFXIV" text="Topics | FFXIV" />
-<outline xmlUrl="https://factorio.com/blog/rss" text="Factorio Blog" type="rss" title="Factorio Blog" htmlUrl="https://factorio.com/" />
-<outline text="Game Developer" xmlUrl="https://www.gamedeveloper.com/rss.xml" htmlUrl="https://www.gamedeveloper.com" title="Game Developer" type="rss" />
-<outline title="Rogue" htmlUrl="https://www.rogue.site" xmlUrl="https://www.rogue.site/rss/" text="Rogue" type="rss" />
+<outline xmlUrl="https://na.finalfantasyxiv.com/lodestone/news/topics.xml" htmlUrl="https://na.finalfantasyxiv.com/lodestone/" type="rss" text="FFXIV" title="FFXIV" />
+<outline xmlUrl="https://factorio.com/blog/rss" text="Factorio" type="rss" title="Factorio" htmlUrl="https://factorio.com/" />
+<outline type="rss" htmlUrl="https://www.guildwars2.com/en" xmlUrl="https://www.guildwars2.com/en/feed/" title="Guild Wars" text="Guild Wars" />
 </outline>
 <outline title="Misc tech" text="Misc tech">
-<outline type="rss" htmlUrl="https://blog.unicode.org/" title="The Unicode Blog" text="The Unicode Blog" xmlUrl="https://blog.unicode.org/feeds/posts/default" />
-<outline text="The Pudding" type="rss" title="The Pudding" htmlUrl="https://pudding.cool" xmlUrl="https://pudding.cool/rss.xml" />
-<outline text="Deno" htmlUrl="https://deno.com/blog" title="Deno" xmlUrl="https://deno.com/feed" type="rss" />
+<outline text="The Unicode Blog" htmlUrl="https://blog.unicode.org/" title="The Unicode Blog" xmlUrl="https://blog.unicode.org/feeds/posts/default" type="rss" />
+<outline text="The Pudding" htmlUrl="https://pudding.cool" xmlUrl="https://pudding.cool/rss.xml" type="rss" title="The Pudding" />
+<outline xmlUrl="https://deno.com/feed" title="Deno" text="Deno" htmlUrl="https://deno.com/blog" type="rss" />
+<outline title="Ink &amp; Switch" text="Ink &amp; Switch" htmlUrl="https://www.inkandswitch.com/" type="rss" xmlUrl="https://www.inkandswitch.com/index.xml" />
 </outline>
 </body>
 </opml>

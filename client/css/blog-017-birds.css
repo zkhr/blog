@@ -1,0 +1,15 @@
+.hieroglyphs {
+  word-wrap: break-word;
+  font-size: 36px;
+}
+
+.unicode-bird {
+  align-items: center;
+  display: flex;
+}
+
+.unicode-char {
+  font-size: 60px;
+  line-height: 60px;
+  padding-right: 8px;
+}
