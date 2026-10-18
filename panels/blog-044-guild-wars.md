@@ -7,6 +7,7 @@ navLinks:
   - 0 0 Home
   - 0 -1 Journal
   - 7 -8 Prev
+  - 6 -7 Next
 ---
 
 # Guild Wars 1

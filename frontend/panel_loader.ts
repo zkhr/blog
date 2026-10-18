@@ -1,13 +1,14 @@
-import { DOMParser } from "jsr:@b-fuze/deno-dom";
+import { JSDOM } from "jsdom";
 import { renderPanel } from "./panel_renderer.ts";
 import {
   getPanelLinks,
-  Panel,
-  PanelKey,
+  type Panel,
+  type PanelKey,
   toPanel,
   toPanelKey,
 } from "../common/panel.ts";
 import { filterToJournalPanels } from "./utils.ts";
+import { readdir, readFile } from "node:fs/promises";
 
 export async function loadPanels(): Promise<Map<PanelKey, Panel>> {
   const panels = await fetchPanels();
@@ -20,10 +21,11 @@ export async function loadPanels(): Promise<Map<PanelKey, Panel>> {
 
 async function fetchPanels() {
   const panels = new Map<PanelKey, Panel>();
-  for await (const file of Deno.readDir("./panels")) {
-    const panel = await renderPanel(file.name);
+  const filenames = await readdir("./panels");
+  for (const filename of filenames) {
+    const panel = await renderPanel(filename);
     if (!panel) {
-      console.log(`Panel not found for ${file.name}`);
+      console.log(`Panel not found for ${filename}`);
       continue;
     }
     panels.set(toPanelKey(panel.metadata.coordinates), panel);
@@ -68,9 +70,11 @@ function addJournalPanel(panels: Map<PanelKey, Panel>) {
 }
 
 async function addBlogrollPanel(panels: Map<PanelKey, Panel>) {
-  const xmlContent = await Deno.readTextFile(`./public/misc/feeds.opml`);
-  const doc = new DOMParser().parseFromString(xmlContent, "text/html");
-  const outlines = doc.querySelectorAll("outline");
+  const xmlContent = await readFile(`./public/misc/feeds.opml`, {
+    encoding: "utf8",
+  });
+  const dom = new JSDOM(xmlContent);
+  const outlines = dom.window.document.getElementsByTagName("outline");
   const entries: string[] = [];
   for (const outline of outlines) {
     const text = outline.getAttribute("text");
@@ -112,9 +116,9 @@ async function addBlogrollPanel(panels: Map<PanelKey, Panel>) {
 }
 
 function addPanel(panels: Map<PanelKey, Panel>, htmlContent: string) {
-  const doc = new DOMParser().parseFromString(htmlContent, "text/html");
-  const panelEl = doc.querySelector<HTMLElement>(".panel")!;
-  const panel = toPanel(panelEl);
+  const dom = new JSDOM(htmlContent);
+  const panelEls = dom.window.document.getElementsByClassName("panel");
+  const panel = toPanel(panelEls[0]);
   panels.set(toPanelKey(panel.metadata.coordinates), panel);
 }
 
@@ -131,16 +135,17 @@ function addBacklinksToPanels(panels: Map<PanelKey, Panel>) {
       console.log(`Error building backlink for ${panel.metadata.title}.`);
       continue;
     }
-    const doc = new DOMParser().parseFromString(
+    const dom = new JSDOM(
       `<div class="backlinks">
         <div class="backlinks-title">⇐ Backlinks:</div>
         <div class="backlinks-content">
           ${renderBacklinks(srcKeys, panels)}
         </div>
       </div>`,
-      "text/html",
     );
-    contentEl.appendChild(doc.querySelector<HTMLElement>(".backlinks")!);
+    contentEl.appendChild(
+      dom.window.document.getElementsByClassName("backlinks")[0],
+    );
   }
 }
 

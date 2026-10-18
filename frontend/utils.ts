@@ -1,4 +1,4 @@
-import { Panel, PanelKey } from "../common/panel.ts";
+import { type Panel, type PanelKey } from "../common/panel.ts";
 
 /** Filters the provided panels to just journal panels, sorted chronologically. */
 export function filterToJournalPanels(

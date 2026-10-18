@@ -1,3 +1,4 @@
 dist/*
-drafts/
+drafts/*
+node_modules/*
 public/fonts/*

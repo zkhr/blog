@@ -14,28 +14,23 @@ blog/
 │   └── js/              # Client-side TS code (to be compiled to JS)
 ├── common/              # Defines code shared between clients and the frontend
 ├── dist/                # Generated static content (served by the frontend)
+├── drafts/              # Drafts for future blog posts
 ├── frontend/            # Server-side TS code (for running the frontend)
+├── node_modules/        # Server dependencies
 ├── panels/              # Contains all renderable panels
 ├── public/              # Additional static content
 │   ├── fonts/
 │   ├── images/
 │   └── misc/
 ├── .gitignore           # Files that aren't tracked by git
-├── deno.json            # Deno (runtime & package mgr) config and tasks
-└── deno.lock            # Deno lock file for checking module integrity
+├── package.json         # Node config
+└── package-lock.json    # Node lock file for dependency versioning
 ```
-
-## Prerequisites
-
-ari.blumenthal.dev is served by the [Deno](https://docs.deno.com) JS runtime.
 
 ## Running the FE
 
-To run the server (i.e. update static content, respond to requests, and watch
-for any local changes), run:
-
 ```sh
-$ deno run app
+$ npm start
 ```
 
 ## FAQ

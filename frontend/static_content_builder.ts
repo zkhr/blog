@@ -1,4 +1,5 @@
-import { Panel, PanelKey } from "../common/panel.ts";
+import { copyFile, mkdir, readdir, rm, writeFile } from "node:fs/promises";
+import { type Panel, type PanelKey } from "../common/panel.ts";
 import { filterToJournalPanels } from "./utils.ts";
 import { compileCss } from "./css_loader.ts";
 import { compileJs } from "./js_loader.ts";
@@ -28,11 +29,11 @@ export async function buildStaticContent(
 
 async function cleanDistDir() {
   try {
-    await Deno.remove(DIST_DIR, { recursive: true });
+    await rm(DIST_DIR, { recursive: true });
   } catch (_) {
     // If we couldn't remove the directory, it probably didn't exist yet.
   }
-  await Deno.mkdir(`${DIST_DIR}/`, { recursive: true });
+  await mkdir(`${DIST_DIR}/`, { recursive: true });
 }
 
 /** Copies all static content to the dist/ directory. */
@@ -42,9 +43,10 @@ async function copyStaticContentToDist() {
     const src = `./public/${staticDir}`;
     const dest = `${DIST_DIR}/${staticDir}`;
     console.log(`    Copying ${src} to ${dest}`);
-    await Deno.mkdir(dest, { recursive: true });
-    for await (const file of Deno.readDir(src)) {
-      Deno.copyFile(`${src}/${file.name}`, `${dest}/${file.name}`);
+    await mkdir(dest, { recursive: true });
+    const filenames = await readdir(src);
+    for (const filename of filenames) {
+      copyFile(`${src}/${filename}`, `${dest}/${filename}`);
     }
   }
 }
@@ -85,7 +87,7 @@ async function buildAtomFeed(
     }
   }
 
-  await Deno.writeTextFile(
+  await writeFile(
     filename,
     `<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
@@ -130,5 +132,5 @@ async function buildSitemap(
     "https://ari.blumenthal.dev/booggle/",
   );
 
-  await Deno.writeTextFile(filename, entries.join("\n"));
+  await writeFile(filename, entries.join("\n"));
 }

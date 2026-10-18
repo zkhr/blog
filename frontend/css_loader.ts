@@ -1,15 +1,17 @@
 import { genRandomString } from "./utils.ts";
+import { readdir, readFile, writeFile } from "node:fs/promises";
 
 /** Combines CSS into a single file. Returns the filename of the merged css. */
 export async function compileCss(distDir: string): Promise<string> {
-  const filename = `index-${genRandomString()}.css`;
-  console.log(`    Adding ${distDir}/${filename}`);
+  const outputFilename = `index-${genRandomString()}.css`;
+  console.log(`    Adding ${distDir}/${outputFilename}`);
 
   let result = "";
-  for await (const file of Deno.readDir("./client/css")) {
-    result += await Deno.readTextFile(`./client/css/${file.name}`);
+  const filenames = await readdir("./client/css");
+  for (const filename of filenames) {
+    result += await readFile(`./client/css/${filename}`, { encoding: "utf8" });
   }
 
-  await Deno.writeTextFile(`${distDir}/${filename}`, result);
-  return filename;
+  await writeFile(`${distDir}/${outputFilename}`, result);
+  return outputFilename;
 }

@@ -1,31 +1,32 @@
-import { DOMParser } from "jsr:@b-fuze/deno-dom";
-import { marked } from "npm:marked";
-import matter from "npm:gray-matter";
+import { JSDOM } from "jsdom";
+import { marked } from "marked";
+import matter from "gray-matter";
 import {
-  Coordinates,
-  Link,
-  Panel,
-  PanelMetadata,
-  PanelType,
+  type Coordinates,
+  type Link,
+  type Panel,
+  type PanelMetadata,
+  type PanelType,
   toPanel,
 } from "../common/panel.ts";
+import { readFile } from "node:fs/promises";
 
 export async function renderPanel(filename: string): Promise<Panel | null> {
   const src = `./panels/${filename}`;
   const suffix = filename.split(".")[1];
   const htmlContent = await getPanelHtml(suffix, src, filename);
-  const doc = new DOMParser().parseFromString(htmlContent, "text/html");
-  const panelEl = doc.querySelector<HTMLElement>(".panel");
-  return panelEl ? toPanel(panelEl) : null;
+  const dom = new JSDOM(htmlContent);
+  const panels = dom.window.document.getElementsByClassName("panel");
+  return panels.length > 0 ? toPanel(panels[0]) : null;
 }
 
 async function getPanelHtml(suffix: string, src: string, filename: string) {
   switch (suffix) {
     case "html": {
-      return Deno.readTextFile(src);
+      return readFile(src, { encoding: "utf8" });
     }
     case "md": {
-      const panelText = await Deno.readTextFile(src);
+      const panelText = await readFile(src, { encoding: "utf8" });
       return mdToHtml(panelText, filename);
     }
   }

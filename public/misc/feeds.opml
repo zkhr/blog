@@ -34,7 +34,6 @@
 <outline title="Misc tech" text="Misc tech">
 <outline text="The Unicode Blog" htmlUrl="https://blog.unicode.org/" title="The Unicode Blog" xmlUrl="https://blog.unicode.org/feeds/posts/default" type="rss" />
 <outline text="The Pudding" htmlUrl="https://pudding.cool" xmlUrl="https://pudding.cool/rss.xml" type="rss" title="The Pudding" />
-<outline xmlUrl="https://deno.com/feed" title="Deno" text="Deno" htmlUrl="https://deno.com/blog" type="rss" />
 <outline title="Ink &amp; Switch" text="Ink &amp; Switch" htmlUrl="https://www.inkandswitch.com/" type="rss" xmlUrl="https://www.inkandswitch.com/index.xml" />
 </outline>
 </body>

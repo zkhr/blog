@@ -33,18 +33,32 @@ export function toPanel(el: HTMLElement): Panel {
   const metadata = {
     coordinates: getCoordinates(el),
     title: el.querySelector(".title")?.textContent ?? "",
-    type: (el.dataset.type ?? "") as PanelType,
-    urlSuffix: el.dataset.urlSuffix ?? "",
+    type: dataset(el, "type") as PanelType,
+    urlSuffix: dataset(el, "urlSuffix"),
     date: el.querySelector(".blog-date")?.textContent ?? "",
     navLinks: getPanelLinks(el, ".nav-link"),
   };
   return { metadata, el };
 }
 
+/** Returns the dataset entry for an element. */
+function dataset(el: HTMLElement, entry: string): string {
+  if (el.dataset) return el.dataset[entry] ?? "";
+
+  // The node dom-parser library only populates attributes, not dataset, so
+  // we have to find it manually...
+  for (const attr of el.attributes) {
+    if (attr.name === `data-${entry}`) {
+      return attr.value;
+    }
+  }
+  return "";
+}
+
 function getCoordinates(el: HTMLElement): Coordinates {
   return {
-    x: parseInt(el.dataset.x ?? "0"),
-    y: parseInt(el.dataset.y ?? "0"),
+    x: parseInt(dataset(el, "x")) || 0,
+    y: parseInt(dataset(el, "y")) || 0,
   };
 }
 

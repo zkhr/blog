@@ -1,6 +1,7 @@
 import { genRandomString } from "./utils.ts";
-import { bundle } from "jsr:@deno/emit";
-import { Panel, PanelKey } from "../common/panel.ts";
+import { type Panel, type PanelKey } from "../common/panel.ts";
+import * as esbuild from "esbuild";
+import { writeFile } from "node:fs/promises";
 
 /** Builds JS from TS sources. Returns the filename of the generated js. */
 export async function compileJs(
@@ -10,10 +11,13 @@ export async function compileJs(
   const filename = `index-${genRandomString()}.js`;
   console.log(`    Adding ${distDir}/${filename}`);
 
-  const result = await bundle("client/js/app.ts");
-  result.code = genPanelCode(panels) + result.code;
-
-  await Deno.writeTextFile(`${distDir}/${filename}`, result.code);
+  const result = await esbuild.build({
+    entryPoints: ["client/js/app.ts"],
+    bundle: true,
+    write: false,
+  });
+  const code = genPanelCode(panels) + result.outputFiles[0].text;
+  await writeFile(`${distDir}/${filename}`, code);
   return filename;
 }
 

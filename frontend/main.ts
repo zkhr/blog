@@ -1,4 +1,4 @@
-import { Application, Context, Next, Router } from "@oak/oak";
+import express, { type Request, type Response } from "express";
 import { loadPanels } from "./panel_loader.ts";
 import { toPanelKey } from "../common/panel.ts";
 import { buildStaticContent } from "./static_content_builder.ts";
@@ -6,16 +6,16 @@ import { buildStaticContent } from "./static_content_builder.ts";
 const panels = await loadPanels();
 const sc = await buildStaticContent(panels);
 
-const router = new Router();
-router.get("/", (ctx) => servePanel(ctx, "0", "0"));
-router.get("/!/:x/:y", (ctx) => servePanel(ctx, ctx.params.x, ctx.params.y));
-router.get("/!/:x/:y/:_", (ctx) => servePanel(ctx, ctx.params.x, ctx.params.y));
-
-const app = new Application();
-app.use(router.routes());
-app.use(router.allowedMethods());
-app.use(handleStatic);
-app.use(handle404);
+const app = express();
+app.get("/", (req: Request, res: Response) => servePanel(res, "0", "0"));
+app.get(
+  "/\\!/:x/:y{/:_}",
+  (req: Request, res: Response) => servePanel(res, req.params.x, req.params.y),
+);
+app.use(express.static(sc.root));
+app.all("*any", (req, res) => {
+  res.status(404).send("<!DOCTYPE HTML><head><title>404</title></head>");
+});
 
 app.listen({ port: 3001 });
 
@@ -26,10 +26,10 @@ console.log("║  zkhr/blog frontend is listening on port 3001.    ║");
 console.log("╚═══════════════════════════════════════════════════╝");
 
 /** Renders a panel at the requested coordinates */
-function servePanel(ctx: Context, x: string, y: string) {
+function servePanel(res: Response, x: string, y: string) {
   const panel = panels.get(toPanelKey({ x: parseInt(x), y: parseInt(y) }));
   const panelHtml = panel ? panel.el.outerHTML : "";
-  ctx.response.body = `<!DOCTYPE html>
+  res.send(`<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -52,23 +52,5 @@ function servePanel(ctx: Context, x: string, y: string) {
     <div id="panel-matrix">${panelHtml}</div>
     <script src="/${sc.jsFilename}"></script>
   </body>
-</html>`;
-}
-
-/** Serves content from the static content builder's root directory. */
-async function handleStatic(ctx: Context<Record<string, object>>, next: Next) {
-  try {
-    await ctx.send({ root: sc.root });
-  } catch {
-    await next();
-  }
-}
-
-/** Serves a blank 404 page for any unknown requests. */
-async function handle404(ctx: Context<Record<string, object>>, next: Next) {
-  await next();
-  if (ctx.response.status === 404 && ctx.request.accepts("text/html")) {
-    ctx.response.body = `<!DOCTYPE HTML><head><title>404</title></head>`;
-    ctx.response.status = 404;
-  }
+</html>`);
 }
