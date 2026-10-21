@@ -30,7 +30,8 @@ blog/
 ## Running the FE
 
 ```sh
-$ npm start
+$ npm start # to just run the server
+$ npm run watch # to also watch for local changes to client, panels, or public.
 ```
 
 ## FAQ

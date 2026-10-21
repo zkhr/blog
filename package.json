@@ -10,7 +10,8 @@
   "author": "Ari Blumenthal",
   "type": "module",
   "scripts": {
-    "start": "node frontend/main.ts"
+    "start": "node frontend/main.ts",
+    "watch": "node --watch-path=./client --watch-path=./panels --watch-path=./public frontend/main.ts"
   },
   "dependencies": {
     "esbuild": "^0.28.2",

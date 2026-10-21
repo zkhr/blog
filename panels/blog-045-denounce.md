@@ -7,6 +7,7 @@ navLinks:
   - 0 0 Home
   - 0 -1 Journal
   - 7 -7 Prev
+  - 6 -6 Next
 ---
 
 Just saw a few days ago that
